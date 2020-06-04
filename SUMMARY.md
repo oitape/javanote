@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [String](string.md)
 * [Common](common.md)
+* [String](string.md)
 * [Long](long.md)
 
