@@ -5,8 +5,8 @@
  - PC区：Java线程的私有数据：执行下一条指令的地址
  - Native method stack：虚拟机的native方法有关
 - 内存模型：JMM（Java memory model）
- - 主内存：
- - 工作内存
+ - 主内存（共享内存）：
+ - 工作空间内存
  - 工作方式：
    - 线程修改私有数据，直接在工作空间上修改
    - 线程修改共享数据，把数据复制到工作空间中去，在工作空间中修改，修改完成以后，刷新内存中的数据
@@ -43,4 +43,12 @@
  - Volatile在JMM模型上实现MESI协议，
  - Synchronize：加锁
  - JUC Lock
- 
+- JMM与有序性
+ - Volatile：
+ - Synchronized：
+ - Happens-before原则：
+   - 程序次序原则
+   - 锁定原则：后一次加锁必须等前一次解锁
+   - Volatile原则：霸道原则
+   - 传递原则：A---B---C       A--C
+
