@@ -5,6 +5,7 @@
  - PC区：Java线程的私有数据：执行下一条指令的地址
  - Native method stack：虚拟机的native方法有关
 - 内存模型：JMM（Java memory model）
+![](/assets/iShot2020-06-09下午09.13.45.png)
  - 主内存（共享内存）：
  - 工作空间内存
  - 工作方式：
