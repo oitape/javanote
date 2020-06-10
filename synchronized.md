@@ -17,13 +17,13 @@
 通过`javap -v $className` 可查看
   - 方法内synchronized可以看到
     - monitorenter 和 monitorexit 
-  - synchronized 静态方法
+  - synchronized 方法
     ```java
     public static synchronized void accessResources0();
     descriptor: ()V
     flags: ACC_PUBLIC, ACC_STATIC, ACC_SYNCHRONIZED
     ```
-    - 可以看到通过ACC_SYNCHRONIZED flag进行加锁实现同步静态方法
+    - 可以看到通过ACC_SYNCHRONIZED flag进行加锁实现同步方法
   
 - Java虚拟机对synchronized的优化
   - 偏向锁 （jdk1.6之后）
