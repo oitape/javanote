@@ -11,3 +11,16 @@
 - Java中，每个对象都会有一个monitor对象，监视器
   - 某一个线程要占有这个对象的时候，先monitor的计数器是不是0，0代表无线程占有，占有该对象时，monitor+1；不为0，则有其他线程已经占有；线程释放时，monitor-1.
   - 同一线程可以对同一对象进行多次加锁，+1，+1，重入性
+  
+  
+- synchronized底层原理
+通过`javap -v $className` 可查看
+  - 方法内synchronized可以看到
+    - monitorenter 和 monitorexit 
+  - synchronized 静态方法
+
+    ```java
+    public static synchronized void accessResources0();
+    descriptor: ()V
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_SYNCHRONIZED
+    ```
