@@ -1,4 +1,4 @@
-- 查看对象内存地址
+- 查看对象hash
     ```
     System.identityHashCode(obj);
     ```
