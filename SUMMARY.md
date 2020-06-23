@@ -7,4 +7,5 @@
 * [Memory](memory.md)
 * [Synchronized](synchronized.md)
 * [Volatile](volatile.md)
+* [Singleton](singleton.md)
 
