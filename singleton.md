@@ -33,3 +33,19 @@
         }                            
     }
     ```
+    - 内部类
+    ```java
+    public class HolderDemo {
+    private HolderDemo() { }
+
+    ///内部类在什么时候初始化  需要外部类调用内部类才会初始化
+    private static class Holder {
+        private static HolderDemo instance = new HolderDemo();
+    }
+
+    public static HolderDemo getInstance() {
+        return Holder.instance;
+    }
+    }
+
+    ```
