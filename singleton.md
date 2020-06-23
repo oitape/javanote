@@ -19,11 +19,17 @@
         
         private HoonSynSingleton() {
         }
-    
-        public synchronized static HoonSynSingleton getInstance() {
-            if (null == instance)
-                instance = new HoonSynSingleton();
-            return instance;
-        }                        
+        
+        public static HoonSynSingletonDemo getInstance() {
+            if (instance != null) {
+                return instance
+            }
+            synchronized (HoonSynSingletonDemo.class) {
+                if (instance != null) {
+                    return instance
+                }
+                return new HoonSynSingletonDemo();
+            }
+        }                            
     }
     ```
