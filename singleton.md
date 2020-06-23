@@ -1,4 +1,4 @@
-- 单例模式
+    - 单例模式
     - 饿汉式:在加载的时候就已经被实例化，只有一次 线程安全，
     ```java
     public class HungerySingleton {
@@ -32,20 +32,24 @@
             }
         }                            
     }
-    ```
+    ```    
     - 内部类
     ```java
     public class HolderDemo {
-    private HolderDemo() { }
-
-    ///内部类在什么时候初始化  需要外部类调用内部类才会初始化
-    private static class Holder {
-        private static HolderDemo instance = new HolderDemo();
+        private HolderDemo() { }
+    
+        //内部类在什么时候初始化  需要外部类调用内部类才会初始化
+        private static class Holder {
+            private static HolderDemo instance = new HolderDemo();
+        }
+    
+        public static HolderDemo getInstance() {
+            return Holder.instance;
+        }
     }
 
-    public static HolderDemo getInstance() {
-        return Holder.instance;
-    }
-    }
-
+    ```
+    - 枚举
+    ```java
+    
     ```
