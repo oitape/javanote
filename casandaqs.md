@@ -18,3 +18,119 @@
 - AQS：AbstractQueuedSychronizer同步发生器，构建LOCK。在JUC包ReentrantLock、读写锁、信号量的基础都是AQS    
     - 通过内置得到FIFO同步队列来完成线程争夺资源的管理工作
     - 同步器来管理 需要获取资源的Node线程队列，每个线程做的事情就是获取锁、释放锁，然后队列里的线程通过自旋锁去公平竞争资源
+
+- 自定义锁
+```java
+public class MyLock implements Lock {
+    private Helper helper = new Helper();
+    private class Helper extends AbstractQueuedSynchronizer {
+        // 获取锁
+        @Override
+        protected boolean tryAcquire(int arg) {
+            int state = getState();
+            // 拿到锁
+            if (state == 0) {
+                // 利用CAS原理又该state
+                if (compareAndSetState(0, arg)) {
+                    // 设置当前锁占用资源
+                    setExclusiveOwnerThread(Thread.currentThread());
+                    return true;
+                }
+            } else if (getExclusiveOwnerThread() == Thread.currentThread()) { //锁重入性
+                setState(getState() + arg);
+                return true;
+            }
+            return false;
+        }
+
+        //释放锁
+        @Override
+        protected boolean tryRelease(int arg) {
+            int state = getState() - arg;
+            boolean flag = false;
+            // 判断释放后是否为0
+            if (state == 0) {
+                setExclusiveOwnerThread(null);
+                setState(state);
+                return true;
+            }
+            setState(state);
+            return false;
+        }
+
+        public Condition newConditionObject() {
+            return new ConditionObject();
+        }
+    }
+
+    @Override
+    public void lock() {
+        helper.acquire(1);
+    }
+
+    @Override
+    public void lockInterruptibly() throws InterruptedException {
+        helper.acquireInterruptibly(1);
+    }
+
+    @Override
+    public boolean tryLock() {
+        return helper.tryAcquire(1);
+    }
+
+    @Override
+    public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
+        return helper.tryAcquireSharedNanos(1, unit.toNanos(time));
+    }
+
+    @Override
+    public void unlock() {
+        helper.release(1);
+    }
+
+    @Override
+    public Condition newCondition() {
+        return helper.newConditionObject();
+    }
+}
+```
+
+- CountDownLatch
+    ```java
+        CountDownLatch latch=new CountDownLatch(10);
+        for (int i = 0; i < 10; i++) {
+            threads[i]=new Thread(()->{
+                int val=new Random().nextInt(10);
+                try {
+                    TimeUnit.SECONDS.sleep(val);
+                    latch.countDown();
+                } catch (InterruptedException e) {
+                    latch.countDown();
+                }
+            });
+            threads[i].start();
+        }
+        latch.await();
+        System.out.println("唤醒主线程")
+    ```
+- CyclicBarrier
+    ```java
+        CyclicBarrier barrier=new CyclicBarrier(8);
+        Thread[] play=new Thread[8];
+        for (int i = 0; i < 8; i++) {
+            play[i]=new Thread(()->{
+                try {
+                    TimeUnit.SECONDS.sleep(new Random().nextInt(10));
+                    System.out.println(Thread.currentThread().getName()+"准备好了");
+                    barrier.await();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                // 等到8个线程全部准备好了  才统一一起往下走
+                System.out.println("选手"+Thread.currentThread().getName()+"起跑");
+            },"play["+i+"]");
+            play[i].start();
+        }
+    ```
+    
+    
