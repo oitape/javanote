@@ -54,6 +54,6 @@
     if (newCapacity - minCapacity < 0)
         newCapacity = minCapacity;
     ```
-    所以最终数组扩容后的大小为 16。
+    // 所以最终数组扩容后的大小为 16。
     
     ```
