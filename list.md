@@ -50,10 +50,10 @@
         elementData = Arrays.copyOf(elementData, newCapacity);
     }
     // 数组在加入一个值后，实际大小是 1，最大可用大小是 10 ，现 在需要一下子加入 15 个值，那我们期望数组的大小值就是 16，此时数组最大可用大小只有 10，明显不够，需要扩容，扩容后的大小是:10 + 10 /2 = 15，这时候发现扩容后的大小仍 然不到我们期望的值 16,
-    ```java
+
     if (newCapacity - minCapacity < 0)
         newCapacity = minCapacity;
-    ```
+        
     // 所以最终数组扩容后的大小为 16。
     
     ```
