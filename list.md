@@ -56,3 +56,6 @@
         
     // 所以最终数组扩容后的大小为 16。
     ```
+    - 线程安全的list
+        - Collections.synchronizedList(arrayList);
+        - CopyOnWriteArrayList
