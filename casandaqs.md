@@ -95,7 +95,7 @@ public class MyLock implements Lock {
 }
 ```
 
-- CountDownLatch
+- CountDownLatch：等所有线程都执行完了才继续下一步
     ```java
         CountDownLatch latch=new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
@@ -113,7 +113,7 @@ public class MyLock implements Lock {
         latch.await();
         System.out.println("唤醒主线程")
     ```
-- CyclicBarrier
+- CyclicBarrier：用于所有线程都准备好了再同时执行
     ```java
         CyclicBarrier barrier=new CyclicBarrier(8);
         Thread[] play=new Thread[8];
@@ -131,6 +131,10 @@ public class MyLock implements Lock {
             },"play["+i+"]");
             play[i].start();
         }
+    ```
+    
+- Semaphore
+    ```
     ```
     
     
