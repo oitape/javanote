@@ -13,5 +13,8 @@
         ```
     - newSingleThreadExecutor
         ```java
-        
+        new FinalizableDelegatedExecutorService
+            (new ThreadPoolExecutor(1, 1,
+                                    0L, TimeUnit.MILLISECONDS,
+                                    new LinkedBlockingQueue<Runnable>()));
         ```
