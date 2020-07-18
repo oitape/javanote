@@ -12,7 +12,7 @@
     - 循环时间太长：如果CAS一直不成功呢？这种情况绝对有可能发生，如果自旋CAS长时间地不成功，则会给CPU带来非常大的开销。在JUC中有些地方就限制了CAS自旋的次数，例如BlockingQueue的SynchronousQueue。
     - 只能保证一个共享变量原子操作：看了CAS的实现就知道这只能针对一个共享变量，如果是多个共享变量就只能使用锁了，当然如果你有办法把多个变量整成一个变量，利用CAS也不错。例如读写锁中state的高地位
     - ABA问题：CAS需要检查操作值有没有发生改变，如果没有发生改变则更新。但是存在这样一种情况：如果一个值原来是A，变成了B，然后又变成了A，那么在CAS检查的时候会发现没有改变，但是实质上它已经发生了改变，这就是所谓的ABA问题。对于ABA问题其解决方案是加上版本号，即在每个变量都加上一个版本号，每次改变时加1，即A —> B —> A，变成1A —> 2B —> 3A。
-- thread.Join()：把该线程加入到当前线程，比如main中走到thread.Join()时会先执行thread完毕后再执行main
+- thread.Join()：把该线程加入到当前线程，比如main中走到thread.Join()时会先执行thread完毕后再执行main。多线程使用join可以使线程按照自己指定的顺序执行
 
 
 - AQS：AbstractQueuedSychronizer同步发生器，构建LOCK。在JUC包ReentrantLock、读写锁、信号量的基础都是AQS    
@@ -135,7 +135,6 @@ public class MyLock implements Lock {
     
 - Semaphore：用于控制同时运行的总数
     ```java
-    
         Semaphore semaphore = new Semaphore(5);
         Thread[] threads = new Thread[10];
         for (int i = 0; i < threads.length; i++) {
