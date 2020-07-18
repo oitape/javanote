@@ -158,5 +158,12 @@ public class MyLock implements Lock {
             threads[i].start();
         }
     ```
+- JUC
+    - 非阻塞式集合：ConcurrentLinkedDeque
+        包含添加移除方法：方法不能立即被执行，则返回null或抛出异常，但是调用这个方法的线程不会被阻塞
+    - 阻塞式集合：LinkedBlockingDeque
+        当集合已满或为空时，被调用的添加或者移除方法就不能立即被执行，那么调用这个方法的线程将被阻塞，一直到该方法可以被成功执行
+    
+    
     
     
