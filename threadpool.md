@@ -18,3 +18,9 @@
                                     0L, TimeUnit.MILLISECONDS,
                                     new LinkedBlockingQueue<Runnable>()));
         ```
+    - newScheduledThreadPool
+        ```java
+        super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS,
+              new DelayedWorkQueue());
+        ```
+- 线程池的状态
