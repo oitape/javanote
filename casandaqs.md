@@ -133,8 +133,31 @@ public class MyLock implements Lock {
         }
     ```
     
-- Semaphore
-    ```
+- Semaphore：用于控制同时运行的总数
+    ```java
+    
+        Semaphore semaphore = new Semaphore(5);
+        Thread[] threads = new Thread[10];
+        for (int i = 0; i < threads.length; i++) {
+            int finalI = i;
+            threads[i] = new Thread(() -> {
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                    semaphore.acquire();
+                    System.out.println(Thread.currentThread().getName() + " 可以入场");
+                } catch (Exception e) {
+
+                }
+                try {
+                    TimeUnit.SECONDS.sleep(finalI);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                semaphore.release();
+                System.out.println(Thread.currentThread().getName() + " 离场");
+            });
+            threads[i].start();
+        }
     ```
     
     
