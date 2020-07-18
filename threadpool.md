@@ -1,4 +1,5 @@
 - 线程池
+     ![](/assets/pool.png)
     - newFixedThreadPool
         ```java
         new ThreadPoolExecutor(nThreads, nThreads,
