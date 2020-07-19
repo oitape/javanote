@@ -14,5 +14,5 @@
 * [List](list.md)
 * [Map](map.md)
 * [ThreadPool](threadpool.md)
-* [Maven&Git](maven.md)
+* [Maven](maven.md)
 
