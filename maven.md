@@ -22,7 +22,19 @@
     - Add Configuation
     ![](/assets/iShot2020-07-19下午05.36.05.png)
 
-- 打包源代码插件
+- 打包的同时生成源代码jar包插件
     ```java
-    
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+            <phase>verify</phase>
+          </execution>
+        </executions>
+      </plugin>
     ```
