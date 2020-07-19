@@ -105,19 +105,6 @@
         </pluginRepositories>
       </profile>
       ```
-      - 配置连接私服权限
-      ```xml
-       <server>
-        <id>release</id> 
-        <username>admin</username> 
-        <password>admin123</password>
-       </server> 
-       <server>
-          <id>snapshots</id> 
-          <username>deployment</username> 
-          <password>deployment123</password>
-       </server>
-      ```
       - 发布到私服配置
       ```xml
       <distributionManagement>
@@ -132,6 +119,21 @@
             <url>http://nexus.wosai-inc.com:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
       </distributionManagement>
+      ```
+      - 配置连接私服权限
+      ```xml
+      <servers>
+        <server>
+            <id>deployment</id>
+            <username>deployment</username>
+            <password>deployment123</password>
+        </server>
+        <server>
+            <id>release</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+      </servers>
       ```
       
     
