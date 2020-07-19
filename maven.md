@@ -105,5 +105,18 @@
         </pluginRepositories>
       </profile>
       ```
+      - 配置连接私服权限
+      ```xml
+       <server>
+        <id>release</id> 
+        <username>admin</username> 
+        <password>admin123</password>
+       </server> 
+       <server>
+          <id>snapshots</id> 
+          <username>deployment</username> 
+          <password>deployment123</password>
+       </server>
+      ```
     
   
