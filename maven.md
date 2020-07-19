@@ -4,7 +4,8 @@
     - mvn test  测试
     - mvn package 打包
     - mvn instal  打包并copy到本地仓库
-- Web项目配置
+- 
+- Web项目Tomcat插件配置
     - <build>内部进行配置plugins
     ```
     <plugins>
@@ -38,3 +39,16 @@
         </executions>
       </plugin>
     ```
+- JDK编译插件
+  ```java
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId> 
+    <artifactId>maven-compiler-plugin</artifactId> 
+    <version>3.8.0</version>
+    <configuration> 
+      <source>1.8</source> 
+      <target>1.8</target> 
+      <encoding>UTF-8</encoding>
+    </configuration>
+  </plugin>
+  ```
