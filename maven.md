@@ -7,7 +7,7 @@
 - 
 - Web项目Tomcat插件配置
     - <build>内部进行配置plugins
-    ```
+    ```xml
     <plugins>
         <plugin>
           <groupId>org.apache.tomcat.maven</groupId>
@@ -24,7 +24,7 @@
     ![](/assets/iShot2020-07-19下午05.36.05.png)
 
 - 打包的同时生成源代码jar包插件
-    ```java
+    ```xml
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
@@ -40,7 +40,7 @@
       </plugin>
     ```
 - JDK编译插件
-  ```java
+  ```xml
   <plugin>
     <groupId>org.apache.maven.plugins</groupId> 
     <artifactId>maven-compiler-plugin</artifactId> 
@@ -68,7 +68,7 @@
   - 使用私服
     - 配置settings.xml
       - 添加镜像配置，将所有访问外网仓库的请求指向私服
-      ```java
+      ```xml
          <mirror>
           <id>nexus</id>
           <mirrorOf>*</mirrorOf>           
@@ -76,33 +76,33 @@
         </mirror>
       ```
       - 添加profiles，所有请求均通过镜像
-      ```
+      ```xml
       <profile> 
-      <id>nexus</id> 
-      <repositories>
-        <repository>
-          <id>central</id> 
-          <url>https://repo1.maven.org/maven2</url> 
-          <releases>
-            <enabled>true</enabled>
-          </releases> 
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </repository> 
-      </repositories> 
-      <pluginRepositories>
-        <pluginRepository>
-          <id>central</id> 
-          <url>https://repo1.maven.org/maven2</url> 
-          <releases>
-            <enabled>true</enabled>
-          </releases> 
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </pluginRepository> 
-      </pluginRepositories>
+        <id>nexus</id> 
+        <repositories>
+          <repository>
+            <id>central</id> 
+            <url>https://repo1.maven.org/maven2</url> 
+            <releases>
+              <enabled>true</enabled>
+            </releases> 
+            <snapshots>
+              <enabled>true</enabled>
+            </snapshots>
+          </repository> 
+        </repositories> 
+        <pluginRepositories>
+          <pluginRepository>
+            <id>central</id> 
+            <url>https://repo1.maven.org/maven2</url> 
+            <releases>
+              <enabled>true</enabled>
+            </releases> 
+            <snapshots>
+              <enabled>true</enabled>
+            </snapshots>
+          </pluginRepository> 
+        </pluginRepositories>
       </profile>
       ```
     
