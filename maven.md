@@ -118,5 +118,21 @@
           <password>deployment123</password>
        </server>
       ```
+      - 发布到私服配置
+      ```xml
+      <distributionManagement>
+        <repository>
+            <id>deployment</id>
+            <name>Internal Releases</name>
+            <url>http://nexus.wosai-inc.com:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>deployment</id>
+            <name>Internal Snapshots</name>
+            <url>http://nexus.wosai-inc.com:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+      </distributionManagement>
+      ```
+      
     
   
