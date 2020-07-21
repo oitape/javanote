@@ -31,4 +31,4 @@
     - 设置自动装配类型
     ```
     default-autowire="byType"
-    ```
+    ``` 
