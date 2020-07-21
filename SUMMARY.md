@@ -15,5 +15,5 @@
 * [Map](map.md)
 * [ThreadPool](threadpool.md)
 * [Maven](maven.md)
-* [Tomcat](tomcat.md)
+* [IOC](ioc.md)
 
