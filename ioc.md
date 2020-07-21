@@ -24,5 +24,7 @@
     @ComponentScan("top.oitm")
     @ImportResource("classpath:spring.xml")
     public class Spring {
+    
     }    
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Spring.class);
     ```
