@@ -77,7 +77,7 @@
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         //下面的用法会报错：No qualifying bean of type 'top.oitm.practice.aop.IndexDao' available
-        Dao bean = context.getBean(IndexDao.class);
+        Dao bean = (Dao) context.getBean("indexDao");
         bean.query();
     }
     ```
