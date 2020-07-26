@@ -28,6 +28,12 @@
          public void args(){
         
          }
+         *this 代表的是当前生成的代理对象
+         @Pointcut("this(top.oitm.dao.IndexDao)")
+         public void args(){
+         } 
+     
+         
          *可以指定多个条件PointCut点
          @Before("withIn()&&!args")
          public void before(){
@@ -50,8 +56,33 @@
     }    
     ```
 - JDK的动态代理只能基于接口，为什么不能用继承？ 
+    -案例
+    ```java
+    @Component
+    @Aspect
+    public class AspectJ {
+        //this是代理对象，target是原对象
+        @Pointcut("this(top.oitm.practice.aop.IndexDao)")
+        public void pointThis(){}
+    
+        @Before("pointThis()")
+        public void before(){
+            System.out.println("before");
+        }
+    }
+
+    @Configuration
+    @EnableAspectJAutoProxy
+    @ComponentScan("top.oitm.practice.aop")
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        //下面的用法会报错：No qualifying bean of type 'top.oitm.practice.aop.IndexDao' available
+        Dao bean = context.getBean(IndexDao.class);
+        bean.query();
+    }
+    ```
     - 因为java是单继承的，动态代理对象自动继承了Proxy类，只能通过实现我们代理的接口类。
-    - 可以通过@EnableAspectJAutoProxy(proxyTargetClass = true)设定为cglib动态代理直接代理指定对象
+    - 可以通过@EnableAspectJAutoProxy(proxyTargetClass = true)设定为cglib动态代理直接代理指定对象 通过父子类实现
     
 
 
