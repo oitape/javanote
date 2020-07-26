@@ -33,6 +33,7 @@
     default-autowire="byType"
     ``` 
 - 配置
+    - 配置bean的先后顺序
     ```java
     public class PropertyConfig implements InitializingBean {
     public PropertyConfig() {
@@ -49,4 +50,12 @@
     @PreDestroy
     public void preDestroy(){}
     }
+    ```
+    - 相同类型多bean
+    ```
+    //第一种设置默认使用的bean加上下面注解
+    @Primary
+    
+    //第二种使用指定bean
+    @Qualifier("bean")
     ```
