@@ -21,12 +21,15 @@
         /**
          * within只能定义到里类
          @Pointcut("within(top.oitm.practice.aop.*)")
+         public void within(){
+         }
          *args 指定参数
          @Pointcut("args(java.lang.String,java.lang.Integer)")
-         public void withIn(){
+         public void args(){
         
          }
-         @Before("withIn()")
+         *可以指定多个条件PointCut点
+         @Before("withIn()&&!args")
          public void before(){
          System.out.println("before");
          }
@@ -46,3 +49,7 @@
         }
     }    
     ```
+- 动态代理只能基于接口，为什么不能用继承？
+    因为java是单继承的，动态代理对象自动继承了Proxy类，只能通过实现我们代理的接口类
+
+
