@@ -83,6 +83,7 @@
     ```
     - 因为java是单继承的，动态代理对象自动继承了Proxy类，只能通过实现我们代理的接口类。
     - 可以通过@EnableAspectJAutoProxy(proxyTargetClass = true)设定为cglib动态代理直接代理指定对象 通过父子类实现
+    - 或者使用@Pointcut("target(top.oitm.practice.aop.IndexDao)")
     
 
 
