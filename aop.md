@@ -17,7 +17,8 @@
     }
     
     @Configuration
-    @EnableAspectJAutoProxy
+    //使用Java @Configuration启用@AspectJ支持，请添加@EnableAspectJAutoProxy注释
+    @EnableAspectJAutoProxy 
     @ComponentScan("top.oitm.practice.aop")
     public class AppConfig {
         public static void main(String[] args) {
