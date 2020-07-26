@@ -32,3 +32,21 @@
     ```
     default-autowire="byType"
     ``` 
+- 配置
+    ```java
+    public class PropertyConfig implements InitializingBean {
+    public PropertyConfig() {
+        System.out.println("1、ConfigProperty");
+    }
+    @PostConstruct
+    public void init() {
+        System.out.println("2、init");
+    }
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("3、afterPropertiesSet");
+    }
+    @PreDestroy
+    public void preDestroy(){}
+    }
+    ```
