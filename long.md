@@ -1,4 +1,4 @@
-* Long Integer内部实现了一种缓存机制，缓存匆-128到127诶的所有Long值，如果是这个范围的值，则不会初始化直接从缓存中拿
+* Long Integer内部实现了一种缓存机制，缓存从-128到127的所有Long值，如果是这个范围的值，则不会初始化直接从缓存中拿
 
 ```java
     public static Long valueOf(long l) {
