@@ -17,4 +17,6 @@
 * [Maven](maven.md)
 * [IOC](ioc.md)
 * [AOP](aop.md)
+* [Delegate](delegate.md)
+* [Reflect](reflect.md)
 
