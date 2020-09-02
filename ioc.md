@@ -68,5 +68,32 @@
     @Qualifier("bean")
     ```
 
+- 扫描
 
+```java
+public class AnnotationConfigApplicationContext {
 
+    public void scan(String basePackage){
+        String rootPath = this.getClass().getResource("/").getPath();
+        String  basePackagePath = basePackage.replaceAll("\\.","\\\\");
+        File file = new File(rootPath+"//"+basePackagePath);
+        String names[]=file.list();
+        for (String name : names) {
+            name=name.replaceAll(".class","");
+            try {
+               Class clazz =  Class.forName(basePackage+"."+name);
+                //判斷是否是屬於@servi@xxxx
+                if(clazz.isAnnotationPresent(Luban.class)){
+                    Service service = (Service) clazz.getAnnotation(Service.class);
+                    System.out.println(service.value());
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+}
+
+```
