@@ -73,5 +73,27 @@
     - HashMap底层数据结构？<br>
     HashMap 底层是数组 + 链表 + 红黑树的数据结构，数组的主要作用是方便快速查找，时 间复杂度是 O(1)，默认大小是 16，数组的下标索引是通过 key 的 hashcode 计算出来的，数 组元素叫做 Node，当多个 key 的 hashcode 一致，但 key 值不同时，单个 Node 就会转化 成链表，链表的查询复杂度是 O(n)，当链表的长度大于等于 8 并且数组的大小超过 64 时，链 表就会转化成红黑树，红黑树的查询复杂度是 O(log(n))，简单来说，最坏的查询次数相当于红 黑树的最大深度
     - HashMap、TreeMap、LinkedHashMap三者异同? <br>
+        - 相同点
+            - 三者特定情况下都会使用红黑树
+            - 底层hash算法相同
+            - 迭代过程中，Map被改动都会抛ConcurrentModificationException异常
+        - 不同点
+            - HashMap数据结构以数组为主，查询较快；TreeMap数据结构以红黑树为主，利用红黑树左小右大实现key的排序；LinkedHashMap继承HashMap，增加了插入顺序访问和LRU策略        
+            - 三种 map 的底层数据结构的不同，导致上层包装的api略有差别。
+    - Map的hash算法
+    ```java
+    static final int hash(Object key) {
+     int h;
+     return (key == null) ? 0 : 
+     (h = key.hashCode()) ^ (h >>> 16); 
+    }
+    ```
+            
+            
+            
+            
+            
+            
+            
    
    
