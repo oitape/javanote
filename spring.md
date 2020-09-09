@@ -1,5 +1,4 @@
-- spring源码
-
+- Spring源码流程
 ```
 //实例化一个工厂DefaultListableBeanFactory
 org.springframework.context.support.GenericApplicationContext->GenericApplicationContext()
