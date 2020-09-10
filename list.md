@@ -66,4 +66,11 @@
     * CopyOnWriteArrayList
 
 
+- CopyOnWriteArrayList
+    - 数据结构同ArrayList底层是数组
+    - 加锁ReentrantLock
+    - 从原数组中copy出新数组
+    - 在新数组上操作，并把新数组赋值给数组容器
+    - 解锁
+
 
