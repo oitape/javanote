@@ -72,5 +72,5 @@
     - 从原数组中copy出新数组
     - 在新数组上操作，并把新数组赋值给数组容器
     - 解锁
-
+    - 需要线程安全的使用list时使用CopyOnWriteArrayList，通过锁+Volatile+数组拷贝相互配合实现了List的线程安全。
 
