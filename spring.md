@@ -72,7 +72,7 @@ org.springframework.context.support.GenericApplicationContext->GenericApplicatio
 - ConfigurationClassPostProcessor
    - processConfigBeanDefinitions
      - 是否有@Configuration注解，spring会加一个标记
-     - 加：CONFIGURATION_CLASS_FULL，回调用：enhanceConfigurationClasses，使用cglib动态代理生成代理的config代理类，类中增加了($$beanFactory)成员变量，重复调用类中加了@Bean的方法只会产生一次，不会执行多次对象的生成
+     - 加：CONFIGURATION_CLASS_FULL，回调用：enhanceConfigurationClasses，使用cglib动态代理生成代理的config代理类，类中增加了($$beanFactory)成员变量，重复调用类中加了@Bean的方法只会产生一次，不会执行多次对象的生成。内部执行会判断是不是第一次执行，如果是创建，不是就使用已创建的对象。ConfigurationClassEnhancer.isCurrentlyInvokedFactoryMethod
      - 不加：CONFIGURATION_CLASS_LITE，类中加了@Bean的方法，对象的构造方法被调用多少次就执行多少次
     
 - 四种类注册
