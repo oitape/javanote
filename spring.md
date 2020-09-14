@@ -80,3 +80,8 @@ org.springframework.context.support.GenericApplicationContext->GenericApplicatio
    - ImportSelector：先configurationClasses；然后再注册
    - Registrar   importBeanDefinitonRegistrars 再注册
    - Import普通类： 先configurationClasses
+   
+
+- BeanPostProcessor: 插手bean的实例化过程，在bean实例化之后，bean还没有被spring的bean容器管理之前干预。使用场景@PostConstruct、@Aspectj
+- BeanFactoryProcessor：任意一个bean被new出来之前执行。场景：ConfigurationClassPostProcessor#postProcessBeanFactory，用来针对配置类加上cglib动态代理
+- BeanDefinitionRegistryPostProcessor：是BeanPostProcessor的子类在BeanFactoryProcessor之前执行：应为源码当中先遍历BeanDefinitionRegistryPostProcessor（有自定义的还有spring提供的），自定义的先执行
