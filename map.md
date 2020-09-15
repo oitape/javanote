@@ -99,7 +99,9 @@
     - 迭代过程中，即使Map结构被修改，也不会抛异常        
     - 除了数组+链表+红黑树的基本结构外，增加了转移节点，是为了保证扩容时线程安全的节点。
     - 提供了很多Stream流式方法
-    - ConcurrentHashMap并不是继承自HashMap
+    - ConcurrentHashMap并不是继承自HashMap。异同点如下
+        - 数组和链表结构几乎相同；都实现了Map接口继承了AbstractMap抽象类，大部分方法相同
+        - 红黑树结构略有不同，HashMap的红黑树中的节点叫TreeNode，TreeNode不仅仅有属性，还维护着红黑树的结构，比如说查找 新增等；ConcurrentHashMap中红黑树被拆分成两块，TreeNode仅仅维护的属性和查找功能，新增了TreeBin来维护红黑树结构，并负责根节点加解锁。
     
 
             
