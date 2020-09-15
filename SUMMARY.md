@@ -14,6 +14,7 @@
 * [List](list.md)
 * [Set](set.md)
 * [Map](map.md)
+* [Queue](queue.md)
 * [ThreadPool](threadpool.md)
 * [Maven](maven.md)
 * [IOC](ioc.md)
