@@ -22,4 +22,5 @@
 * [Delegate](delegate.md)
 * [Reflect](reflect.md)
 * [Spring](spring.md)
+* [Log](log.md)
 
