@@ -18,7 +18,7 @@
 
 ```java
 public static Log createLog(String name) {
-	switch (logApi) { // logApi = JUL
+	switch (logApi) { // logApi = jcl, 所以走的default，生成了JUL log
 		case LOG4J:
 			return Log4jAdapter.createLog(name);
 		case SLF4J_LAL:
