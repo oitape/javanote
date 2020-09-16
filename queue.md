@@ -41,6 +41,6 @@
     - 底层使用排序和超时阻塞实现延迟队列，排序使用PriorityQueue排序能力，超时阻塞使用的是锁的等待能力。
 
 
-
+- ArrayBlockingQueue
 
 
