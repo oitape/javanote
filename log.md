@@ -14,9 +14,48 @@
         
         - 可以使用sl4j，通过绑定器进行动态绑定不同的log实现，参考sl4j官网
 
-- 5.x
+- 5.x 的log
 
 ```java
+
+	private static final String LOG4J_SPI = "org.apache.logging.log4j.spi.ExtendedLogger";
+
+	private static final String LOG4J_SLF4J_PROVIDER = "org.apache.logging.slf4j.SLF4JProvider";
+
+	private static final String SLF4J_SPI = "org.slf4j.spi.LocationAwareLogger";
+
+	private static final String SLF4J_API = "org.slf4j.Logger";
+
+
+	private static final LogApi logApi;
+
+	static {
+		if (isPresent(LOG4J_SPI)) {
+			if (isPresent(LOG4J_SLF4J_PROVIDER) && isPresent(SLF4J_SPI)) {
+				// log4j-to-slf4j bridge -> we'll rather go with the SLF4J SPI;
+				// however, we still prefer Log4j over the plain SLF4J API since
+				// the latter does not have location awareness support.
+				logApi = LogApi.SLF4J_LAL;
+			}
+			else {
+				// Use Log4j 2.x directly, including location awareness support
+				logApi = LogApi.LOG4J;
+			}
+		}
+		else if (isPresent(SLF4J_SPI)) {
+			// Full SLF4J SPI including location awareness support
+			logApi = LogApi.SLF4J_LAL;
+		}
+		else if (isPresent(SLF4J_API)) {
+			// Minimal SLF4J API without location awareness support
+			logApi = LogApi.SLF4J;
+		}
+		else {
+			// java.util.logging as default
+			logApi = LogApi.JUL;
+		}
+	}
+
 public static Log createLog(String name) {
 	switch (logApi) { // logApi = jcl, 所以走的default，生成了JUL log
 		case LOG4J:
