@@ -32,3 +32,12 @@
     - 堆栈模式：TransferStack
         - put放到堆栈头
         - take从堆栈头拿
+        
+- DelayQueue：延迟队列
+    - 
+    
+
+
+
+
+
