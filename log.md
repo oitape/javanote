@@ -19,16 +19,10 @@
 ```java
 
 	private static final String LOG4J_SPI = "org.apache.logging.log4j.spi.ExtendedLogger";
-
 	private static final String LOG4J_SLF4J_PROVIDER = "org.apache.logging.slf4j.SLF4JProvider";
-
 	private static final String SLF4J_SPI = "org.slf4j.spi.LocationAwareLogger";
-
 	private static final String SLF4J_API = "org.slf4j.Logger";
-
-
 	private static final LogApi logApi;
-
 	static {
 		if (isPresent(LOG4J_SPI)) {
 			if (isPresent(LOG4J_SLF4J_PROVIDER) && isPresent(SLF4J_SPI)) {
