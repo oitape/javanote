@@ -64,4 +64,38 @@ public static Log createLog(String name) {
 }
 
 ```
+
+
+- mybaits自定义log
+
+```java
+@Configuration
+@ComponentScan("top.oitm")
+@MapperScan("top.oitm.dao")
+public class AppConfig {
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        driverManagerDataSource.setUrl("jdbc:mysql://172.16.158.139:3306/oitm?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false");
+        driverManagerDataSource.setUsername("root");
+        driverManagerDataSource.setPassword("root");
+        return driverManagerDataSource;
+    }
+
+
+    @Bean
+    public SqlSessionFactoryBean sqlSessionFactoryBean() {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setLogImpl(Log4jImpl.class);
+        sqlSessionFactoryBean.setConfiguration(configuration);
+        sqlSessionFactoryBean.setDataSource(dataSource());
+        return sqlSessionFactoryBean;
+    }
+
+}
+```
+
+
         

@@ -1,0 +1,3 @@
+- 二级缓存
+    - mybatis，一级缓存在和spring整合的时候会失效，原因？
+        - mybatis的一级缓存是根据session来缓存的，和spring整合后，session交给了spring管理，spring再查询完毕后，会关闭session，所以一级缓存失效
