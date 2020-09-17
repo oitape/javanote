@@ -61,6 +61,11 @@
 
 - SynchronousQueue队列有没有大小？
     - SynchronousQueue本身没有容量的，所以无法查看其大小
-    
+
+- 工作使用场景？
+    - LinkedBlockingQueue：适合生产的数据大小不定，比如下单系统，会把下单请求放到一个线程池里，这时候我们初始化线程池时，一般会选择它，并设置一个合理的大小。一般工作我们大多选择LinkedBlockingQueue，并设置一个合适的队列大小
+    - ArrayBlockingQueue：一般用于生产数据量固定的场景，比如每天生成100条对账单结果
+    - DelayQueue：    
+        ![](/assets/iShot2020-09-17下午02.25.14.png)
     
     
