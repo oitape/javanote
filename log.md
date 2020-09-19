@@ -97,5 +97,8 @@ public class AppConfig {
 }
 ```
 
+- spring4 jcl ——> 采用log4j
+- spring5 jcl-spring ——> 采用jul
+
 
         
