@@ -14,3 +14,5 @@
     tryImplementation(LogFactory::useJdkLogging);
     tryImplementation(LogFactory::useNoLogging);
     ```
+- 一级缓存失效原理？
+    - 
