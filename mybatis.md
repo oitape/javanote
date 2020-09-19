@@ -15,4 +15,19 @@
     tryImplementation(LogFactory::useNoLogging);
     ```
 - 一级缓存失效原理？
-    - 
+    - mybatis —— sqlSession —— defaultSqlSession —— select —— 执行sql。使用的是defaultSqlSession所以缓存还在。
+    - spring —— sqlSession —— SQLSessionTemplate —— select —— sqlSessionProxy.select —— 执行sql —— 关闭session
+    ```java
+    //SqlSessionTemplate.SqlSessionInterceptor.invoke中最后部分代码
+     finally {
+        if (sqlSession != null) {
+          closeSqlSession(sqlSession, SqlSessionTemplate.this.sqlSessionFactory);
+        }
+      }
+    ```
+    
+- mybatis和spring是如何整合的？
+    - MapperScan扫描mapper所对应的BeanDefinition
+    - 把mapper变成FactoryBean，MapperFactoryBean
+    - 为BeanDefinition添加一个构造方法的值，因为mybatis的Mapper FactoryBean有一个有参构造方法，spring实例化时需要一个构造方法的值
+    - mybatis利用spring的afterPropertiesSet方法来完成对mapper信息的初始化，比如注解的sql语句初始化。
