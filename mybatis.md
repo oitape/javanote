@@ -31,3 +31,4 @@
     - 把mapper变成FactoryBean，MapperFactoryBean
     - 为BeanDefinition添加一个构造方法的值，因为mybatis的Mapper FactoryBean有一个有参构造方法，spring实例化时需要一个构造方法的值
     - mybatis利用spring的afterPropertiesSet方法来完成对mapper信息的初始化，比如注解的sql语句初始化。
+    - 当一个MapperFactoryBean被实例化了之后，MapperFactoryBean内部实现了InitialBean接口afterPropertiesSet方法，afterPropertiesSet中调用了子类的checkDaoConfig()方法，checkDaoConfig中有configuration.addMapper(this.mapperInterface)
