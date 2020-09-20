@@ -1,3 +1,6 @@
+- spring默认的不是自动装配：AUTOWIRE_NO
+    - 为属性添加@Autowire才会注入进来
+	
 - Spring源码流程
 ```
 //实例化一个工厂DefaultListableBeanFactory
