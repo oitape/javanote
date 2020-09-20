@@ -4,8 +4,8 @@
     - mvn test  测试
     - mvn package 打包
     - mvn instal  打包并copy到本地仓库
-- 
-- Web项目Tomcat插件配置
+
+- 启动Web项目Tomcat插件配置
     - <build>内部进行配置plugins
     ```xml
     <plugins>
@@ -22,6 +22,21 @@
     ```
     - Add Configuation
     ![](/assets/iShot2020-07-19下午05.36.05.png)
+
+- 启动Web项目jetty插件配置(最新的Tomcat插件是7，不支持websocket)
+  ```xml
+  <build>
+    <finalName>websocket</finalName>
+    <plugins>
+      <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>9.4.31.v20200723</version>
+      </plugin>
+    </plugins>
+  </build>
+  ```
+  
 
 - 打包的同时生成源代码jar包插件
     ```xml
