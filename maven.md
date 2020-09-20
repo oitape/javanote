@@ -36,6 +36,8 @@
     </plugins>
   </build>
   ```
+  - Add Configuation
+    ![](/assets/iShot2020-09-20上午10.05.06.png)
   
 
 - 打包的同时生成源代码jar包插件
