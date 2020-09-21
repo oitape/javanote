@@ -1,6 +1,8 @@
 - spring可以把相同类型注入到map中
    ```java
-   
+   // key是类名首字母小写
+   @Autowire
+   private Map<String,OrderDao> daos;
    ```
 - spring默认的不是自动装配：AUTOWIRE_NO
     - 为属性添加@Autowire才会注入进来
