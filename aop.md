@@ -180,6 +180,19 @@ public class ProxyUtil {
 }
 ```
 
+- spring添加注解@EnableAspectJAutoProxy实现aop的代理
+    - @Import(AspectJAutoProxyRegistrar.class)
+    - 放到spring的beanDefinitionMap中：AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);
+    ```java
+    RootBeanDefinition beanDefinition = new RootBeanDefinition(cls);
+    beanDefinition.setSource(source);
+    beanDefinition.getPropertyValues().add("order", -2147483648);
+    beanDefinition.setRole(2);
+    registry.registerBeanDefinition("org.springframework.aop.config.internalAutoProxyCreator", beanDefinition);
+    ```
+    - registerBeanPostProcessors方法中从beanDefinitionMap中根据类型找出名字
+    - 添加到spring后置处理器列表中
+
 
 
 
