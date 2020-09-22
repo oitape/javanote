@@ -192,7 +192,7 @@ public class ProxyUtil {
     ```
     - registerBeanPostProcessors方法中从beanDefinitionMap中根据类型找出名字
     - 添加到spring后置处理器列表中
-    - 把原生对象变成代理对象
+    - AbstractAutoProxyCreator把原生对象变成代理对象
 
 
 
