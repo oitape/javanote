@@ -102,4 +102,27 @@ org.springframework.context.support.GenericApplicationContext->GenericApplicatio
 
 - spring AbstractBeanFactory.doGetBean中使用transformedBeanName的原因？
 ![](/assets/iShot2020-09-23上午06.13.19.png)
-	
+	- 每次doGetBean都会判断，该name的bean是否已创建
+	```java
+	// Eagerly check singleton cache for manually registered singletons.
+		Object sharedInstance = getSingleton(beanName);
+	```
+	- 和下面的判断实现不一样,要区分开，该方法内部会进行bean的创建
+	```java
+	// Create bean instance.
+	if (mbd.isSingleton()) {
+		sharedInstance = getSingleton(beanName, () -> {
+			try {
+				return createBean(beanName, mbd, args);
+			}
+			catch (BeansException ex) {
+				// Explicitly remove instance from singleton cache: It might have been put there
+				// eagerly by the creation process, to allow for circular reference resolution.
+				// Also remove any beans that received a temporary reference to the bean.
+				destroySingleton(beanName);
+				throw ex;
+			}
+		});
+		bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd);
+	}
+	```	
