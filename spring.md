@@ -99,3 +99,7 @@ org.springframework.context.support.GenericApplicationContext->GenericApplicatio
 - BeanDefinitionRegistryPostProcessor：是BeanPostProcessor的子类在BeanFactoryProcessor之前执行：应为源码当中先遍历BeanDefinitionRegistryPostProcessor（有自定义的还有spring提供的），自定义的先执行，ConfigurationClassPostProcessor扫描、3种import的扫描、@Bean的扫描，判断配置类是否是一个完整的配置类
 - importSelector：通过这个方法selectImports返回一个全类名，把他变成beanDefinition，动态添加bd，这个bd是死的，不能动态变化。
 - ImportBeanDefinitionRegistrar: 可以动态注册，可实现的功能包含importSelector，场景：mybatis
+
+- spring AbstractBeanFactory.doGetBean中使用transformedBeanName的原因？
+![](/assets/iShot2020-09-23上午06.13.19.png)
+	
