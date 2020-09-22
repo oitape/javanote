@@ -69,4 +69,7 @@ public class CglibProxy implements MethodInterceptor{
 	- 如果目标对象没有实现了接口，必须采用CGLIB库，spring会自动在JDK动态代理和CGLIB之间转换
 
 
+- Spring aop不管是使用jdk还是cglib都是动态在运行时植入的，如果用aspectj它是在编译时把类编译成代理的。
+
+
 
