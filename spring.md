@@ -127,3 +127,6 @@ org.springframework.context.support.GenericApplicationContext->GenericApplicatio
 	}
 	```	
 	- 最后创建的实现在`AbstractAutowireCapableBeanFactory.doCreateBean`
+
+- spring bean实例化流程图	
+	![](/assets/spring初始化bean的流程图.jpg)
