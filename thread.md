@@ -58,6 +58,7 @@ thread.join();
         - 当key为null，在下一次ThreadLocalMap调用set(),get()，remove()方法的时候会被清除value值。
         
         - 解决办法：<br> a、每次使用完ThreadLocal都调用它的remove()方法清除数据；<br>b、将ThreadLocal变量定义成private static，这样就一直存在ThreadLocal的强引用，也就能保证任何时候都能通过ThreadLocal的弱引用访问到Entry的value值，进而清除掉 。
+    
         
 - 面试题
     - 创建子线程时，子线程得不到父类的ThreadLocal，有什么办法可以解决这个问题？
