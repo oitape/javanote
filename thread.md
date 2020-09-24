@@ -37,7 +37,7 @@ thread.join();
     
 - yield: 是一个native方法
     - 当前线程做出让步，放弃当前cpu，让cpu重新选择线程，避免线程过度使用cpu，我们在写while死循环的时候，预计短时间内，while可以结束的话，可以在死循环里使用yield方法，防止cpu一直while死循环霸占
-
+    
 - sleep：是一个native方法
     - 当前线程沉睡多久，沉睡期间不会释放锁资源，其他线程是无法得到锁的
 
@@ -46,6 +46,9 @@ thread.join();
     - 如果 I/O 操作被阻塞了，我们主动打断当前线程，连接会被关闭，并抛出 ClosedByInterruptException 异常;
     
     
+- ThreadLocal
+    - ThreadLoal 变量，线程局部变量，同一个 ThreadLocal 所包含的对象，在不同的 Thread 中有不同的副本
+    - 
 - 面试题
     - 创建子线程时，子线程得不到父类的ThreadLocal，有什么办法可以解决这个问题？
      - 可以使用InheritableThreadLocal来代替ThreadLocal，两者都是线程的属性，所以可以做到线程之间的数据隔离，父线程 ThreadLocal 是无法传递给子线程 的，但 InheritableThreadLocal 可以。
