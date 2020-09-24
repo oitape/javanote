@@ -47,8 +47,18 @@ thread.join();
     
     
 - ThreadLocal
-    - ThreadLoal 变量，线程局部变量，同一个 ThreadLocal 所包含的对象，在不同的 Thread 中有不同的副本
-    - 
+    - ThreadLoal是线程局部变量，和线程一对一
+    - ThreadLocal 变量通常被private static修饰。线程结束时，对应的ThreadLocal 的实例副本都可被回收
+    - ThreadLocal 适用于每个线程需要自己独立的实例且该实例需要在多个方法中被使用，也即变量在线程间隔离而在方法或类间共享的场景。
+    - 实现原理：
+        - ThreadLocal内部类ThreadLocalMap，set()、get()方法都是调用这个内部类的方法，ThreadLocal只是ThreadLocalMap的封装，传递了变量值。
+    - 内存泄露问题
+        - 弱引用在下次YGC的时候就会被回收
+        - ThreadLocalMap中的Entry是使用ThreadLocal的弱引用作为key，一个ThreadLocal不存在外部强引用时，Key(ThreadLocal)势必会被GC回收，这样就会导致ThreadLocalMap中key为null， 而value还存在着强引用，只有thead线程退出以后,value的强引用链条才会断掉
+        - 当key为null，在下一次ThreadLocalMap调用set(),get()，remove()方法的时候会被清除value值。
+        
+        - 解决办法：<br> a、每次使用完ThreadLocal都调用它的remove()方法清除数据；<br>b、将ThreadLocal变量定义成private static，这样就一直存在ThreadLocal的强引用，也就能保证任何时候都能通过ThreadLocal的弱引用访问到Entry的value值，进而清除掉 。
+        
 - 面试题
     - 创建子线程时，子线程得不到父类的ThreadLocal，有什么办法可以解决这个问题？
      - 可以使用InheritableThreadLocal来代替ThreadLocal，两者都是线程的属性，所以可以做到线程之间的数据隔离，父线程 ThreadLocal 是无法传递给子线程 的，但 InheritableThreadLocal 可以。
