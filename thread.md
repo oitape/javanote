@@ -31,7 +31,7 @@ Thread thread = new Thread(new Runnable() {
     });
 // 开一个子线程去执行
 thread.start();
-// 当前主线程等待子线程执行完成之后再执行 
+// 当前主线程等待子线程执行完成之后再执行，需要在等待线程的内部调优先执行线程join
 thread.join();
     ```
     
@@ -63,5 +63,8 @@ thread.join();
 - 面试题
     - 创建子线程时，子线程得不到父类的ThreadLocal，有什么办法可以解决这个问题？
      - 可以使用InheritableThreadLocal来代替ThreadLocal，两者都是线程的属性，所以可以做到线程之间的数据隔离，父线程 ThreadLocal 是无法传递给子线程 的，但 InheritableThreadLocal 可以。
+    - 线程start和run之间的区别？
+        - start会开启一个新的线程，run方法不会
+    - 
      
 
