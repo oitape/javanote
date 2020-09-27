@@ -75,6 +75,10 @@ thread.join();
         - 可以，通过FutureTask的构造器入参，封装成FT传给Thread去执行。
     - FutureTask的get、cancel方法的理解？
         - get方法主要作用是得到Callable异步任务执行的结果，无参get会一直等待任务执行完成才返回，有参get可以设定固定的时间，在设定时间内还没执行完成，直接返回异常，实际工作中建议使用有参get。cancel方法主要用来取消任务的。
-    - 
+    - Thread.yield方法有什么用？
+        - 表示当前线程放弃CPU，重新参与到CPU的竞争中去，再次竞争自己有可能得到CPU资源，也有可能得不到，好处是防止当前线程一直霸占CPU。工作中可能会写while自旋的代码，如果一直自旋，CPU会一直被while占用，如果能预见while自旋时间很长，会设置判断条件让线程阻塞；如果能预见自旋时间很短，通常使用Thread.yield方法，使当前线程让步
+    - sleep和wait方法异同？
+        - 相同点：两者都让线程进入TIMED_WATING状态并且可以设置等待的时间
+        - 不同点：wait是Object类的方法，sleep是Thread类的方法；sleep不会释放锁，沉睡的时候，其他线程无法获得锁，但是wait会释放锁。
      
 
