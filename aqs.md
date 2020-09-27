@@ -38,4 +38,83 @@
       - 排它锁：同一个时刻只有一个线程可以获取锁
     - 获取锁
       - 比如使用Lock.lock()，Lock一般是AQS的子类，lock方法一般会调用AQS的acquire或tryAcquire方法，acquire方法AQS已经实现了，tryAcquire需要子类实现，
+    - 释放锁
+      - 比如Lock.unLock ()方法，目的是让线程释放对资源的访问权，
       
+* 自定义锁
+
+  ```java
+  public class MyLock implements Lock {
+    private Helper helper = new Helper();
+    private class Helper extends AbstractQueuedSynchronizer {
+        // 获取锁
+        @Override
+        protected boolean tryAcquire(int arg) {
+            int state = getState();
+            // 拿到锁
+            if (state == 0) {
+                // 利用CAS原理修改state
+                if (compareAndSetState(0, arg)) {
+                    // 设置当前锁占用资源
+                    setExclusiveOwnerThread(Thread.currentThread());
+                    return true;
+                }
+            } else if (getExclusiveOwnerThread() == Thread.currentThread()) { //锁重入性
+                setState(getState() + arg);
+                return true;
+            }
+            return false;
+        }
+
+        //释放锁
+        @Override
+        protected boolean tryRelease(int arg) {
+            int state = getState() - arg;
+            boolean flag = false;
+            // 判断释放后是否为0
+            if (state == 0) {
+                setExclusiveOwnerThread(null);
+                setState(state);
+                return true;
+            }
+            setState(state);
+            return false;
+        }
+
+        public Condition newConditionObject() {
+            return new ConditionObject();
+        }
+    }
+
+    @Override
+    public void lock() {
+        helper.acquire(1);
+    }
+
+    @Override
+    public void lockInterruptibly() throws InterruptedException {
+        helper.acquireInterruptibly(1);
+    }
+
+    @Override
+    public boolean tryLock() {
+        return helper.tryAcquire(1);
+    }
+
+    @Override
+    public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
+        return helper.tryAcquireSharedNanos(1, unit.toNanos(time));
+    }
+
+    @Override
+    public void unlock() {
+        helper.release(1);
+    }
+
+    @Override
+    public Condition newCondition() {
+        return helper.newConditionObject();
+    }
+  }
+  ```
+
