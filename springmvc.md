@@ -1,4 +1,4 @@
-- mvc可以不用web.xml也可以配置好项目启动
+- mvc项目可以不用web.xml也可以配置好项目启动
     - 新建类实现ServletContainerInitializer的onStartup方法
     ```java
     public class Mvcinitializer implements ServletContainerInitializer {
@@ -20,4 +20,4 @@
     
   - 新建resources目录
     - 在META-INF目录建services目录
-    - 新建文件
+    - 新建文件名为`javax.servlet.ServletContainerInitializer`并把类名`top.oitm.Mvcinitializer`写到文件当中。这时候Tomcat在启动的时候就会自动执行Mvcinitializer中的onStartup方法
