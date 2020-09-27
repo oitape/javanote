@@ -39,7 +39,8 @@
     - 获取锁
       - 比如使用Lock.lock()，Lock一般是AQS的子类，lock方法一般会调用AQS的acquire或tryAcquire方法，acquire方法AQS已经实现了，tryAcquire需要子类实现，
     - 释放锁
-      - 比如Lock.unLock ()方法，目的是让线程释放对资源的访问权，
+      - 比如Lock.unLock ()方法，目的是让线程释放对资源的访问权
+    - acquire（）和 release（）方法时AQS提供的一种框架流程，实际需要子类去实现tryAcquire（）和tryRelease（）方法
       
 * 自定义锁
 
