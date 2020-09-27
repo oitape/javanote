@@ -65,6 +65,10 @@ thread.join();
      - 可以使用InheritableThreadLocal来代替ThreadLocal，两者都是线程的属性，所以可以做到线程之间的数据隔离，父线程 ThreadLocal 是无法传递给子线程 的，但 InheritableThreadLocal 可以。
     - 线程的start和run之间的区别？
         - start会开启一个新的线程，run方法不会
+    - 守护线程和非守护线程区别？
+        - 主要区别：JVM退出时，是不会管守护线程，只会管非守护线程，如果非守护线程还在运行，JVM就不会退出；如果有守护线程且没有非守护线程，JVM直接退出。日常工作中日志的收集：根据日志重要程度，不重要就选择守护线程，重要的就选择非守护线程。
+    - Thread、Runnable、Callable区别？
+        - Thread实现了Runnable，本身就是Runnable，但同时负责线程创建、线程状态变更等操作。Runnable是无返回值任务接口，Callable有返回值，两者的执行必须要有Thread
     - 
      
 
