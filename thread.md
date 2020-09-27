@@ -74,6 +74,7 @@ thread.join();
     - Callable是否可以丢给Thread去执行？
         - 可以，通过FutureTask的构造器入参，封装成FT传给Thread去执行。
     - FutureTask的get、cancel方法的理解？
-        - get方法主要作用是得到Callable异步任务执行的结果，无参get会一直等待任务执行完成才返回，有参get可以设定固定的时间，在设定时间内还没执行完成，直接返回异常，实际工作中建议使用有参get。cancel方法主要用来
+        - get方法主要作用是得到Callable异步任务执行的结果，无参get会一直等待任务执行完成才返回，有参get可以设定固定的时间，在设定时间内还没执行完成，直接返回异常，实际工作中建议使用有参get。cancel方法主要用来取消任务的。
+    - 
      
 
