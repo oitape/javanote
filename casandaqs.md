@@ -2,7 +2,6 @@
   * 悲观锁：写多，读少。采用LOCK
   * 乐观锁：写少，读多。采用版本机制。每写一次版本增加
 * CAS：CompareAndSwap
-
   * 一种无锁的原子算法，乐观锁。给一个期望值，与现有的值比较，如果相等再修改，不相等什么都不做
     CAS\(V,E,N\)：V是拿到的值，E期望的值，N要修改的值。如果V=E才会将V的值修改成N。如果V!=E则说明已经被人修改，不做操作
   * CAS实现稍微复杂，无锁，不存在阻塞，提高效率，CPU的吞吐量。
@@ -21,21 +20,21 @@
 * CountDownLatch：等所有线程都执行完了才继续下一步
 
   ```java
-        CountDownLatch latch=new CountDownLatch(10);
-        for (int i = 0; i < 10; i++) {
-            threads[i]=new Thread(()->{
-                int val=new Random().nextInt(10);
-                try {
-                    TimeUnit.SECONDS.sleep(val);
-                    latch.countDown();
-                } catch (InterruptedException e) {
-                    latch.countDown();
-                }
-            });
-            threads[i].start();
-        }
-        latch.await();
-        System.out.println("唤醒主线程")
+    CountDownLatch latch=new CountDownLatch(10);
+    for (int i = 0; i < 10; i++) {
+        threads[i]=new Thread(()->{
+            int val=new Random().nextInt(10);
+            try {
+                TimeUnit.SECONDS.sleep(val);
+                latch.countDown();
+            } catch (InterruptedException e) {
+                latch.countDown();
+            }
+        });
+        threads[i].start();
+    }
+    latch.await();
+    System.out.println("唤醒主线程")
   ```
 
 * CyclicBarrier：用于所有线程都准备好了再同时执行
