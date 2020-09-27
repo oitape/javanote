@@ -16,7 +16,12 @@
 
 * thread.Join\(\)：把该线程加入到当前线程，比如main中走到thread.Join\(\)时会先执行thread完毕后再执行main。多线程使用join可以使线程按照自己指定的顺序执行
 
-
+- ReentrantLock
+    - 可重入互斥锁：同一个线程可以对同一个共享资源重复的加锁或释放锁，互斥就是AQS中的排它锁的意思，只允许一个线程获得锁
+    - 和synchronized锁具有同样的功能，但是更有扩展性
+    - 构造器接收fairness参数，true保证获得锁时的顺序，可以保证同步队列中的线程从头到尾的顺序依次获得锁，false不保证
+    - ReentrantLock本身是不继承AQS，实现了Lock接口
+    
 * CountDownLatch：等所有线程都执行完了才继续下一步
 
   ```java

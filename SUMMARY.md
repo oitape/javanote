@@ -8,7 +8,7 @@
 * [Volatile](volatile.md)
 * [Singleton](singleton.md)
 * [AQS](aqs.md)
-* [CAS&JUC](casandaqs.md)
+* [CAS&Lock](casandaqs.md)
 * [Keyword](keyword.md)
 * [工具类技巧](gong-ju-lei-ji-qiao.md)
 * [List](list.md)
