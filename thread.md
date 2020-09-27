@@ -69,6 +69,11 @@ thread.join();
         - 主要区别：JVM退出时，是不会管守护线程，只会管非守护线程，如果非守护线程还在运行，JVM就不会退出；如果有守护线程且没有非守护线程，JVM直接退出。日常工作中日志的收集：根据日志重要程度，不重要就选择守护线程，重要的就选择非守护线程。
     - Thread、Runnable、Callable区别？
         - Thread实现了Runnable，本身就是Runnable，但同时负责线程创建、线程状态变更等操作。Runnable是无返回值任务接口，Callable有返回值，两者的执行必须要有Thread
-    - 
+    - 线程池submit有两个方法，分别是接受Runnable和Callable接口，底层如何适配的？
+        - Runnable和Callable是通过FutureTask进行统一的，FT有个属性叫callable，同时实现了Runnable接口，FutureTask 的最终目标是把 Runnable 和 Callable 都转化成 Callable，Runnable 转化成 Callable 是通过 RunnableAdapter 适配器进行实现的。
+    - Callable是否可以丢给Thread去执行？
+        - 可以，通过FutureTask的构造器入参，封装成FT传给Thread去执行。
+    - FutureTask的get、cancel方法的理解？
+        - get方法主要作用是得到Callable异步任务执行的结果，无参get会一直等待任务执行完成才返回，有参get可以设定固定的时间，在设定时间内还没执行完成，直接返回异常，实际工作中建议使用有参get。cancel方法主要用来
      
 
