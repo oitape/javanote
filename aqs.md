@@ -18,3 +18,24 @@
     - 同步队列的主要作用阻塞获取不到锁的线程，并在适当时机释放这些线程。同步队列底层数据结构是一个双向链表。
     - `private transient volatile Node head;` 同步队列链表头
     - `private transient volatile Node tail;` 同步链表的尾
+
+  - 条件队列属性
+    - 和同步队列一样管理获取不到锁的线程，底层数据结构也是链表，但条件队列不直接和锁打交道，常常和锁配合使用，是一定场景下对锁功能的一种补充。
+
+    ```java
+    // 条件队列，从属性上可以看出是链表结构
+    public class ConditionObject implements Condition, java.io.Serializable { 
+      private static final long serialVersionUID = 1173984872572414699L; 
+      // 条件队列中第一个 node
+      private transient Node firstWaiter;
+      // 条件队列中最后一个 node  
+      private transient Node lastWaiter; 
+    }
+    ```
+    - ConditionObject 是实现 Condition 接口的，Condition 接口相当于 Object 的各种监控方 法，比如 Object#wait ()、Object#notify、Object#notifyAll 这些方法
+    - 共享锁和排它锁区别？
+      - 共享锁：允许多个线程获得同一个锁，并且可以设置获取锁的线程数量
+      - 排它锁：同一个时刻只有一个线程可以获取锁
+    - 获取锁
+      - 比如使用Lock.lock()，Lock一般是AQS的子类，lock方法一般会调用AQS的acquire或tryAcquire方法，acquire方法AQS已经实现了，tryAcquire需要子类实现，
+      
