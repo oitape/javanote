@@ -20,7 +20,7 @@
     - 可重入互斥锁：同一个线程可以对同一个共享资源重复的加锁或释放锁，互斥就是AQS中的排它锁的意思，只允许一个线程获得锁
     - 和synchronized锁具有同样的功能，但是更有扩展性
     - 构造器接收fairness参数，true保证获得锁时的顺序，可以保证同步队列中的线程从头到尾的顺序依次获得锁，false不保证
-    - ReentrantLock本身是不继承AQS，实现了Lock接口
+    - ReentrantLock本身是不继承AQS，实现了Lock接口；但是Lock接口中方法的实现都是通过内部类`abstract static class Sync extends AbstractQueuedSynchronizer `实现的，所以相关操作还是AQS的原理
     
 * CountDownLatch：等所有线程都执行完了才继续下一步
 
