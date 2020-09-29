@@ -53,6 +53,10 @@
       - 线程池彻底终止，就变成TERMINATED状态。 
       - 线程池处在TIDYING状态时，执行完terminated()之后，就会由 TIDYING -> TERMINATED。
  
+- Worker
+    - Worker可以理解成线程池中任务执行的最小单元，实现了Runnable接口的run方法
+    - Worker本身也实现了AQS，所以它也是一个锁，在执行任务的时候，会锁住自己，任务执行完成之后，会释放自己
+ 
 - 如何设置线程池
     - IO 密集型任务：由于线程并不是一直在运行，所以可以尽可能的多配置线程，比如 CPU 个数 * 2
     - CPU 密集型任务（大量复杂的运算）应当分配较少的线程，比如 CPU 个数相当的大小。
@@ -75,6 +79,19 @@
         - 空闲线程回收时机：如果线程超时，还从阻塞队列中拿不到任务，当前线程就会回收，如果`allowCoreThreadTimeOut`设置为true，core thread也会被回收，直到剩下一个线程为止，线程执行完成没有消亡，是因为阻塞的从队列中拿任务，在`keepAliveTime`的超时时间内还没拿到任务，就会打断阻塞，线程直接返回，线程的声明周期就结束了，JVM会回收掉该线程对象，所以回收线程的源码提现就是 让线程不在队列中阻塞，直接返回了。
     - 想在线程池任务执行前和执行后，做一些资源清理工作，如何操作？
         - ThreadPoolExecutor提供了一些钩子函数，我们只需要继承ThradPoolExecutor并实现这些钩子函数，在线程执行前实现beforeExecute方法，执行之后实现afterExecute方法。
+    - 线程执行完任务后，做什么？
+        - 阻塞从队列中拿任务，无任务就无限阻塞
+        - 阻塞从队列中拿任务，没有任务阻塞一段时间，线程返回，被JVM回收
+    - keepAliveTime设置成负数或者0，表示无限阻塞？
+        - 这种是不对的，如果keepAliveTime设置成负数，线程池初始化就会直接抛异常；设置为0，队列如果是 LinkedBlockingQueue 的话， 执行 workQueue.poll (keepAliveTime, TimeUnit.NANOSECONDS) 方法时，如果队列中没 有任务，会直接返回 null，导致线程立马返回，不会无限阻塞。
+        
+- 经验
+    - 初始化时设置coreSize == maxSize
+        - 线程一下子增加到 maxSize，并且不要回收线程，防止线程回收， 避免不断增加回收的损耗。现在机器的资源都是很充足的，我们不用去担心线程空闲会浪费机器的资源
+    - maxSize 无界 + SynchronousQueue
+        - SynchronousQueue部有堆栈和队列两种形式，默认是 堆栈的形式，其内部是没有存储的容器的，放元素和拿元素是一一对应的，比如我使用 put 方 法放元素，如果此时没有对应的 take 操作的话，put 操作就会阻塞，需要有线程过来执行 take 操作后，put 操作才会返回。
+        - 选择 SynchronousQueue 队列，假设所有请求都执行 put 操作，没有请求执行 take 操作，前 10 个 put 请求会消耗 10 个线程，都阻塞在 put 操作 上，第 11 个请求过来后，请求就会被拒绝，所以我们才说尽量把 maxSize 设置大一点，防止请求被拒绝。
+    
         
         
         
