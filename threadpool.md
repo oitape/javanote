@@ -73,7 +73,8 @@
         - 在Executor已经关闭或对最大县城和最大队列都使用饱和时，可以使用RejectedExecutionHandler类进行捕获
     - 线程池中线程空闲回收的理解？
         - 空闲线程回收时机：如果线程超时，还从阻塞队列中拿不到任务，当前线程就会回收，如果`allowCoreThreadTimeOut`设置为true，core thread也会被回收，直到剩下一个线程为止，线程执行完成没有消亡，是因为阻塞的从队列中拿任务，在`keepAliveTime`的超时时间内还没拿到任务，就会打断阻塞，线程直接返回，线程的声明周期就结束了，JVM会回收掉该线程对象，所以回收线程的源码提现就是 让线程不在队列中阻塞，直接返回了。
-        
+    - 想在线程池任务执行前和执行后，做一些资源清理工作，如何操作？
+        - ThreadPoolExecutor提供了一些钩子函数，我们只需要继承ThradPoolExecutor并实现这些钩子函数，在线程执行前实现beforeExecute方法，执行之后实现afterExecute方法。
         
         
         
