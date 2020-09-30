@@ -1,0 +1,3 @@
+- Socket构造函数比较多，分两大类
+    - 指定代理类型Proxy创建套接字，一共三种类型：DIRECT(直连)、 HTTP(HTTP、FTP 高级协议的代理)、SOCKS(SOCKS 代理)，三种不同的代码方式对 应的 SocketImpl 不同，分别是:PlainSocketImpl、HttpConnectSocketImpl、 SocksSocketImpl，除了类型之外 Proxy 还指定了地址和端口
+    - 默认SocksSocketImpl创建，并且需要在构造函数中传入地址和端口
