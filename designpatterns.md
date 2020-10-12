@@ -23,3 +23,11 @@
     }
     ```
     - 示例
+    ```java
+    public static void main(String[] args) {
+        JDKObservable movieJDK = new JDKObservable();
+        JDKObserver masterJDK = new JDKObserver();
+        movieJDK.addObserver(masterJDK);
+        movieJDK.move();
+    }
+    ```
