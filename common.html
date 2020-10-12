@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Synchronized · GitBook</title>
+        <title>Common · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="volatile.html" />
+    <link rel="next" href="string.html" />
     
     
-    <link rel="prev" href="memory.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="common.html">
+        <li class="chapter active" data-level="1.2" data-path="common.html">
             
                 <a href="common.html">
             
@@ -154,7 +154,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="synchronized.html">
+        <li class="chapter " data-level="1.6" data-path="synchronized.html">
             
                 <a href="synchronized.html">
             
@@ -548,7 +548,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Synchronized</a>
+        <a href="." >Common</a>
     </h1>
 </div>
 
@@ -564,66 +564,21 @@
                                 <section class="normal markdown-section">
                                 
                                 <ul>
-<li>&#x83B7;&#x53D6;&#x5BF9;&#x8C61;&#x9501;<ul>
-<li>synchronized(this|object) {}</li>
-<li>&#x4FEE;&#x9970;&#x975E;&#x9759;&#x6001;&#x65B9;&#x6CD5;</li>
-<li>&#x5728; Java &#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A; monitor &#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x5176;&#x5B9E;&#x5C31;&#x662F; Java &#x5BF9;&#x8C61;&#x7684;&#x9501;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x88AB;&#x79F0;&#x4E3A;&#x201C;&#x5185;&#x7F6E;&#x9501;&#x201D;&#x6216;&#x201C;&#x5BF9;&#x8C61;&#x9501;&#x201D;&#x3002;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x6709;&#x5176;&#x72EC;&#x7ACB;&#x7684;&#x5BF9;&#x8C61;&#x9501;&#xFF0C;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#x3002;</li>
+<li>jdk&#x548C;jre&#x7684;&#x533A;&#x522B;<ul>
+<li>jre&#xFF1A;&#x63D0;&#x4F9B;java&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;</li>
+<li>jdk&#xFF1A;&#x63D0;&#x4F9B;java&#x7684;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x548C;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF08;&#x5305;&#x542B;&#x4E86;jre&#xFF09;</li>
 </ul>
 </li>
-<li>&#x83B7;&#x53D6;&#x7C7B;&#x9501;<ul>
-<li>synchronized(&#x7C7B;.class) {}</li>
-<li>&#x4FEE;&#x9970;&#x9759;&#x6001;&#x65B9;&#x6CD5;</li>
-<li>&#x5728; Java &#x4E2D;&#xFF0C;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A;&#x7C7B;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x9501;&#xFF0C;&#x53EF;&#x4EE5;&#x79F0;&#x4E3A;&#x201C;&#x7C7B;&#x9501;&#x201D;&#xFF0C;&#x7C7B;&#x9501;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x901A;&#x8FC7;&#x5BF9;&#x8C61;&#x9501;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5373;&#x7C7B;&#x7684; Class &#x5BF9;&#x8C61;&#x9501;&#x3002;&#x6BCF;&#x4E2A;&#x7C7B;&#x53EA;&#x6709;&#x4E00;&#x4E2A; Class &#x5BF9;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;&#x7C7B;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7C7B;&#x9501;&#x3002;</li>
+<li>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x53CA;&#x5176;&#x5C01;&#x88C5;&#x7C7B;
+  <img src="assets/iShot2020-10-12&#x4E0B;&#x5348;06.30.51.png" alt=""></li>
+<li>&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x5C01;&#x88C5;&#x7C7B;&#xFF1F;<ul>
+<li>&#x56E0;&#x4E3A;&#x6CDB;&#x578B;&#x7C7B;&#x5305;&#x62EC;&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</li>
+<li>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6309;&#x503C;&#x4F20;&#x9012;&#xFF0C;&#x5C01;&#x88C5;&#x7C7B;&#x578B;&#x6309;&#x5F15;&#x7528;&#x4F20;&#x9012;</li>
+<li>&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x5728;&#x6808;&#x4E2D;&#x521B;&#x5EFA;&#xFF0C;&#x5C01;&#x88C5;&#x7C7B;&#x578B;&#x5728;&#x5806;&#x4E2D;&#x521B;&#x5EFA;</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>Java&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;monitor&#x5BF9;&#x8C61;&#xFF0C;&#x76D1;&#x89C6;&#x5668;<ul>
-<li>&#x67D0;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8981;&#x5360;&#x6709;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5148;monitor&#x7684;&#x8BA1;&#x6570;&#x5668;&#x662F;&#x4E0D;&#x662F;0&#xFF0C;0&#x4EE3;&#x8868;&#x65E0;&#x7EBF;&#x7A0B;&#x5360;&#x6709;&#xFF0C;&#x5360;&#x6709;&#x8BE5;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;monitor+1&#xFF1B;&#x4E0D;&#x4E3A;0&#xFF0C;&#x5219;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x5360;&#x6709;&#xFF1B;&#x7EBF;&#x7A0B;&#x91CA;&#x653E;&#x65F6;&#xFF0C;monitor-1.</li>
-<li>&#x540C;&#x4E00;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x5BF9;&#x540C;&#x4E00;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#x52A0;&#x9501;&#xFF0C;+1&#xFF0C;+1&#xFF0C;&#x91CD;&#x5165;&#x6027;</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>synchronized&#x5E95;&#x5C42;&#x539F;&#x7406;
-&#x901A;&#x8FC7;<code>javap -v $className</code> &#x53EF;&#x67E5;&#x770B;</p>
-<ul>
-<li>&#x65B9;&#x6CD5;&#x5185;synchronized&#x53EF;&#x4EE5;&#x770B;&#x5230;<ul>
-<li>monitorenter &#x548C; monitorexit </li>
-</ul>
-</li>
-<li>synchronized &#x65B9;&#x6CD5;<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">accessResources0</span><span class="hljs-params">()</span></span>;
-descriptor: ()V
-flags: ACC_PUBLIC, ACC_STATIC, ACC_SYNCHRONIZED
-</code></pre>
-<ul>
-<li>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x901A;&#x8FC7;ACC_SYNCHRONIZED flag&#x8FDB;&#x884C;&#x52A0;&#x9501;&#x5B9E;&#x73B0;&#x540C;&#x6B65;&#x65B9;&#x6CD5;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Java&#x865A;&#x62DF;&#x673A;&#x5BF9;synchronized&#x7684;&#x4F18;&#x5316;</p>
-<ul>
-<li>&#x504F;&#x5411;&#x9501; &#xFF08;jdk1.6&#x4E4B;&#x540E;&#xFF09;</li>
-<li>&#x8F7B;&#x91CF;&#x7EA7;&#x9501;&#xFF08;jdk1.6&#x4E4B;&#x540E;&#xFF09;</li>
-<li>&#x91CD;&#x91CF;&#x7EA7;&#x9501; </li>
-</ul>
-<p>&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5305;&#x542B;&#xFF1A;&#x5BF9;&#x8C61;&#x5934;&#x3001;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x3001;&#x586B;&#x5145;&#x6570;&#x636E;
-<img src="assets/instance.png" alt=""></p>
-<ul>
-<li>&#x5BF9;&#x8C61;&#x5934;&#xFF1A;&#x52A0;&#x9501;&#x7684;&#x57FA;&#x7840;
-<img src="assets/instance-header.png" alt=""><ul>
-<li>Mark Word&#x4E2D; &#x9501;&#x4FE1;&#x606F;
-<img src="assets/lock-info.png" alt=""></li>
-<li>&#x65E0;&#x9501;&#x72B6;&#x6001;:&#x6CA1;&#x6709;&#x52A0;&#x9501;</li>
-<li>&#x504F;&#x5411;&#x9501;&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x67D0;&#x4E00;&#x7EBF;&#x7A0B;&#x5360;&#x6709;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x5426;&#x504F;&#x5411;&#x9501;&#x7F6E;1&#xFF0C;&#x9501;&#x6807;&#x8BB0;01&#xFF0C;&#x5199;&#x5165;&#x7EBF;&#x7A0B;&#x53F7;&#xFF1B;&#x5F53;&#x5176;&#x4ED6;&#x7684;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7ADE;&#x4E89;&#xFF0C;&#x53EF;&#x80FD;&#x5931;&#x8D25;&#x4E5F;&#x53EF;&#x80FD;&#x6210;&#x529F;&#x3002;&#x503E;&#x5411;&#x88AB;&#x7B2C;&#x4E00;&#x6B21;&#x5360;&#x6709;&#x5B83;&#x7684;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x6B21;&#x6570;&#x591A;&#xFF0C;&#x6210;&#x529F;</li>
-<li>CAS&#x7B97;&#x6CD5;</li>
-<li>&#x81EA;&#x65CB;&#x9501;&#xFF1A;&#x7ADE;&#x4E89;&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x662F;&#x9A6C;&#x4E0A;&#x8F6C;&#x5316;&#x7EA7;&#x522B;&#xFF0C;&#x800C;&#x662F;&#x6267;&#x884C;&#x51E0;&#x6B21;&#x7A7A;&#x5FAA;&#x73AF;5 10 </li>
-<li>&#x9501;&#x6D88;&#x9664;&#xFF1A;JIT&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x5427;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x9501;&#x53BB;&#x6389;</li>
-</ul>
-</li>
-<li>&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;</li>
-<li>&#x586B;&#x5145;&#x6570;&#x636E;&#xFF1A;8&#x5B57;&#x8282;</li>
+<li>==&#x548C;equals&#x533A;&#x522B;&#xFF1F;<ul>
+<li>==&#x6BD4;&#x8F83;&#x7684;&#x662F;&#x5F15;&#x7528;&#x800C;equals&#x6BD4;&#x8F83;&#x7684;&#x662F;&#x5185;&#x5BB9;</li>
 </ul>
 </li>
 </ul>
@@ -654,12 +609,12 @@ flags: ACC_PUBLIC, ACC_STATIC, ACC_SYNCHRONIZED
 
             
                 
-                <a href="memory.html" class="navigation navigation-prev " aria-label="Previous page: Memory">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Introduction">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="volatile.html" class="navigation navigation-next " aria-label="Next page: Volatile">
+                <a href="string.html" class="navigation navigation-next " aria-label="Next page: String">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -670,7 +625,7 @@ flags: ACC_PUBLIC, ACC_STATIC, ACC_SYNCHRONIZED
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Synchronized","level":"1.6","depth":1,"next":{"title":"Volatile","level":"1.7","depth":1,"path":"volatile.md","ref":"volatile.md","articles":[]},"previous":{"title":"Memory","level":"1.5","depth":1,"path":"memory.md","ref":"memory.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"synchronized.md","mtime":"2020-10-09T10:21:30.167Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-12T14:57:10.016Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Common","level":"1.2","depth":1,"next":{"title":"String","level":"1.3","depth":1,"path":"string.md","ref":"string.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"common.md","mtime":"2020-10-12T12:17:25.312Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-12T14:57:10.016Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
