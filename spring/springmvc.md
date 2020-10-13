@@ -21,7 +21,8 @@
   - 新建resources目录
     - 在META-INF目录建services目录
     - 新建文件名为`javax.servlet.ServletContainerInitializer`并把类名`top.oitm.Mvcinitializer`写到文件当中。这时候Tomcat在启动的时候就会自动执行Mvcinitializer中的onStartup方法
-    
+
+        
 - SpringMVC 核心流程
     - 首先请求进入DispatcherServlet 由DispatcherServlet 从HandlerMappings中提取对应的Handler
     - 此时只是获取到了对应的Handle，然后得去寻找对应的适配器，即:HandlerAdapter
