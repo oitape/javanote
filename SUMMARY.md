@@ -29,6 +29,7 @@
 * [Spring](spring.md)
   * [SpringMVC](spring/springmvc.md)
   * [SpringBoot](spring/springboot.md)
+  * [SpringCloud](spring/springcloud.md)
 * [DesignPatterns](designpatterns.md)
 * [Log](log.md)
 * [Mybatis](mybatis.md)
