@@ -42,9 +42,9 @@
         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
     ```
+
     - 配置
-    
-    ```yml
+    ```yaml
     server:
       port: 6000
     eureka:
@@ -58,7 +58,7 @@
             leaseExpirationDurationInSeconds: 30 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
 
     spring:
-      application:
-        name: server-power #此实例注册到eureka服务端的name
+        application:
+            name: server-power #此实例注册到eureka服务端的name
     ```
     
