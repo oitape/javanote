@@ -30,6 +30,7 @@
   * [SpringMVC](spring/springmvc.md)
   * [SpringBoot](spring/springboot.md)
   * [SpringCloud](spring/springcloud.md)
+    * [Eureka](spring/springcloud/eureka.md)
 * [DesignPatterns](designpatterns.md)
 * [Log](log.md)
 * [Mybatis](mybatis.md)
