@@ -61,4 +61,4 @@
         application:
             name: server-power #此实例注册到eureka服务端的name
     ```
-    
+    - Application添加注解@EnableEurekaClient

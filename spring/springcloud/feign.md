@@ -17,7 +17,7 @@ Feign旨在使编写Java Http客户端变得更容易。 前面在使用Ribbon+R
     Object power();
     }
     ```
-    - 调用
+    - 调用：Application增加@EnableFeignClients
     ```java
     @Autowired
     PowerServiceClient powerServiceClient;

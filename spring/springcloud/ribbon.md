@@ -37,4 +37,5 @@ public IRule iRule(){
 }
 ```
 
-- 
+- 不同微服务使用不同负载策略，配置类不能在应用程序上下文ComponentScan中，否则他将有所有的RibbonClient共享
+![](/assets/iShot2020-10-19下午09.05.06.png)
