@@ -33,6 +33,7 @@
     * [Eureka](spring/springcloud/eureka.md)
     * [Ribbon](spring/springcloud/ribbon.md)
     * [Feign](spring/springcloud/feign.md)
+    * [负载均衡算法](spring/springcloud/fu-zai-jun-heng-suan-fa.md)
 * [DesignPatterns](designpatterns.md)
 * [Log](log.md)
 * [Mybatis](mybatis.md)

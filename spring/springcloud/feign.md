@@ -9,7 +9,7 @@ Feign旨在使编写Java Http客户端变得更容易。 前面在使用Ribbon+R
     <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
     ```
-    - 编写service家长@FeignClient()注解，参数就是微服务名称
+    - 编写service加 **@FeignClient()** 注解，参数就是微服务名称
     ```java
     @FeignClient("SERVER-POWER")
     public interface PowerServiceClient {
@@ -17,7 +17,7 @@ Feign旨在使编写Java Http客户端变得更容易。 前面在使用Ribbon+R
     Object power();
     }
     ```
-    - 调用：Application增加@EnableFeignClients
+    - 调用：Application增加 **@EnableFeignClients**
     ```java
     @Autowired
     PowerServiceClient powerServiceClient;
