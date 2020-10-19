@@ -31,6 +31,8 @@
   * [SpringBoot](spring/springboot.md)
   * [SpringCloud](spring/springcloud.md)
     * [Eureka](spring/springcloud/eureka.md)
+    * [Ribbon](spring/springcloud/ribbon.md)
+    * [Feign](spring/springcloud/feign.md)
 * [DesignPatterns](designpatterns.md)
 * [Log](log.md)
 * [Mybatis](mybatis.md)
