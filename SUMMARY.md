@@ -34,6 +34,7 @@
     * [Ribbon](spring/springcloud/ribbon.md)
     * [Feign](spring/springcloud/feign.md)
     * [负载均衡算法](spring/springcloud/fu-zai-jun-heng-suan-fa.md)
+    * [Hystrix](spring/springcloud/hystrix.md)
 * [DesignPatterns](designpatterns.md)
 * [Log](log.md)
 * [Mybatis](mybatis.md)
