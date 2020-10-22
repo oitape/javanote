@@ -1,0 +1,980 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Hystrix · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="zuul.html" />
+    
+    
+    <link rel="prev" href="fu-zai-jun-heng-suan-fa.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../common.html">
+            
+                <a href="../../common.html">
+            
+                    
+                    Common
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../string.html">
+            
+                <a href="../../string.html">
+            
+                    
+                    String
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../long.html">
+            
+                <a href="../../long.html">
+            
+                    
+                    Long
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../memory.html">
+            
+                <a href="../../memory.html">
+            
+                    
+                    Memory
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../synchronized.html">
+            
+                <a href="../../synchronized.html">
+            
+                    
+                    Synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../volatile.html">
+            
+                <a href="../../volatile.html">
+            
+                    
+                    Volatile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../singleton.html">
+            
+                <a href="../../singleton.html">
+            
+                    
+                    Singleton
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../aqs.html">
+            
+                <a href="../../aqs.html">
+            
+                    
+                    AQS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../casandaqs.html">
+            
+                <a href="../../casandaqs.html">
+            
+                    
+                    CAS&Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../keyword.html">
+            
+                <a href="../../keyword.html">
+            
+                    
+                    Keyword
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../gong-ju-lei-ji-qiao.html">
+            
+                <a href="../../gong-ju-lei-ji-qiao.html">
+            
+                    
+                    工具类技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../list.html">
+            
+                <a href="../../list.html">
+            
+                    
+                    List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../../set.html">
+            
+                <a href="../../set.html">
+            
+                    
+                    Set
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../map.html">
+            
+                <a href="../../map.html">
+            
+                    
+                    Map
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../../queue.html">
+            
+                <a href="../../queue.html">
+            
+                    
+                    Queue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../../thread.html">
+            
+                <a href="../../thread.html">
+            
+                    
+                    Thread
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../../threadpool.html">
+            
+                <a href="../../threadpool.html">
+            
+                    
+                    ThreadPool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="../../threadlocal.html">
+            
+                <a href="../../threadlocal.html">
+            
+                    
+                    ThreadLocal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../../threadlocal/socket.html">
+            
+                <a href="../../threadlocal/socket.html">
+            
+                    
+                    Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="../../stream.html">
+            
+                <a href="../../stream.html">
+            
+                    
+                    Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="../../maven.html">
+            
+                <a href="../../maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="../../ioc.html">
+            
+                <a href="../../ioc.html">
+            
+                    
+                    IOC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="../../aop.html">
+            
+                <a href="../../aop.html">
+            
+                    
+                    AOP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="../../delegate.html">
+            
+                <a href="../../delegate.html">
+            
+                    
+                    Delegate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="../../reflect.html">
+            
+                <a href="../../reflect.html">
+            
+                    
+                    Reflect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="../../spring.html">
+            
+                <a href="../../spring.html">
+            
+                    
+                    Spring
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../springmvc.html">
+            
+                <a href="../springmvc.html">
+            
+                    
+                    SpringMVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.2" data-path="../springboot.html">
+            
+                <a href="../springboot.html">
+            
+                    
+                    SpringBoot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3" data-path="../springcloud.html">
+            
+                <a href="../springcloud.html">
+            
+                    
+                    SpringCloud
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.3.1" data-path="eureka.html">
+            
+                <a href="eureka.html">
+            
+                    
+                    Eureka
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3.2" data-path="ribbon.html">
+            
+                <a href="ribbon.html">
+            
+                    
+                    Ribbon
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3.3" data-path="feign.html">
+            
+                <a href="feign.html">
+            
+                    
+                    Feign
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3.4" data-path="fu-zai-jun-heng-suan-fa.html">
+            
+                <a href="fu-zai-jun-heng-suan-fa.html">
+            
+                    
+                    负载均衡算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.27.3.5" data-path="hystrix.html">
+            
+                <a href="hystrix.html">
+            
+                    
+                    Hystrix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3.6" data-path="zuul.html">
+            
+                <a href="zuul.html">
+            
+                    
+                    Zuul
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="../../designpatterns.html">
+            
+                <a href="../../designpatterns.html">
+            
+                    
+                    DesignPatterns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" data-path="../../log.html">
+            
+                <a href="../../log.html">
+            
+                    
+                    Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" data-path="../../mybatis.html">
+            
+                <a href="../../mybatis.html">
+            
+                    
+                    Mybatis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31" data-path="../../web.html">
+            
+                <a href="../../web.html">
+            
+                    
+                    Web
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32" data-path="../../jvm.html">
+            
+                <a href="../../jvm.html">
+            
+                    
+                    JVM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33" data-path="../../net.html">
+            
+                <a href="../../net.html">
+            
+                    
+                    Net
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.33.1" data-path="../../net/gai-shu.html">
+            
+                <a href="../../net/gai-shu.html">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33.2" data-path="../../net/lian-lu-ceng.html">
+            
+                <a href="../../net/lian-lu-ceng.html">
+            
+                    
+                    链路层
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Hystrix</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <ul>
+<li><p>Hystrix&#xFF1A;&#x80FD;&#x591F;&#x4FDD;&#x8BC1;&#x5728;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;&#x51FA;&#x95EE;&#x9898;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x6574;&#x4F53;&#x670D;&#x52A1;&#x5931;&#x8D25;&#xFF0C;&#x907F;&#x514D;&#x7EA7;&#x8054;&#x6545;&#x969C;&#xFF0C;&#x4EE5;&#x63D0;&#x9AD8;&#x5206; &#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x7684;&#x5F39;&#x6027;&#x3002;<br>&#x201C;&#x65AD;&#x8DEF;&#x5668;&#x201D;&#x672C;&#x8EAB;&#x662F;&#x4E00;&#x79CD;&#x5F00;&#x5173;&#x88C5;&#x7F6E;&#xFF0C;&#x5F53;&#x67D0;&#x4E2A;&#x670D;&#x52A1;&#x5355;&#x5143;&#x53D1;&#x751F;&#x6545;&#x969C;&#x4E4B;&#x540E;&#xFF0C;&#x901A;&#x8FC7;&#x65AD;&#x8DEF;&#x5668;&#x7684;&#x6545;&#x969C;&#x76D1;&#x63A7;(&#x7C7B;&#x4F3C;&#x7194;&#x65AD;&#x4FDD;&#x9669;&#x4E1D;)&#xFF0C;&#x5411;&#x8C03; &#x7528;&#x65B9;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7B26;&#x5408;&#x9884;&#x671F;&#x7684;&#x3001;&#x53EF;&#x5904;&#x7406;&#x7684;&#x5907;&#x9009;&#x54CD;&#x5E94;(FallBack)&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x957F;&#x65F6;&#x95F4;&#x7684;&#x7B49;&#x5F85;&#x6216;&#x8005;&#x629B;&#x51FA;&#x8C03;&#x7528;&#x65B9;&#x65E0;&#x6CD5;&#x5904;&#x7406;&#x7684;&#x5F02; &#x5E38;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4FDD;&#x8BC1;&#x4E86;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x65B9;&#x7684;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x88AB;&#x957F;&#x65F6;&#x95F4;&#x3001;&#x4E0D;&#x5FC5;&#x8981;&#x5730;&#x5360;&#x7528;&#xFF0C;&#x4ECE;&#x800C;&#x907F;&#x514D;&#x4E86;&#x6545;&#x969C;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x8513;&#x5EF6;&#xFF0C;&#x4E43;&#x81F3; &#x96EA;&#x5D29;&#x3002;</p>
+</li>
+<li><p>&#x4F7F;&#x7528;</p>
+<ul>
+<li>&#x914D;&#x7F6E;<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>     
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-hystrix<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>&#x914D;&#x7F6E;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">hystrix:</span>
+<span class="hljs-attr">   command:</span>
+<span class="hljs-attr">     default:</span>
+<span class="hljs-attr">       execution:</span> 
+<span class="hljs-attr">         isolation:</span>
+<span class="hljs-attr">           thread:</span>
+<span class="hljs-attr">             timeoutInMilliseconds:</span> <span class="hljs-number">20000</span>  <span class="hljs-comment">## &#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#x533A;&#x95F4;</span>
+<span class="hljs-attr">       circuitBreaker:</span>
+<span class="hljs-attr">         requestVolumeThreshold:</span> <span class="hljs-number">5</span>
+         sleepWindowInMilliseconds : <span class="hljs-number">5000</span>   
+
+<span class="hljs-attr">   threadpool:</span>
+<span class="hljs-attr">      default:</span>
+<span class="hljs-attr">         coreSize:</span> <span class="hljs-number">10</span>
+<span class="hljs-attr">      power:</span> <span class="hljs-comment">## &#x4E0D;&#x540C;&#x63A5;&#x53E3;&#x914D;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x7EBF;&#x7A0B;&#x6570;</span>
+<span class="hljs-attr">         coreSize:</span> <span class="hljs-number">10</span>
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x5165;&#x6CE8;&#x89E3; <strong>@EnableHystrix</strong> &#x6216;&#x8005; <strong>@EnableCircuitBreaker</strong>(&#x4ED6;&#x4EEC;&#x4E4B;&#x95F4;&#x662F;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#xFF0C;2&#x4E2A;&#x6CE8;&#x89E3;&#x6240;&#x63CF;&#x8FF0;&#x7684;&#x5185;&#x5BB9;&#x662F; &#x5B8C;&#x5168;&#x4E00;&#x6837;&#x7684;,&#x7136;&#x540E;&#x5728;&#x6211;&#x4EEC;&#x7684;controller&#x4E0A;&#x9762;&#x52A0;&#x5165;&#x6CE8;&#x89E3;@HystrixCommand(fallbackMethod&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x521A;&#x521A;&#x8BF4;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x540D;&#x5B57;)</p>
+<pre><code class="lang-java"><span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">&quot;/feignPower.do&quot;</span>)         
+<span class="hljs-meta">@HystrixCommand</span>(fallbackMethod = <span class="hljs-string">&quot;fallbackMethod&quot;</span>) 
+<span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">feignPower</span><span class="hljs-params">(String name)</span></span>{
+  <span class="hljs-keyword">return</span> powerServiceClient.power(); 
+}  
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">fallbackMethod</span><span class="hljs-params">(String name)</span></span>{ 
+   System.out.println(name);
+   <span class="hljs-keyword">return</span> R.error(<span class="hljs-string">&quot;&#x964D;&#x7EA7;&#x4FE1;&#x606F;&quot;</span>);
+ }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>&#x7194;&#x65AD;
+  &#x4E00;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x591A; &#x6B21;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x65F6;(&#x9ED8;&#x8BA4;&#x662F;10&#x79D2;&#x5185;20&#x6B21;&#x5F53;&#x7136; &#x8FD9;&#x4E2A;&#x4E5F;&#x80FD;&#x914D;&#x7F6E;)&#xFF0C;hystrix&#x5C31;&#x4F1A;&#x91C7;&#x53D6;&#x7194;&#x65AD;&#x673A;&#x5236;&#xFF0C;&#x4E0D;&#x518D;&#x7EE7;&#x7EED;&#x8C03;&#x7528;&#x4F60;&#x7684;&#x65B9;&#x6CD5;(&#x4F1A; &#x5728;&#x9ED8;&#x8BA4;5&#x79D2;&#x949F;&#x5185;&#x548C;&#x7535;&#x5668;&#x77ED;&#x8DEF;&#x4E00;&#x6837;&#xFF0C;5&#x79D2;&#x949F;&#x540E;&#x4F1A;&#x8BD5;&#x63A2;&#x6027;&#x7684;&#x5148;&#x5173;&#x95ED;&#x7194;&#x65AD;&#x673A;&#x5236;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8FD9;&#x65F6;&#x5019;&#x518D;&#x5931;&#x8D25;&#x4E00;&#x6B21;{&#x4E4B;&#x524D;&#x662F;20&#x6B21;} &#x90A3;&#x4E48;&#x53C8;&#x4F1A;&#x91CD;&#x65B0;&#x8FDB;&#x884C;&#x7194;&#x65AD;) &#x800C;&#x662F;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x964D;&#x7EA7;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x907F;&#x514D;&#x4E86;&#x670D;&#x52A1;&#x96EA;&#x5D29;&#x7684;&#x95EE;&#x9898;</p>
+</li>
+<li><p>&#x9650;&#x6D41;
+  hystrix&#x901A;&#x8FC7;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x7BA1;&#x7406;&#x4F60;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x8C03;&#x7528;&#xFF0C;&#x4ED6;&#x9ED8;&#x8BA4;&#x662F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6C60;(10&#x5927;&#x5C0F;) &#x7BA1;&#x7406;&#x4F60;&#x7684;&#x6240;&#x6709;&#x5FAE;&#x670D;&#x52A1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5; &#x7ED9;&#x67D0;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x5F00;&#x8F9F;&#x65B0;&#x7684;&#x7EBF;&#x7A0B;&#x6C60;</p>
+<ul>
+<li>&#x4F7F;&#x7528;<pre><code class="lang-java"><span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">&quot;/feignOrder.do&quot;</span>)     
+<span class="hljs-meta">@HystrixCommand</span>(fallbackMethod = <span class="hljs-string">&quot;fallbackOrderMethod&quot;</span> ,
+  threadPoolKey = <span class="hljs-string">&quot;order&quot;</span>,
+  threadPoolProperties ={<span class="hljs-meta">@HystrixProperty</span>(name = <span class="hljs-string">&quot;coreSize&quot;</span>,value = <span class="hljs-string">&quot;2&quot;</span>),
+                        <span class="hljs-meta">@HystrixProperty</span>(name = <span class="hljs-string">&quot;maxQueueSize&quot;</span>,value = <span class="hljs-string">&quot;1&quot;</span>})
+<span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">feignOrder</span><span class="hljs-params">(String name)</span></span>{
+System.out.println(<span class="hljs-number">1</span>);
+<span class="hljs-keyword">return</span> restTemplate.getForObject(ORDERURL+<span class="hljs-string">&quot;/order.do&quot;</span>,Object.class); 
+}
+</code></pre>
+<ul>
+<li>threadPoolKey &#x5C31;&#x662F;&#x5728;&#x7EBF;&#x7A0B;&#x6C60;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#xFF0C; hystrix &#x4F1A;&#x62FF;&#x4F60;&#x8FD9;&#x4E2A;&#x6807;&#x8BC6;&#x53BB;&#x8BA1;&#x6570;&#xFF0C;&#x770B;&#x7EBF;&#x7A0B;&#x5360;&#x7528;&#x662F;&#x5426;&#x8D85;&#x8FC7;&#x4E86;&#xFF0C; &#x8D85;&#x8FC7;&#x4E86;&#x5C31;&#x4F1A;&#x76F4; &#x63A5;&#x964D;&#x7EA7;&#x8BE5;&#x6B21;&#x8C03;&#x7528;</li>
+<li>&#x6BD4;&#x5982;&#xFF0C;&#x8FD9;&#x91CC;coreSize&#x7ED9;&#x4ED6;&#x503C;&#x4E3A;2 &#x90A3;&#x4E48;&#x5047;&#x8BBE;&#x4F60;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#x95F4;&#x662F;3s&#x6267;&#x884C;&#x5B8C;&#xFF0C; &#x90A3;&#x4E48;&#x5728;3s&#x5185;&#x5982;&#x679C;&#x6709;&#x8D85;&#x8FC7;2&#x4E2A;&#x8BF7;&#x6C42;&#x8FDB;&#x6765;&#x7684; &#x8BDD;&#xFF0C; &#x5269;&#x4E0B;&#x7684;&#x8BF7;&#x6C42;&#x5219;&#x5168;&#x90E8;&#x964D;&#x7EA7;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>feign&#x6574;&#x5408;hystrix
+feign &#x4EE5;&#x524D;&#x9ED8;&#x8BA4;&#x662F;&#x652F;&#x6301;hystrix&#x7684;&#xFF0C; &#x4F46;&#x662F;&#x5728;Spring-Cloud Dalston &#x7248;&#x672C;&#x4E4B;&#x540E;&#x5C31;&#x9ED8;&#x8BA4;&#x5173;&#x95ED;&#x4E86;</p>
+<ul>
+<li>&#x914D;&#x7F6E;<pre><code class="lang-yaml"><span class="hljs-attr">feign:</span>
+<span class="hljs-attr">  hystrix:</span>
+<span class="hljs-attr">    enabled:</span> <span class="hljs-literal">true</span>
+</code></pre>
+</li>
+<li><p>&#x4F7F;&#x7528;</p>
+<pre><code class="lang-java"> <span class="hljs-meta">@FeignClient</span>(value = <span class="hljs-string">&quot;SERVER-POWER&quot;</span>,fallback = PowerServiceFallBack.class) 
+ <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PowerServiceClient</span> </span>{  
+    <span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">&quot;/power.do&quot;</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">power</span><span class="hljs-params">(@RequestParam(<span class="hljs-string">&quot;name&quot;</span>)</span> String name)</span>;
+}
+
+<span class="hljs-comment">//PowerServiceFallBack&#x7C7B;</span>
+  <span class="hljs-meta">@Component</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PowerServiceFallBack</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">PowerServiceClient</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">power</span><span class="hljs-params">(String name)</span> </span>{ 
+          <span class="hljs-keyword">return</span> R.error(<span class="hljs-string">&quot;&#x6D4B;&#x8BD5;&#x964D;&#x7EA7;&quot;</span>);
+    } 
+  }
+</code></pre>
+</li>
+<li><p>&#x5982;&#x679C;&#x9700;&#x8981;&#x62FF;&#x5230;&#x964D;&#x7EA7;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x6307;&#x5B9A; fallbackFactory</p>
+<pre><code class="lang-java"> <span class="hljs-meta">@Component</span>
+ <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PowerServiceClientFallBackFactory</span> <span class="hljs-keyword">implements</span>
+ <span class="hljs-title">FallbackFactory</span>&lt;<span class="hljs-title">PowerServiceClient</span>&gt; </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> PowerServiceClient <span class="hljs-title">create</span><span class="hljs-params">(Throwable throwable)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PowerServiceClient() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">power</span><span class="hljs-params">(String name)</span> </span>{
+        String message = throwable.getMessage(); <span class="hljs-keyword">return</span> R.error(<span class="hljs-string">&quot;feign&#x964D;&#x7EA7;&quot;</span>);
+      } 
+    };
+  } 
+}
+
+<span class="hljs-comment">//FeignClient&#x6307;&#x5B9A;factory</span>
+<span class="hljs-meta">@FeignClient</span>(value = <span class="hljs-string">&quot;SERVER-POWER&quot;</span>,fallbackFactory =         PowerServiceClientFallBackFactory.class)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PowerServiceClient</span> </span>{
+  <span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">&quot;/power.do&quot;</span>)
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">power</span><span class="hljs-params">(@RequestParam(<span class="hljs-string">&quot;name&quot;</span>)</span> String name)</span>;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>&#x76F8;&#x5173;&#x5C5E;&#x6027;
+Execution&#x76F8;&#x5173;&#x7684;&#x5C5E;&#x6027;&#x7684;&#x914D;&#x7F6E;</p>
+<ul>
+<li>hystrix.command.default.execution.isolation.strategy &#x9694;&#x79BB;&#x7B56;&#x7565;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;Thread, &#x53EF;&#x9009;Thread|Semaphor</li>
+<li>hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds &#x547D;&#x4EE4;&#x6267;&#x884C;&#x8D85;&#x65F6;&#x65F6; &#x95F4;&#xFF0C;&#x9ED8;&#x8BA4;1000ms</li>
+<li>hystrix.command.default.execution.timeout.enabled &#x6267;&#x884C;&#x662F;&#x5426;&#x542F;&#x7528;&#x8D85;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x542F;&#x7528;true   </li>
+<li>hystrix.command.default.execution.isolation.thread.interruptOnTimeout &#x53D1;&#x751F;&#x8D85;&#x65F6;&#x662F;&#x662F;&#x5426;&#x4E2D;&#x65AD;&#xFF0C;&#x9ED8;&#x8BA4;true</li>
+<li>hystrix.command.default.execution.isolation.semaphore.maxConcurrentRequests &#x6700;&#x5927;&#x5E76;&#x53D1;&#x8BF7;&#x6C42; &#x6570;&#xFF0C;&#x9ED8;&#x8BA4;10&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x5F53;&#x4F7F;&#x7528;ExecutionIsolationStrategy.SEMAPHORE&#x7B56;&#x7565;&#x65F6;&#x624D;&#x6709;&#x6548;&#x3002;&#x5982;&#x679C;&#x8FBE;&#x5230;&#x6700;&#x5927;&#x5E76;&#x53D1;&#x8BF7;&#x6C42; &#x6570;&#xFF0C;&#x8BF7;&#x6C42;&#x4F1A;&#x88AB;&#x62D2;&#x7EDD;&#x3002;&#x7406;&#x8BBA;&#x4E0A;&#x9009;&#x62E9;semaphore size&#x7684;&#x539F;&#x5219;&#x548C;&#x9009;&#x62E9;thread size&#x4E00;&#x81F4;&#xFF0C;&#x4F46;&#x9009;&#x7528;semaphore&#x65F6;&#x6BCF;&#x6B21;&#x6267;&#x884C; &#x7684;&#x5355;&#x5143;&#x8981;&#x6BD4;&#x8F83;&#x5C0F;&#x4E14;&#x6267;&#x884C;&#x901F;&#x5EA6;&#x5FEB;(ms&#x7EA7;&#x522B;)&#xFF0C;&#x5426;&#x5219;&#x7684;&#x8BDD;&#x5E94;&#x8BE5;&#x7528;thread&#x3002; semaphore&#x5E94;&#x8BE5;&#x5360;&#x6574;&#x4E2A;&#x5BB9;&#x5668;(tomcat)&#x7684;&#x7EBF;&#x7A0B; &#x6C60;&#x7684;&#x4E00;&#x5C0F;&#x90E8;&#x5206;&#x3002; Fallback&#x76F8;&#x5173;&#x7684;&#x5C5E;&#x6027; &#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x4E8E;Hystrix&#x7684;THREAD&#x548C;SEMAPHORE&#x7B56;&#x7565;</li>
+<li>hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests &#x5982;&#x679C;&#x5E76;&#x53D1;&#x6570;&#x8FBE;&#x5230; &#x8BE5;&#x8BBE;&#x7F6E;&#x503C;&#xFF0C;&#x8BF7;&#x6C42;&#x4F1A;&#x88AB;&#x62D2;&#x7EDD;&#x548C;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x5E76;&#x4E14;fallback&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x9ED8;&#x8BA4;10</li>
+<li>hystrix.command.default.fallback.enabled &#x5F53;&#x6267;&#x884C;&#x5931;&#x8D25;&#x6216;&#x8005;&#x8BF7;&#x6C42;&#x88AB;&#x62D2;&#x7EDD;&#xFF0C;&#x662F;&#x5426;&#x4F1A;&#x5C1D;&#x8BD5;&#x8C03;&#x7528; hystrixCommand.getFallback() &#x3002;&#x9ED8;&#x8BA4;true
+Circuit Breaker&#x76F8;&#x5173;&#x7684;&#x5C5E;&#x6027;</li>
+<li>hystrix.command.default.circuitBreaker.enabled &#x7528;&#x6765;&#x8DDF;&#x8E2A;circuit&#x7684;&#x5065;&#x5EB7;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x672A;&#x8FBE;&#x6807;&#x5219;&#x8BA9; request&#x77ED;&#x8DEF;&#x3002;&#x9ED8;&#x8BA4;true</li>
+<li>hystrix.command.default.circuitBreaker.requestVolumeThreshold &#x4E00;&#x4E2A;rolling window&#x5185;&#x6700;&#x5C0F;&#x7684; &#x8BF7; &#x6C42;&#x6570;&#x3002;&#x5982;&#x679C;&#x8BBE;&#x4E3A;20&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x4E00;&#x4E2A;rolling window&#x7684;&#x65F6;&#x95F4;&#x5185;(&#x6BD4;&#x5982;&#x8BF4;1&#x4E2A;rolling window&#x662F;10&#x79D2;)&#x6536;&#x5230;19&#x4E2A;&#x8BF7; &#x6C42;&#xFF0C; &#x5373;&#x4F7F;19&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x5931;&#x8D25;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;circuit break&#x3002;&#x9ED8;&#x8BA4;20</li>
+<li>hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds &#x89E6;&#x53D1;&#x77ED;&#x8DEF;&#x7684;&#x65F6;&#x95F4;&#x503C;&#xFF0C;&#x5F53;&#x8BE5;&#x503C;&#x8BBE; &#x4E3A;5000&#x65F6;&#xFF0C;&#x5219;&#x5F53;&#x89E6;&#x53D1;circuit break&#x540E;&#x7684;5000&#x6BEB;&#x79D2;&#x5185;&#x90FD;&#x4F1A;&#x62D2;&#x7EDD;request&#xFF0C;&#x4E5F;&#x5C31;&#x662F;5000&#x6BEB;&#x79D2;&#x540E;&#x624D;&#x4F1A;&#x5173;&#x95ED;circuit&#x3002; &#x9ED8;&#x8BA4;5000</li>
+<li>hystrix.command.default.circuitBreaker.errorThresholdPercentage&#x9519;&#x8BEF;&#x6BD4;&#x7387;&#x9600;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x9519;&#x8BEF;&#x7387;&gt;=&#x8BE5; &#x503C;&#xFF0C;circuit&#x4F1A;&#x88AB;&#x6253;&#x5F00;&#xFF0C;&#x5E76;&#x77ED;&#x8DEF;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x89E6;&#x53D1;fallback&#x3002;&#x9ED8;&#x8BA4;50</li>
+<li>hystrix.command.default.circuitBreaker.forceOpen &#x5F3A;&#x5236;&#x6253;&#x5F00;&#x7194;&#x65AD;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6253;&#x5F00;&#x8FD9;&#x4E2A;&#x5F00;&#x5173;&#xFF0C;&#x90A3;&#x4E48;&#x62D2;&#x7EDD;&#x6240; &#x6709;request&#xFF0C;&#x9ED8;&#x8BA4;false</li>
+<li>hystrix.command.default.circuitBreaker.forceClosed &#x5F3A;&#x5236;&#x5173;&#x95ED;&#x7194;&#x65AD;&#x5668; &#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x5F00;&#x5173;&#x6253;&#x5F00;&#xFF0C;circuit&#x5C06; &#x4E00;&#x76F4;&#x5173;&#x95ED;&#x4E14;&#x5FFD;&#x7565;circuitBreaker.errorThresholdPercentage
+Metrics&#x76F8;&#x5173;&#x53C2;&#x6570;</li>
+<li>hystrix.command.default.metrics.rollingStats.timeInMilliseconds &#x8BBE;&#x7F6E;&#x7EDF;&#x8BA1;&#x7684;&#x65F6;&#x95F4;&#x7A97;&#x53E3;&#x503C;&#x7684;&#xFF0C;&#x6BEB;&#x79D2; &#x503C;&#xFF0C;circuit break &#x7684;&#x6253;&#x5F00;&#x4F1A;&#x6839;&#x636E;1&#x4E2A;rolling window&#x7684;&#x7EDF;&#x8BA1;&#x6765;&#x8BA1;&#x7B97;&#x3002;&#x82E5;rolling window&#x88AB;&#x8BBE;&#x4E3A;10000&#x6BEB;&#x79D2;&#xFF0C; &#x5219;rolling window&#x4F1A;&#x88AB;&#x5206;&#x6210;n&#x4E2A;buckets&#xFF0C;&#x6BCF;&#x4E2A;bucket&#x5305;&#x542B;success&#xFF0C;failure&#xFF0C;timeout&#xFF0C;rejection&#x7684;&#x6B21;&#x6570; &#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002;&#x9ED8;&#x8BA4;10000</li>
+<li>hystrix.command.default.metrics.rollingStats.numBuckets &#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;rolling window&#x88AB;&#x5212;&#x5206;&#x7684;&#x6570; &#x91CF;&#xFF0C;&#x82E5;numBuckets=10&#xFF0C;rolling window=10000&#xFF0C;&#x90A3;&#x4E48;&#x4E00;&#x4E2A;bucket&#x7684;&#x65F6;&#x95F4;&#x5373;1&#x79D2;&#x3002;&#x5FC5;&#x987B;&#x7B26;&#x5408;
+rolling window % numberBuckets == 0&#x3002;&#x9ED8;&#x8BA4;10</li>
+<li>hystrix.command.default.metrics.rollingPercentile.enabled &#x6267;&#x884C;&#x65F6;&#x662F;&#x5426;enable&#x6307;&#x6807;&#x7684;&#x8BA1;&#x7B97;&#x548C;&#x8DDF;&#x8E2A;&#xFF0C; &#x9ED8;&#x8BA4;true</li>
+<li>hystrix.command.default.metrics.rollingPercentile.timeInMilliseconds &#x8BBE;&#x7F6E;rolling percentile window&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x9ED8;&#x8BA4;60000</li>
+<li>hystrix.command.default.metrics.rollingPercentile.numBuckets &#x8BBE;&#x7F6E;rolling percentile window&#x7684;numberBuckets&#x3002;&#x903B;&#x8F91;&#x540C;&#x4E0A;&#x3002;&#x9ED8;&#x8BA4;6</li>
+<li>hystrix.command.default.metrics.rollingPercentile.bucketSize &#x5982;&#x679C;bucket size=100&#xFF0C; window =10s&#xFF0C;&#x82E5;&#x8FD9;10s&#x91CC;&#x6709;500&#x6B21;&#x6267;&#x884C;&#xFF0C;&#x53EA;&#x6709;&#x6700;&#x540E;100&#x6B21;&#x6267;&#x884C;&#x4F1A;&#x88AB;&#x7EDF;&#x8BA1;&#x5230;bucket&#x91CC;&#x53BB;&#x3002;&#x589E;&#x52A0;&#x8BE5;&#x503C;&#x4F1A;&#x589E;&#x52A0;&#x5185;&#x5B58;&#x5F00;&#x9500;&#x4EE5; &#x53CA;&#x6392;&#x5E8F; &#x7684;&#x5F00;&#x9500;&#x3002;&#x9ED8;&#x8BA4;100</li>
+<li>hystrix.command.default.metrics.healthSnapshot.intervalInMilliseconds &#x8BB0;&#x5F55;health &#x5FEB;&#x7167;(&#x7528; &#x6765;&#x7EDF;&#x8BA1;&#x6210;&#x529F;&#x548C;&#x9519;&#x8BEF;&#x7EFF;)&#x7684;&#x95F4;&#x9694;&#xFF0C;&#x9ED8;&#x8BA4;500ms
+Request Context &#x76F8;&#x5173;&#x53C2;&#x6570;</li>
+<li>hystrix.command.default.requestCache.enabled &#x9ED8;&#x8BA4;true&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x8F7D;getCacheKey()&#xFF0C;&#x8FD4;&#x56DE;null&#x65F6;&#x4E0D;
+&#x7F13;&#x5B58;</li>
+<li>hystrix.command.default.requestLog.enabled &#x8BB0;&#x5F55;&#x65E5;&#x5FD7;&#x5230;HystrixRequestLog&#xFF0C;&#x9ED8;&#x8BA4;true </li>
+</ul>
+</li>
+<li><p>Collapser Properties &#x76F8;&#x5173;&#x53C2;&#x6570;</p>
+<ul>
+<li>hystrix.collapser.default.maxRequestsInBatch &#x5355;&#x6B21;&#x6279;&#x5904;&#x7406;&#x7684;&#x6700;&#x5927;&#x8BF7;&#x6C42;&#x6570;&#xFF0C;&#x8FBE;&#x5230;&#x8BE5;&#x6570;&#x91CF;&#x89E6;&#x53D1;&#x6279;&#x5904;&#x7406;&#xFF0C;&#x9ED8;
+&#x8BA4; Integer.MAX_VALU</li>
+<li>hystrix.collapser.default.timerDelayInMilliseconds &#x89E6;&#x53D1;&#x6279;&#x5904;&#x7406;&#x7684;&#x5EF6;&#x8FDF;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E3A;&#x521B;&#x5EFA;&#x6279;&#x5904;&#x7406;&#x7684;&#x65F6;&#x95F4;
++&#x8BE5;&#x503C;&#xFF0C;&#x9ED8;&#x8BA4;10</li>
+<li>hystrix.collapser.default.requestCache.enabled &#x662F;&#x5426;&#x5BF9;HystrixCollapser.execute() and HystrixCollapser.queue()&#x7684;cache&#xFF0C;&#x9ED8;&#x8BA4;true</li>
+</ul>
+</li>
+<li><p>ThreadPool &#x76F8;&#x5173;&#x53C2;&#x6570;
+&#x7EBF;&#x7A0B;&#x6570;&#x9ED8;&#x8BA4;&#x503C;10&#x9002;&#x7528;&#x4E8E;&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;(&#x6709;&#x65F6;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5F97;&#x66F4;&#x5C0F;)&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x5F97;&#x66F4;&#x5927;&#xFF0C;&#x90A3;&#x6709;&#x4E2A;&#x57FA;&#x672C;&#x5F97;&#x516C;&#x5F0F;&#x53EF;&#x4EE5; follow:
+requests per second at peak when healthy &#xD7; 99th percentile latency in seconds + some breathing room &#x6BCF;&#x79D2;&#x6700;&#x5927;&#x652F;&#x6491;&#x7684;&#x8BF7;&#x6C42;&#x6570; (99%&#x5E73;&#x5747;&#x54CD;&#x5E94;&#x65F6;&#x95F4; + &#x7F13;&#x5B58;&#x503C;) &#x6BD4;&#x5982;:&#x6BCF;&#x79D2;&#x80FD;&#x5904;&#x7406;1000&#x4E2A;&#x8BF7;&#x6C42;&#xFF0C;99%&#x7684;&#x8BF7; &#x6C42;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x662F;60ms&#xFF0C;&#x90A3;&#x4E48;&#x516C;&#x5F0F;&#x662F;: 1000 (0.060+0.012)
+&#x57FA;&#x672C;&#x5F97;&#x539F;&#x5219;&#x65F6;&#x4FDD;&#x6301;&#x7EBF;&#x7A0B;&#x6C60;&#x5C3D;&#x53EF;&#x80FD;&#x5C0F;&#xFF0C;&#x4ED6;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x91CA;&#x653E;&#x538B;&#x529B;&#xFF0C;&#x9632;&#x6B62;&#x8D44;&#x6E90;&#x88AB;&#x963B;&#x585E;&#x3002; &#x5F53;&#x4E00;&#x5207;&#x90FD;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7EBF;&#x7A0B;&#x6C60;&#x4E00;&#x822C; &#x4EC5;&#x4F1A;&#x6709;1&#x5230;2&#x4E2A;&#x7EBF;&#x7A0B;&#x6FC0;&#x6D3B;&#x6765;&#x63D0;&#x4F9B;&#x670D;&#x52A1;</p>
+<ul>
+<li>hystrix.threadpool.default.coreSize &#x5E76;&#x53D1;&#x6267;&#x884C;&#x7684;&#x6700;&#x5927;&#x7EBF;&#x7A0B;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;10
+hystrix.threadpool.default.maxQueueSize BlockingQueue&#x7684;&#x6700;&#x5927;&#x961F;&#x5217;&#x6570;&#xFF0C;&#x5F53;&#x8BBE;&#x4E3A;-1&#xFF0C;&#x4F1A;&#x4F7F;&#x7528;
+SynchronousQueue&#xFF0C;&#x503C;&#x4E3A;&#x6B63;&#x65F6;&#x4F7F;&#x7528;LinkedBlcokingQueue&#x3002;&#x8BE5;&#x8BBE;&#x7F6E;&#x53EA;&#x4F1A;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x6709;&#x6548;&#xFF0C;&#x4E4B;&#x540E;&#x4E0D;&#x80FD;&#x4FEE;&#x6539; threadpool&#x7684;queue size&#xFF0C;&#x9664;&#x975E;reinitialising thread executor&#x3002;&#x9ED8;&#x8BA4;-1&#x3002;</li>
+<li>hystrix.threadpool.default.queueSizeRejectionThreshold &#x5373;&#x4F7F;maxQueueSize&#x6CA1;&#x6709;&#x8FBE;&#x5230;&#xFF0C;&#x8FBE;&#x5230; queueSizeRejectionThreshold&#x8BE5;&#x503C;&#x540E;&#xFF0C;&#x8BF7;&#x6C42;&#x4E5F;&#x4F1A;&#x88AB;&#x62D2;&#x7EDD;&#x3002;&#x56E0;&#x4E3A;maxQueueSize&#x4E0D;&#x80FD;&#x88AB;&#x52A8;&#x6001;&#x4FEE;&#x6539;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5C06;&#x5141; &#x8BB8;&#x6211;&#x4EEC;&#x52A8;&#x6001;&#x8BBE;&#x7F6E;&#x8BE5;&#x503C;&#x3002;if maxQueueSize == &#x2022;1&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x5C06;&#x4E0D;&#x8D77;&#x4F5C;&#x7528;   </li>
+<li>hystrix.threadpool.default.keepAliveTimeMinutes &#x5982;&#x679C;corePoolSize&#x548C;maxPoolSize&#x8BBE;&#x6210;&#x4E00;&#x6837;(&#x9ED8; &#x8BA4; &#x5B9E;&#x73B0;)&#x8BE5;&#x8BBE;&#x7F6E;&#x65E0;&#x6548;&#x3002;&#x5982;&#x679C;&#x901A;&#x8FC7;plugin(<a href="https://github.com/Netflix/Hystrix/wiki/Plugins)&#x4F7F;&#x7528;&#x81EA;&#x5B9A;" target="_blank">https://github.com/Netflix/Hystrix/wiki/Plugins)&#x4F7F;&#x7528;&#x81EA;&#x5B9A;</a> &#x4E49; &#x5B9E;&#x73B0;&#xFF0C;&#x8BE5;&#x8BBE;&#x7F6E;&#x624D;&#x6709;&#x7528;&#xFF0C;&#x9ED8;&#x8BA4;1.</li>
+<li>hystrix.threadpool.default.metrics.rollingStats.timeInMilliseconds &#x7EBF;&#x7A0B;&#x6C60;&#x7EDF;&#x8BA1;&#x6307;&#x6807;&#x7684;&#x65F6;&#x95F4;&#xFF0C; &#x9ED8; &#x8BA4;10000</li>
+<li>hystrix.threadpool.default.metrics.rollingStats.numBuckets &#x5C06;rolling window&#x5212;&#x5206;&#x4E3A;n&#x4E2A; buckets&#xFF0C;&#x9ED8;&#x8BA4;10</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="fu-zai-jun-heng-suan-fa.html" class="navigation navigation-prev " aria-label="Previous page: 负载均衡算法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="zuul.html" class="navigation navigation-next " aria-label="Next page: Zuul">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Hystrix","level":"1.27.3.5","depth":3,"next":{"title":"Zuul","level":"1.27.3.6","depth":3,"path":"spring/springcloud/zuul.md","ref":"spring/springcloud/zuul.md","articles":[]},"previous":{"title":"负载均衡算法","level":"1.27.3.4","depth":3,"path":"spring/springcloud/fu-zai-jun-heng-suan-fa.md","ref":"spring/springcloud/fu-zai-jun-heng-suan-fa.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring/springcloud/hystrix.md","mtime":"2020-10-20T23:55:22.255Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-22T01:26:20.721Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
