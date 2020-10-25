@@ -60,5 +60,16 @@ Zipkin和 Apache HTrace的设计
          <artifactId>spring-cloud-starter-zipkin</artifactId>
      </dependency>
     ```
+    - 增加以下配置
+    ```yaml
+    spring:
+        zipkin:
+            base-url: http://localhost:9000 #指定Zipkin server地址         
+        sleuth:
+            sampler:
+                probability: 1.0 
+                #request采样的数量 默认是0.1 也即是10% 顾名思义 采取10%的请求数据,因为在分布式系统中，数据量可能会非常大，因此采样非常重要。我们示例数据少最好配置为1全采样
+    ```
+        
         
     
