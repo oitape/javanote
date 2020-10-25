@@ -9,7 +9,7 @@
     - 配置
     ```yaml
     server:
-      port: 3001
+          port: 3001
     eureka:
         server:
             enable-self-preservation: false  #关闭自我保护机制
@@ -46,11 +46,11 @@
     - 配置
     ```yaml
     server:
-      port: 6000
+          port: 6000
     eureka:
         client:
-        serviceUrl:
-            defaultZone: http://localhost:3000/eureka/  #eureka服务端提供的注册地址 参考服务端配置的这个路径
+            serviceUrl:
+                defaultZone: http://localhost:3000/eureka/  #eureka服务端提供的注册地址 参考服务端配置的这个路径
         instance:
             instance-id: power-0 #此实例注册到eureka服务端的唯一的实例ID
             prefer-ip-address: true #是否显示IP地址
