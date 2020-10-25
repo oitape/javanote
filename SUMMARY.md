@@ -37,6 +37,7 @@
     * [Hystrix](spring/springcloud/hystrix.md)
     * [Zuul](spring/springcloud/zuul.md)
     * [HystrixDashbord](spring/springcloud/hystrixdashbord.md)
+    * [Spring-Cloud-Config](spring/springcloud/spring-cloud-config.md)
 * [DesignPatterns](designpatterns.md)
 * [Log](log.md)
 * [Mybatis](mybatis.md)
