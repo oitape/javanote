@@ -48,5 +48,17 @@ Zipkin和 Apache HTrace的设计
         ```
         http://{host}/zipkin/
         ```
+- 微服务整合Zipkin
+    - 依赖
+    ```xml
+     <dependency> 
+         <groupId>org.springframework.cloud</groupId> 
+         <artifactId>spring-cloud-starter-sleuth</artifactId>
+     </dependency>
+     <dependency> 
+         <groupId>org.springframework.cloud</groupId>     
+         <artifactId>spring-cloud-starter-zipkin</artifactId>
+     </dependency>
+    ```
         
     
