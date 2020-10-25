@@ -28,9 +28,12 @@
         @EnableHystrixDashboard
         @SpringBootApplication
         public class AppHystrixDashboard {
-
             public static void main(String[] args) {
                 SpringApplication.run(AppHystrixDashboard.class);
             }
         }
+        ```
+        - 访问
+        ```
+        http://{hsot}/hystri
         ```
