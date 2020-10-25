@@ -94,7 +94,7 @@ application就是配置文件的名字， profile就是对应的环境，  label
         label: master 
         discovery:
           enabled: true
-          service-id: test-config 
+          service-id: config-server
   eureka:
       client:
         serviceUrl:
