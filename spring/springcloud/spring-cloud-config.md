@@ -36,6 +36,7 @@ eureka:
 ```java
 @SpringBootApplication
 @EnableConfigServer
+@EnableEurekaClient
 public class AppConfig {
    public static void main(String[] args) {          
       SpringApplication.run(AppConfig.class);
