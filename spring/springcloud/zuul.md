@@ -62,5 +62,83 @@
     - ROUTING:这种过滤器将请求路由到微服务。这种过滤器 用于构建发送给微服 务的请求，并使用 Apache HttpCIient或 Netfilx Ribbon请求微服务 
     - POST:这种过滤器在路由 到微服务以后执行。这种过滤器可用来为响应添加标准 的 HTTP Header、收集统计信息和指标、将响应从微服务 发送给客户端等。 
     - ERROR:在其他阶段发生错误时执行该过滤器。
+      
+- Zuul集群：
+    - zuul代理配置
+    ```yaml
+    server:
+          port: 9000
+    eureka:
+          client:
+            serviceUrl:
+                defaultZone: http://localhost:3000/eureka/  #eureka服务端提供的注册地址 参考服务端配置的这个路径
+          instance:
+            instance-id: zuul-0 #此实例注册到eureka服务端的唯一的实例ID
+            prefer-ip-address: true #是否显示IP地址
+            leaseRenewalIntervalInSeconds: 10 #eureka客户需要多长时间发送心跳给eureka服务器，表明它仍然活着,默认为30 秒 (与下面配置的单位都是秒)
+            leaseExpirationDurationInSeconds: 30 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
     
+    spring:
+          application:
+            name: zuul #此实例注册到eureka服务端的name
     
+    zuul:
+          prefix: /api
+          ignored-services: "*"
+        #  stripPrefix: false
+          routes:
+            power:
+              serviceId: zuul-server
+              path: /zuul/**
+    ```
+    
+    - zuul服务器001配置
+        ```yaml
+    server:
+          port: 9001
+    eureka:
+          client:
+            serviceUrl:
+                defaultZone: http://localhost:3000/eureka/  #eureka服务端提供的注册地址 参考服务端配置的这个路径
+          instance:
+            instance-id: zuul-server-1 #此实例注册到eureka服务端的唯一的实例ID
+            prefer-ip-address: true #是否显示IP地址
+            leaseRenewalIntervalInSeconds: 10 #eureka客户需要多长时间发送心跳给eureka服务器，表明它仍然活着,默认为30 秒 (与下面配置的单位都是秒)
+            leaseExpirationDurationInSeconds: 30 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
+    
+    spring:
+          application:
+            name: zuul-server #此实例注册到eureka服务端的name
+    
+    zuul:
+          ignored-services: "*"
+          routes:
+            power:    
+              serviceId: server-power
+              path: /power/**
+    ```
+    - zuul服务器002配置
+    ```yaml
+    server:
+          port: 9002    
+    eureka:
+          client:
+            serviceUrl:
+                defaultZone: http://localhost:3000/eureka/  #eureka服务端提供的注册地址 参考服务端配置的这个路径
+          instance:
+            instance-id: zuul-server-2 #此实例注册到eureka服务端的唯一的实例ID
+            prefer-ip-address: true #是否显示IP地址
+            leaseRenewalIntervalInSeconds: 10 #eureka客户需要多长时间发送心跳给eureka服务器，表明它仍然活着,默认为30 秒 (与下面配置的单位都是秒)
+            leaseExpirationDurationInSeconds: 30 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
+
+    spring:
+          application:
+            name: zuul-server #此实例注册到eureka服务端的name
+        
+    zuul:
+          ignored-services: "*"
+          routes:
+            power:
+              serviceId: server-power
+              path: /power/**            
+    ```
