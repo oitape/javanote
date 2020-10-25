@@ -70,6 +70,28 @@ Zipkin和 Apache HTrace的设计
                 probability: 1.0 
                 #request采样的数量 默认是0.1 也即是10% 顾名思义 采取10%的请求数据,因为在分布式系统中，数据量可能会非常大，因此采样非常重要。我们示例数据少最好配置为1全采样
     ```
-        
+
+- zipkin server 数据持久化问题
+    zipkin重启后我们的分布式链路数据全部清空了。
+因为zipkin server 默认数据是存储在内存当中， 所以当你服务重启之后内存自然而然也就清空了,使用Elasticsearch 做数据持久化
+    - zipkin server里面引入依赖:
+    ```xml
+      <dependency>
+        <groupId>io.zipkin.java</groupId> 
+        <artifactId>zipkin-autoconfigure-storage-elasticsearch-http</artifactId> 
+        <version>2.3.1</version>
+      </dependency>
+    ```
+    - yaml
+    ```yaml
+    zipkin:
+        storage:
+            type: elasticsearch
+            elasticsearch:
+              cluster: elasticsearch
+              hosts: http://localhost:9200
+              index: zipki  
+    ```
+
         
     
