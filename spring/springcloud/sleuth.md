@@ -25,4 +25,28 @@ Zipkin和 Apache HTrace的设计
             <version>2.8.4</version>
         </dependency>
         ```
+        - yaml
+        ```yaml
+        # 2.7.x以后自己搭建需要加以下配置
+        management:
+            metrics:
+              web: 
+                server:
+                  autoTimeRequests: false
+        ```
+        - 启动类
+        ```java
+        @EnableZipkinServer
+        @SpringBootApplication
+        public class AppSleuth {
+            public static void main(String[] args) {             
+                SpringApplication.run(AppSleuth.class);
+            } 
+        }
+        ```
+        - 访问
+        ```
+        http://{host}/zipkin/
+        ```
+        
     
