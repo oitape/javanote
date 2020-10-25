@@ -23,3 +23,14 @@
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
         ```
+        - 启动类上加入注解
+        ```java    
+        @EnableHystrixDashboard
+        @SpringBootApplication
+        public class AppHystrixDashboard {
+
+            public static void main(String[] args) {
+                SpringApplication.run(AppHystrixDashboard.class);
+            }
+        }
+        ```
