@@ -35,5 +35,5 @@
         ```
         - 访问
         ```
-        http://{hsot}/hystri
+        http://{hsot}/hystrix
         ```
