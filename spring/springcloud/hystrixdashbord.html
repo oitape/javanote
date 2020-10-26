@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>负载均衡算法 · GitBook</title>
+        <title>HystrixDashbord · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="hystrix.html" />
+    <link rel="next" href="spring-cloud-config.html" />
     
     
-    <link rel="prev" href="feign.html" />
+    <link rel="prev" href="zuul.html" />
     
 
     </head>
@@ -520,7 +520,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.27.3.4" data-path="fu-zai-jun-heng-suan-fa.html">
+        <li class="chapter " data-level="1.27.3.4" data-path="fu-zai-jun-heng-suan-fa.html">
             
                 <a href="fu-zai-jun-heng-suan-fa.html">
             
@@ -559,7 +559,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.27.3.7" data-path="hystrixdashbord.html">
+        <li class="chapter active" data-level="1.27.3.7" data-path="hystrixdashbord.html">
             
                 <a href="hystrixdashbord.html">
             
@@ -748,7 +748,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >负载均衡算法</a>
+        <a href="../.." >HystrixDashbord</a>
     </h1>
 </div>
 
@@ -764,20 +764,55 @@
                                 <section class="normal markdown-section">
                                 
                                 <ul>
-<li>&#x968F;&#x673A;&#xFF1A;&#x6839;&#x636E;&#x968F;&#x673A;&#x503C;&#x4ECE;&#x8D1F;&#x8F7D;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x9009;&#x62E9;&#x76EE;&#x6807;</li>
-<li>&#x6743;&#x91CD;&#xFF1A;<ul>
-<li>&#x7B2C;&#x4E00;&#x79CD;&#xFF1A;&#x6839;&#x636E;&#x6743;&#x91CD;&#x503C;&#x5411;&#x5217;&#x8868;&#x4E2D;&#x6DFB;&#x52A0;&#x76F8;&#x540C;&#x6743;&#x91CD;&#x6570;&#x91CF;&#x7684;&#x76EE;&#x6807;&#x670D;&#x52A1;&#xFF0C;&#x6839;&#x636E;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x4ECE;&#x5217;&#x8868;&#x4E2D;&#x53D6;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x5668;</li>
-<li>&#x7B2C;&#x4E8C;&#x79CD;&#xFF1A;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x7F3A;&#x70B9;&#x662F;&#x5728;&#x76EE;&#x6807;&#x6743;&#x91CD;&#x7279;&#x522B;&#x5927;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6570;&#x7EC4;&#x5217;&#x8868;&#x5C31;&#x4F1A;&#x7279;&#x522B;&#x5927;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x7B2C;&#x4E8C;&#x79CD;&#x601D;&#x8DEF;&#x56FE;&#x793A;&#xFF0C;
-<img src="../../assets/iShot2020-10-20&#x4E0A;&#x5348;06.45.25.png" alt=""></li>
-<li>&#x7B2C;&#x4E09;&#x79CD;&#xFF1A;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x5206;&#x914D;&#x9012;&#x589E;&#x6570;&#xFF0C;&#x5BF9;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x53D6;&#x4F59;</li>
+<li>Hystrix&#xFF1A;&#xFF08;&#x5355;&#x7EAF;&#x7684;Hystrix&#xFF09;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x4E8E;&#x5FAE;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x72B6;&#x6001;&#x7684;&#x76D1;&#x63A7;&#x4FE1;&#x606F;&#xFF0C;&#x9700;&#x8981;&#x7ED3;&#x5408;spring-boot-actuator&#x6A21;&#x5757;&#x4F7F;&#x7528;</li>
+<li>&#x4F7F;&#x7528;<ul>
+<li>&#x5728;&#x5FAE;&#x670D;&#x52A1;&#x5185;&#x90E8;&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>             
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</code></pre>
+</li>
+<li>&#x8BBF;&#x95EE; {$host}/actuator/hystrix.stream&#x4FBF;&#x53EF;&#x4EE5;&#x770B;&#x89C1;&#x5FAE;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x7684;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#xFF0C;&#x5728;Spring Finchley &#x7248;&#x672C;&#x4EE5;&#x524D;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x662F;/hystrix.stream&#xFF0C;&#x5982;&#x679C;&#x662F;Finchley &#x7684;&#x8BDD; &#x8FD8;&#x5F97;&#x5728;&#x5FAE;&#x670D;&#x52A1;&#x9879;&#x76EE;&#x7684;yml&#x91CC;&#x9762;&#x52A0;&#x5165;&#x914D;&#x7F6E;:<pre><code class="lang-yaml"><span class="hljs-attr">management:</span>
+<span class="hljs-attr">    endpoints:</span>
+<span class="hljs-attr">      web:</span>
+<span class="hljs-attr">        exposure:</span>
+<span class="hljs-attr">          include:</span> <span class="hljs-string">&apos;*&apos;</span>
+</code></pre>
+</li>
+<li>&#x65B0;&#x5EFA;HystrixDashbord&#x9879;&#x76EE;<ul>
+<li>&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>     
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-hystrix-dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</code></pre>
+</li>
+<li>&#x542F;&#x52A8;&#x7C7B;&#x4E0A;&#x52A0;&#x5165;&#x6CE8;&#x89E3;<pre><code class="lang-java"><span class="hljs-meta">@EnableHystrixDashboard</span>
+<span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppHystrixDashboard</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+      SpringApplication.run(AppHystrixDashboard.class);
+  }
+}
+</code></pre>
+</li>
+<li>&#x8BBF;&#x95EE;<pre><code>http://{hsot}/hystrix
+</code></pre></li>
 </ul>
 </li>
-<li>&#x8F6E;&#x8BE2;&#xFF1A;&#x901A;&#x8FC7;&#x5B57;&#x6BB5;&#x8BB0;&#x5F55;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x5668;&#x4E0B;&#x6807;</li>
-<li>&#x52A0;&#x6743;&#x8F6E;&#x8BE2;&#xFF1A;&#x6743;&#x91CD;+&#x8F6E;&#x8BE2;&#x5B9E;&#x73B0;</li>
-<li>&#x5E73;&#x6ED1;&#x52A0;&#x6743;&#x8F6E;&#x8BE2;&#xFF1A;
-  <img src="../../assets/iShot2020-10-20&#x4E0A;&#x5348;07.21.39.png" alt=""></li>
-<li>&#x4E00;&#x81F4;&#x6027;hash&#x7B97;&#x6CD5;&#xFF1A;&#x4F7F;&#x7528;TreeMap&#x6A21;&#x62DF;</li>
-<li>&#x6700;&#x5C0F;&#x6D3B;&#x8DC3;&#x6570;&#x7B97;&#x6CD5;</li>
+</ul>
+</li>
+<li>&#x5982;&#x4F55;&#x67E5;&#x770B;&#x76D1;&#x63A7;<ul>
+<li>dashbord&#x9875;&#x9762;&#x586B;&#x5165;&#x76D1;&#x63A7;&#x7684;&#x5730;&#x5740;,&#x4F1A;&#x8DF3;&#x5230;&#x76F8;&#x5E94;&#x76D1;&#x63A7;&#x4EEA;&#x8868;&#x76D8;<pre><code>http://localhost:5000/actuator/hystrix.stream
+</code></pre></li>
+<li>&#x5FC5;&#x987B;&#x5728;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x8C03;&#x7528;&#x8FC7;&#x4E86;&#x624D;&#x4F1A;&#x5C55;&#x793A;&#x4FE1;&#x606F;</li>
+<li>&#x4EEA;&#x8868;&#x76D8;&#x89E3;&#x8BFB;
+  <img src="../../assets/iShot2020-10-25&#x4E0B;&#x5348;05.35.22.png" alt=""><ul>
+<li>&#x5B9E;&#x5FC3;&#x5706;:&#x5171;&#x6709;&#x4E24;&#x79CD;&#x542B;&#x4E49;&#x3002;&#x5B83;&#x901A;&#x8FC7;&#x989C;&#x8272;&#x7684;&#x53D8;&#x5316;&#x4EE3;&#x8868;&#x4E86;&#x5B9E;&#x4F8B;&#x7684;&#x5065;&#x5EB7;&#x7A0B;&#x5EA6;&#xFF0C;&#x5B83;&#x7684;&#x5065;&#x5EB7;&#x5EA6;&#x4ECE;&#x7EFF;&#x8272;&#x8BE5;&#x5B9E;&#x5FC3;&#x5706;&#x9664;&#x4E86;&#x989C;&#x8272;&#x7684;&#x53D8;&#x5316;&#x4E4B;&#x5916;&#xFF0C;&#x5B83;&#x7684;&#x5927;&#x5C0F;&#x4E5F;&#x4F1A;&#x6839;&#x636E;&#x5B9E;&#x4F8B;&#x7684;&#x8BF7;&#x6C42;&#x6D41;&#x91CF;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x6D41;&#x91CF;&#x8D8A;&#x5927;&#x8BE5;&#x5B9E;&#x5FC3;&#x5706;&#x5C31;&#x8D8A;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x901A;&#x8FC7; &#x8BE5;&#x5B9E;&#x5FC3;&#x5706;&#x7684;&#x5C55;&#x793A;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5927;&#x91CF;&#x7684;&#x5B9E;&#x4F8B;&#x4E2D;&#x5FEB;&#x901F;&#x7684;&#x53D1;&#x73B0;&#x6545;&#x969C;&#x5B9E;&#x4F8B;&#x548C;&#x9AD8;&#x538B;&#x529B;&#x5B9E;&#x4F8B;&#x3002;</li>
+<li>&#x66F2;&#x7EBF;:&#x7528;&#x6765;&#x8BB0;&#x5F55;2&#x5206;&#x949F;&#x5185;&#x6D41;&#x91CF;&#x7684;&#x76F8;&#x5BF9;&#x53D8;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B83;&#x6765;&#x89C2;&#x5BDF;&#x5230;&#x6D41;&#x91CF;&#x7684;&#x4E0A;&#x5347;&#x548C;&#x4E0B;&#x964D;&#x8D8B;&#x52BF;&#x3002;</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -806,12 +841,12 @@
 
             
                 
-                <a href="feign.html" class="navigation navigation-prev " aria-label="Previous page: Feign">
+                <a href="zuul.html" class="navigation navigation-prev " aria-label="Previous page: Zuul">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="hystrix.html" class="navigation navigation-next " aria-label="Next page: Hystrix">
+                <a href="spring-cloud-config.html" class="navigation navigation-next " aria-label="Next page: Spring-Cloud-Config">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -822,7 +857,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"负载均衡算法","level":"1.27.3.4","depth":3,"next":{"title":"Hystrix","level":"1.27.3.5","depth":3,"path":"spring/springcloud/hystrix.md","ref":"spring/springcloud/hystrix.md","articles":[]},"previous":{"title":"Feign","level":"1.27.3.3","depth":3,"path":"spring/springcloud/feign.md","ref":"spring/springcloud/feign.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring/springcloud/fu-zai-jun-heng-suan-fa.md","mtime":"2020-10-22T01:26:35.902Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-26T01:02:41.375Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"HystrixDashbord","level":"1.27.3.7","depth":3,"next":{"title":"Spring-Cloud-Config","level":"1.27.3.8","depth":3,"path":"spring/springcloud/spring-cloud-config.md","ref":"spring/springcloud/spring-cloud-config.md","articles":[]},"previous":{"title":"Zuul","level":"1.27.3.6","depth":3,"path":"spring/springcloud/zuul.md","ref":"spring/springcloud/zuul.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring/springcloud/hystrixdashbord.md","mtime":"2020-10-25T09:59:06.067Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-26T01:02:41.375Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

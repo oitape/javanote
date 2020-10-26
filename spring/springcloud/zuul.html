@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../../designpatterns.html" />
+    <link rel="next" href="hystrixdashbord.html" />
     
     
     <link rel="prev" href="hystrix.html" />
@@ -559,6 +559,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27.3.7" data-path="hystrixdashbord.html">
+            
+                <a href="hystrixdashbord.html">
+            
+                    
+                    HystrixDashbord
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3.8" data-path="spring-cloud-config.html">
+            
+                <a href="spring-cloud-config.html">
+            
+                    
+                    Spring-Cloud-Config
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3.9" data-path="sleuth.html">
+            
+                <a href="sleuth.html">
+            
+                    
+                    Sleuth
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -792,6 +831,87 @@
 <li>ERROR:&#x5728;&#x5176;&#x4ED6;&#x9636;&#x6BB5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x65F6;&#x6267;&#x884C;&#x8BE5;&#x8FC7;&#x6EE4;&#x5668;&#x3002;</li>
 </ul>
 </li>
+<li><p>Zuul&#x96C6;&#x7FA4;&#xFF1A;</p>
+<ul>
+<li><p>zuul&#x4EE3;&#x7406;&#x914D;&#x7F6E;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">server:</span>
+<span class="hljs-attr">    port:</span> <span class="hljs-number">9000</span>
+<span class="hljs-attr">eureka:</span>
+<span class="hljs-attr">    client:</span>
+<span class="hljs-attr">      serviceUrl:</span>
+<span class="hljs-attr">          defaultZone:</span> http://localhost:<span class="hljs-number">3000</span>/eureka/  <span class="hljs-comment">#eureka&#x670D;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;&#x7684;&#x6CE8;&#x518C;&#x5730;&#x5740; &#x53C2;&#x8003;&#x670D;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;&#x7684;&#x8FD9;&#x4E2A;&#x8DEF;&#x5F84;</span>
+<span class="hljs-attr">    instance:</span>
+<span class="hljs-attr">      instance-id:</span> zuul<span class="hljs-bullet">-0</span> <span class="hljs-comment">#&#x6B64;&#x5B9E;&#x4F8B;&#x6CE8;&#x518C;&#x5230;eureka&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x552F;&#x4E00;&#x7684;&#x5B9E;&#x4F8B;ID</span>
+<span class="hljs-attr">      prefer-ip-address:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#&#x662F;&#x5426;&#x663E;&#x793A;IP&#x5730;&#x5740;</span>
+<span class="hljs-attr">      leaseRenewalIntervalInSeconds:</span> <span class="hljs-number">10</span> <span class="hljs-comment">#eureka&#x5BA2;&#x6237;&#x9700;&#x8981;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x53D1;&#x9001;&#x5FC3;&#x8DF3;&#x7ED9;eureka&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8868;&#x660E;&#x5B83;&#x4ECD;&#x7136;&#x6D3B;&#x7740;,&#x9ED8;&#x8BA4;&#x4E3A;30 &#x79D2; (&#x4E0E;&#x4E0B;&#x9762;&#x914D;&#x7F6E;&#x7684;&#x5355;&#x4F4D;&#x90FD;&#x662F;&#x79D2;)</span>
+<span class="hljs-attr">      leaseExpirationDurationInSeconds:</span> <span class="hljs-number">30</span> <span class="hljs-comment">#Eureka&#x670D;&#x52A1;&#x5668;&#x5728;&#x63A5;&#x6536;&#x5230;&#x5B9E;&#x4F8B;&#x7684;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x53D1;&#x51FA;&#x7684;&#x5FC3;&#x8DF3;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x591A;&#x4E45;&#x624D;&#x53EF;&#x4EE5;&#x5C06;&#x6B64;&#x5B9E;&#x4F8B;&#x5220;&#x9664;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;90&#x79D2;</span>
+
+<span class="hljs-attr">spring:</span>
+<span class="hljs-attr">    application:</span>
+<span class="hljs-attr">      name:</span> zuul <span class="hljs-comment">#&#x6B64;&#x5B9E;&#x4F8B;&#x6CE8;&#x518C;&#x5230;eureka&#x670D;&#x52A1;&#x7AEF;&#x7684;name</span>
+
+<span class="hljs-attr">zuul:</span>
+<span class="hljs-attr">    prefix:</span> /api
+<span class="hljs-attr">    ignored-services:</span> <span class="hljs-string">&quot;*&quot;</span>
+  <span class="hljs-comment">#  stripPrefix: false</span>
+<span class="hljs-attr">    routes:</span>
+<span class="hljs-attr">      power:</span>
+<span class="hljs-attr">        serviceId:</span> zuul-server
+<span class="hljs-attr">        path:</span> /zuul/**
+</code></pre>
+</li>
+<li><p>zuul&#x670D;&#x52A1;&#x5668;001&#x914D;&#x7F6E;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">server:</span>
+<span class="hljs-attr">    port:</span> <span class="hljs-number">9001</span>
+<span class="hljs-attr">eureka:</span>
+<span class="hljs-attr">    client:</span>
+<span class="hljs-attr">      serviceUrl:</span>
+<span class="hljs-attr">          defaultZone:</span> http://localhost:<span class="hljs-number">3000</span>/eureka/  <span class="hljs-comment">#eureka&#x670D;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;&#x7684;&#x6CE8;&#x518C;&#x5730;&#x5740; &#x53C2;&#x8003;&#x670D;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;&#x7684;&#x8FD9;&#x4E2A;&#x8DEF;&#x5F84;</span>
+<span class="hljs-attr">    instance:</span>
+<span class="hljs-attr">      instance-id:</span> zuul-server<span class="hljs-bullet">-1</span> <span class="hljs-comment">#&#x6B64;&#x5B9E;&#x4F8B;&#x6CE8;&#x518C;&#x5230;eureka&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x552F;&#x4E00;&#x7684;&#x5B9E;&#x4F8B;ID</span>
+<span class="hljs-attr">      prefer-ip-address:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#&#x662F;&#x5426;&#x663E;&#x793A;IP&#x5730;&#x5740;</span>
+<span class="hljs-attr">      leaseRenewalIntervalInSeconds:</span> <span class="hljs-number">10</span> <span class="hljs-comment">#eureka&#x5BA2;&#x6237;&#x9700;&#x8981;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x53D1;&#x9001;&#x5FC3;&#x8DF3;&#x7ED9;eureka&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8868;&#x660E;&#x5B83;&#x4ECD;&#x7136;&#x6D3B;&#x7740;,&#x9ED8;&#x8BA4;&#x4E3A;30 &#x79D2; (&#x4E0E;&#x4E0B;&#x9762;&#x914D;&#x7F6E;&#x7684;&#x5355;&#x4F4D;&#x90FD;&#x662F;&#x79D2;)</span>
+<span class="hljs-attr">      leaseExpirationDurationInSeconds:</span> <span class="hljs-number">30</span> <span class="hljs-comment">#Eureka&#x670D;&#x52A1;&#x5668;&#x5728;&#x63A5;&#x6536;&#x5230;&#x5B9E;&#x4F8B;&#x7684;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x53D1;&#x51FA;&#x7684;&#x5FC3;&#x8DF3;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x591A;&#x4E45;&#x624D;&#x53EF;&#x4EE5;&#x5C06;&#x6B64;&#x5B9E;&#x4F8B;&#x5220;&#x9664;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;90&#x79D2;</span>
+
+<span class="hljs-attr">spring:</span>
+<span class="hljs-attr">    application:</span>
+<span class="hljs-attr">      name:</span> zuul-server <span class="hljs-comment">#&#x6B64;&#x5B9E;&#x4F8B;&#x6CE8;&#x518C;&#x5230;eureka&#x670D;&#x52A1;&#x7AEF;&#x7684;name</span>
+
+<span class="hljs-attr">zuul:</span>
+<span class="hljs-attr">    ignored-services:</span> <span class="hljs-string">&quot;*&quot;</span>
+<span class="hljs-attr">    routes:</span>
+<span class="hljs-attr">      power:</span>    
+<span class="hljs-attr">        serviceId:</span> server-power
+<span class="hljs-attr">        path:</span> /power/**
+</code></pre>
+</li>
+<li><p>zuul&#x670D;&#x52A1;&#x5668;002&#x914D;&#x7F6E;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">server:</span>
+<span class="hljs-attr">    port:</span> <span class="hljs-number">9002</span>    
+<span class="hljs-attr">eureka:</span>
+<span class="hljs-attr">    client:</span>
+<span class="hljs-attr">      serviceUrl:</span>
+<span class="hljs-attr">          defaultZone:</span> http://localhost:<span class="hljs-number">3000</span>/eureka/  <span class="hljs-comment">#eureka&#x670D;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;&#x7684;&#x6CE8;&#x518C;&#x5730;&#x5740; &#x53C2;&#x8003;&#x670D;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;&#x7684;&#x8FD9;&#x4E2A;&#x8DEF;&#x5F84;</span>
+<span class="hljs-attr">    instance:</span>
+<span class="hljs-attr">      instance-id:</span> zuul-server<span class="hljs-bullet">-2</span> <span class="hljs-comment">#&#x6B64;&#x5B9E;&#x4F8B;&#x6CE8;&#x518C;&#x5230;eureka&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x552F;&#x4E00;&#x7684;&#x5B9E;&#x4F8B;ID</span>
+<span class="hljs-attr">      prefer-ip-address:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#&#x662F;&#x5426;&#x663E;&#x793A;IP&#x5730;&#x5740;</span>
+<span class="hljs-attr">      leaseRenewalIntervalInSeconds:</span> <span class="hljs-number">10</span> <span class="hljs-comment">#eureka&#x5BA2;&#x6237;&#x9700;&#x8981;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x53D1;&#x9001;&#x5FC3;&#x8DF3;&#x7ED9;eureka&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8868;&#x660E;&#x5B83;&#x4ECD;&#x7136;&#x6D3B;&#x7740;,&#x9ED8;&#x8BA4;&#x4E3A;30 &#x79D2; (&#x4E0E;&#x4E0B;&#x9762;&#x914D;&#x7F6E;&#x7684;&#x5355;&#x4F4D;&#x90FD;&#x662F;&#x79D2;)</span>
+<span class="hljs-attr">      leaseExpirationDurationInSeconds:</span> <span class="hljs-number">30</span> <span class="hljs-comment">#Eureka&#x670D;&#x52A1;&#x5668;&#x5728;&#x63A5;&#x6536;&#x5230;&#x5B9E;&#x4F8B;&#x7684;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x53D1;&#x51FA;&#x7684;&#x5FC3;&#x8DF3;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x591A;&#x4E45;&#x624D;&#x53EF;&#x4EE5;&#x5C06;&#x6B64;&#x5B9E;&#x4F8B;&#x5220;&#x9664;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;90&#x79D2;</span>
+
+<span class="hljs-attr">spring:</span>
+<span class="hljs-attr">    application:</span>
+<span class="hljs-attr">      name:</span> zuul-server <span class="hljs-comment">#&#x6B64;&#x5B9E;&#x4F8B;&#x6CE8;&#x518C;&#x5230;eureka&#x670D;&#x52A1;&#x7AEF;&#x7684;name</span>
+
+<span class="hljs-attr">zuul:</span>
+<span class="hljs-attr">    ignored-services:</span> <span class="hljs-string">&quot;*&quot;</span>
+<span class="hljs-attr">    routes:</span>
+<span class="hljs-attr">      power:</span>
+<span class="hljs-attr">        serviceId:</span> server-power
+<span class="hljs-attr">        path:</span> /power/**
+</code></pre>
+</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -825,7 +945,7 @@
                 </a>
                 
                 
-                <a href="../../designpatterns.html" class="navigation navigation-next " aria-label="Next page: DesignPatterns">
+                <a href="hystrixdashbord.html" class="navigation navigation-next " aria-label="Next page: HystrixDashbord">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -836,7 +956,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Zuul","level":"1.27.3.6","depth":3,"next":{"title":"DesignPatterns","level":"1.28","depth":1,"path":"designpatterns.md","ref":"designpatterns.md","articles":[]},"previous":{"title":"Hystrix","level":"1.27.3.5","depth":3,"path":"spring/springcloud/hystrix.md","ref":"spring/springcloud/hystrix.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring/springcloud/zuul.md","mtime":"2020-10-22T01:26:08.082Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-22T01:26:20.721Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Zuul","level":"1.27.3.6","depth":3,"next":{"title":"HystrixDashbord","level":"1.27.3.7","depth":3,"path":"spring/springcloud/hystrixdashbord.md","ref":"spring/springcloud/hystrixdashbord.md","articles":[]},"previous":{"title":"Hystrix","level":"1.27.3.5","depth":3,"path":"spring/springcloud/hystrix.md","ref":"spring/springcloud/hystrix.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring/springcloud/zuul.md","mtime":"2020-10-25T08:37:20.095Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-26T01:02:41.375Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
