@@ -23,7 +23,13 @@
     - `get /oitm`
     - `delete  /oitm/sub`
 
-- 集群
+- 集群：根据配置文件中的配置来判断是否是集群
     ```
-    
+    clientPort=2181
+
+    server.1=localhost:2887:3887
+    server.2=localhost:2888:3888
+    server.3=localhost:2889:3889    
     ```
+    - Leader、Follower、Observer
+    - 必须要有一个Leader
