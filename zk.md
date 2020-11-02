@@ -5,7 +5,7 @@
 
 - 配置文件
     ```
-    # 基本单位  2000ms
+    # 心跳时间  2000ms
     tickTime=2000
     # 10个tickTime
     initLimit=10
@@ -27,6 +27,8 @@
     ```
     clientPort=2181
 
+    # 各个配置文件增加以下配置
+    # 2887端口用来同步的，3887用来选举的
     server.1=localhost:2887:3887
     server.2=localhost:2888:3888
     server.3=localhost:2889:3889    
