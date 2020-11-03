@@ -54,7 +54,9 @@
     server.4=localhost:2890:3890:observer    
     ```
     - zoo2.cfg
+    ```
     
+    ```    
     
 
   * 创建数据以及日志文件目录
