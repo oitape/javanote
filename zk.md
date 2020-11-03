@@ -34,6 +34,7 @@
 
   * 配置文件
     - zoo1.cfg
+    
     ```
     # 基本单位  2000ms
     tickTime=2000
@@ -52,6 +53,7 @@
     server.3=localhost:2889:3889
     server.4=localhost:2890:3890:observer    
     ```
+    - zoo2.cfg
     
     
 
