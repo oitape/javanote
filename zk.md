@@ -52,22 +52,11 @@
     - zoo1.cfg
     
     ```
-    # 基本单位  2000ms
-    tickTime=2000
-    # 10个tickTime
-    initLimit=10
-    # 5个tickTime
-    syncLimit=5
     # 快照数据  事务日志 两者可分开配置
     dataDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/data_1
     dataLogDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/logs_1
     # 客户端连接端口
     clientPort=2181
-    
-    server.1=localhost:2887:3887
-    server.2=localhost:2888:3888
-    server.3=localhost:2889:3889
-    server.4=localhost:2890:3890:observer    
     ```
     - zoo2.cfg
     
@@ -77,12 +66,6 @@
     dataLogDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/logs_2
     # 客户端连接端口
     clientPort=2182
-    
-    server.1=localhost:2887:3887
-    server.2=localhost:2888:3888
-    server.3=localhost:2889:3889
-    server.4=localhost:2890:3890:observer
-
     ```    
     
 
