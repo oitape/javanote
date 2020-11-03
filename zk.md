@@ -84,3 +84,19 @@
     zkServer.sh status {dir}/conf/zoo2.cfg
     zkServer.sh status {dir}/conf/zoo3.cfg
     ```
+    
+    - 使用三个客户端分别连接三台服务器
+    ```
+    zkCli.sh -server localhost:2181
+    zkCli.sh -server localhost:2182
+    zkCli.sh -server localhost:2183
+    ```
+    
+- Observer
+    - 配置修改: 
+        - 节点配置增加`peerType=observer`
+        - servers列表增加`server.4=localhost:2890:3890:observer `
+- 集群角色
+    - Leader：负责进行投票的发起和决议，最终更新状态
+    - Follower：用于接收客户端请求并返回客户结果。参与Leader发起的投票
+    - observer：可以接收客户端连接，将写请求转发给leader节点。但是Observer不参与投票过程，只是同步leader的状态。
