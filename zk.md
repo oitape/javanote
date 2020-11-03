@@ -33,8 +33,8 @@
 * 集群：根据配置文件中的配置来判断是否是集群；Leader、Follower、Observer
 
   * 配置文件
-
     - 共同配置
+    
     ```
     # 基本单位  2000ms
     tickTime=2000
