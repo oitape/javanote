@@ -47,6 +47,6 @@
 * [Net](net.md)
   * [概述](net/gai-shu.md)
   * [链路层](net/lian-lu-ceng.md)
-* 分布式
+* [分布式](fen-bu-shi.md)
   * [ZK](zk.md)
 

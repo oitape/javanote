@@ -100,3 +100,5 @@
     - Leader：负责进行投票的发起和决议，最终更新状态
     - Follower：用于接收客户端请求并返回客户结果。参与Leader发起的投票
     - observer：可以接收客户端连接，将写请求转发给leader节点。但是Observer不参与投票过程，只是同步leader的状态。
+    
+    
