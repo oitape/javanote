@@ -81,21 +81,24 @@
   * 创建数据以及日志文件目录
 
     ```sh
-    mkdir -p /zookeeper/data_1
-    mkdir -p /zookeeper/data_2
-    mkdir -p /zookeeper/data_3
+    mkdir -p {path}/zookeeper/data_1
+    mkdir -p {path}/zookeeper/data_2
+    mkdir -p {path}/zookeeper/data_3
+    mkdir -p {path}/zookeeper/data_4
 
-    mkdir -p /zookeeper/logs_1
-    mkdir -p /zookeeper/logs_2
-    mkdir -p /zookeeper/logs_3
+    mkdir -p {path}/zookeeper/logs_1
+    mkdir -p {path}/zookeeper/logs_2
+    mkdir -p {path}/zookeeper/logs_3
+    mkdir -p {path}/zookeeper/logs_4
     ```
 
   * 创建myid文件
 
     ```
-    echo "1" > /zookeeper/data_1/myid
-    echo "2" > /zookeeper/data_2/myid
-    echo "3" > /zookeeper/data_3/myid
+    echo "1" > {path}/zookeeper/data_1/myid
+    echo "2" > {path}/zookeeper/data_2/myid
+    echo "3" > {path}/zookeeper/data_3/myid
+    echo "4" > {path}/zookeeper/data_3/myid
     ```
 
   * 修改配置文件
