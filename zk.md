@@ -42,6 +42,11 @@
     initLimit=10
     # 5个tickTime
     syncLimit=5  
+    
+    server.1=localhost:2887:3887
+    server.2=localhost:2888:3888
+    server.3=localhost:2889:3889
+    server.4=localhost:2890:3890:observer  
     ```
     
     - zoo1.cfg
