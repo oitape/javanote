@@ -54,6 +54,7 @@
     server.4=localhost:2890:3890:observer    
     ```
     - zoo2.cfg
+    
     ```
     
     ```    
