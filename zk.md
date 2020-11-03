@@ -51,20 +51,31 @@
     
     - zoo1.cfg
     ```
-    # 快照数据  事务日志 两者可分开配置
     dataDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/data_1
     dataLogDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/logs_1
-    # 客户端连接端口
     clientPort=2181
     ```
     - zoo2.cfg
     ```
-    # 快照数据  事务日志 两者可分开配置
     dataDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/data_2
     dataLogDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/logs_2
-    # 客户端连接端口
     clientPort=2182
     ```    
+    - zoo3.cfg
+    ```
+    dataDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/data_3
+    dataLogDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/logs_3
+    clientPort=2183
+    ```
+    - zoo_ob.cfg
+    ```
+    dataDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/data_4
+    dataLogDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/logs_4
+    clientPort=2184
+    peerType=observer
+    ```
+    
+
     
 
   * 创建数据以及日志文件目录
