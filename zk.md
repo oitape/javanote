@@ -101,27 +101,13 @@
     echo "4" > {path}/zookeeper/data_3/myid
     ```
 
-  * 修改配置文件
-
-    ```
-    tickTime=2000
-    initLimit=10
-    syncLimit=5
-    dataDir=/zookeeper/data_1
-    clientPort=2181
-    dataLogDir=/zookeeper/logs_1
-    # server.x􏱱􏱋中x和􏰻myid中保持一致  􏱱
-    server.1=localhost:2887:3887 
-    server.2=localhost:2888:3888         
-    server.3=localhost:2889:3889
-    ```
-
   * 启动集群
 
     ```
     zkServer.sh start {dir}/conf/zoo1.cfg
     zkServer.sh start {dir}/conf/zoo2.cfg
     zkServer.sh start {dir}/conf/zoo3.cfg
+    zkServer.sh start {dir}/conf/zoo_ob.cfg
     ```
 
   * 验证
@@ -130,6 +116,7 @@
     zkServer.sh status {dir}/conf/zoo1.cfg
     zkServer.sh status {dir}/conf/zoo2.cfg
     zkServer.sh status {dir}/conf/zoo3.cfg
+    zkServer.sh status {dir}/conf/zoo_ob.cfg
     ```
 
   * 使用三个客户端分别连接三台服务器
