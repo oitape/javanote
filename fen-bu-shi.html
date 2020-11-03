@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>IOC · GitBook</title>
+        <title>分布式 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="aop.html" />
+    <link rel="next" href="zk.html" />
     
     
-    <link rel="prev" href="maven.html" />
+    <link rel="prev" href="net/lian-lu-ceng.html" />
     
 
     </head>
@@ -375,7 +375,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.23" data-path="ioc.html">
+        <li class="chapter " data-level="1.23" data-path="ioc.html">
             
                 <a href="ioc.html">
             
@@ -718,7 +718,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.34" data-path="fen-bu-shi.html">
+        <li class="chapter active" data-level="1.34" data-path="fen-bu-shi.html">
             
                 <a href="fen-bu-shi.html">
             
@@ -780,7 +780,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >IOC</a>
+        <a href="." >分布式</a>
     </h1>
 </div>
 
@@ -795,101 +795,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <ul>
-<li><p>Inversion of control</p>
-<ul>
-<li>&#x914D;&#x7F6E;&#x98CE;&#x683C;<ul>
-<li>schemal-based-------xml</li>
-<li>annotation-based-----annotation</li>
-<li>java-based----java Configuration</li>
-</ul>
-</li>
-<li>xml&#x914D;&#x7F6E;&#x65B9;&#x5F0F;<pre><code class="lang-java">ClassPathXmlApplicationContext context = <span class="hljs-keyword">new</span> ClassPathXmlApplicationContext(<span class="hljs-string">&quot;classpath:spring.xml&quot;</span>);
-  Service service = (Service)context.getBean(<span class="hljs-string">&quot;service&quot;</span>);
-</code></pre>
-</li>
-<li><p>&#x6CE8;&#x89E3;&#x914D;&#x7F6E;</p>
-<pre><code class="lang-java"><span class="hljs-meta">@Configuration</span>
-<span class="hljs-meta">@ComponentScan</span>(<span class="hljs-string">&quot;top.oitm&quot;</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Spring</span> </span>{
-
-}
-
-AnnotationConfigApplicationContext context = <span class="hljs-keyword">new</span> AnnotationConfigApplicationContext(Spring.class);
-</code></pre>
-</li>
-<li><p>&#x6DF7;&#x5408;&#x914D;&#x7F6E;</p>
-<pre><code class="lang-java"><span class="hljs-meta">@Configuration</span>
-<span class="hljs-meta">@ComponentScan</span>(<span class="hljs-string">&quot;top.oitm&quot;</span>)
-<span class="hljs-meta">@ImportResource</span>(<span class="hljs-string">&quot;classpath:spring.xml&quot;</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Spring</span> </span>{
-
-}    
-AnnotationConfigApplicationContext context = <span class="hljs-keyword">new</span> AnnotationConfigApplicationContext(Spring.class);
-</code></pre>
-</li>
-<li><p>&#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x88C5;&#x914D;&#x7C7B;&#x578B;</p>
-<pre><code>default-autowire=&quot;byType&quot;
-</code></pre></li>
-</ul>
-</li>
-<li><p>&#x914D;&#x7F6E;</p>
-<ul>
-<li>&#x914D;&#x7F6E;bean&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PropertyConfig</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span> </span>{
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PropertyConfig</span><span class="hljs-params">()</span> </span>{
-  System.out.println(<span class="hljs-string">&quot;1&#x3001;ConfigProperty&quot;</span>);
-}
-<span class="hljs-meta">@PostConstruct</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
-  System.out.println(<span class="hljs-string">&quot;2&#x3001;init&quot;</span>);
-}
-<span class="hljs-meta">@Override</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterPropertiesSet</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
-  System.out.println(<span class="hljs-string">&quot;3&#x3001;afterPropertiesSet&quot;</span>);
-}
-<span class="hljs-meta">@PreDestroy</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">preDestroy</span><span class="hljs-params">()</span></span>{}
-}
-</code></pre>
-</li>
-<li><p>&#x76F8;&#x540C;&#x7C7B;&#x578B;&#x591A;bean</p>
-<pre><code>//&#x7B2C;&#x4E00;&#x79CD;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7684;bean&#x52A0;&#x4E0A;&#x4E0B;&#x9762;&#x6CE8;&#x89E3;
-@Primary
-
-//&#x7B2C;&#x4E8C;&#x79CD;&#x4F7F;&#x7528;&#x6307;&#x5B9A;bean
-@Qualifier(&quot;bean&quot;)
-</code></pre></li>
-</ul>
-</li>
-<li><p>&#x626B;&#x63CF;</p>
-</li>
-</ul>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AnnotationConfigApplicationContext</span> </span>{
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">scan</span><span class="hljs-params">(String basePackage)</span></span>{
-        String rootPath = <span class="hljs-keyword">this</span>.getClass().getResource(<span class="hljs-string">&quot;/&quot;</span>).getPath();
-        String  basePackagePath = basePackage.replaceAll(<span class="hljs-string">&quot;\\.&quot;</span>,<span class="hljs-string">&quot;\\\\&quot;</span>);
-        File file = <span class="hljs-keyword">new</span> File(rootPath+<span class="hljs-string">&quot;//&quot;</span>+basePackagePath);
-        String names[]=file.list();
-        <span class="hljs-keyword">for</span> (String name : names) {
-            name=name.replaceAll(<span class="hljs-string">&quot;.class&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);
-            <span class="hljs-keyword">try</span> {
-               Class clazz =  Class.forName(basePackage+<span class="hljs-string">&quot;.&quot;</span>+name);
-                <span class="hljs-comment">//&#x5224;&#x65B7;&#x662F;&#x5426;&#x662F;&#x5C6C;&#x65BC;@servi@xxxx</span>
-                <span class="hljs-keyword">if</span>(clazz.isAnnotationPresent(Luban.class)){
-                    Service service = (Service) clazz.getAnnotation(Service.class);
-                    System.out.println(service.value());
-                }
-
-            } <span class="hljs-keyword">catch</span> (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-}
-</code></pre>
-
+                                
                                 
                                 </section>
                             
@@ -916,12 +822,12 @@ AnnotationConfigApplicationContext context = <span class="hljs-keyword">new</spa
 
             
                 
-                <a href="maven.html" class="navigation navigation-prev " aria-label="Previous page: Maven">
+                <a href="net/lian-lu-ceng.html" class="navigation navigation-prev " aria-label="Previous page: 链路层">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="aop.html" class="navigation navigation-next " aria-label="Next page: AOP">
+                <a href="zk.html" class="navigation navigation-next " aria-label="Next page: ZK">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -932,7 +838,7 @@ AnnotationConfigApplicationContext context = <span class="hljs-keyword">new</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"IOC","level":"1.23","depth":1,"next":{"title":"AOP","level":"1.24","depth":1,"path":"aop.md","ref":"aop.md","articles":[]},"previous":{"title":"Maven","level":"1.22","depth":1,"path":"maven.md","ref":"maven.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ioc.md","mtime":"2020-10-26T01:03:02.287Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-03T11:55:08.047Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"分布式","level":"1.34","depth":1,"next":{"title":"ZK","level":"1.34.1","depth":2,"path":"zk.md","ref":"zk.md","articles":[]},"previous":{"title":"链路层","level":"1.33.2","depth":2,"path":"net/lian-lu-ceng.md","ref":"net/lian-lu-ceng.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"fen-bu-shi.md","mtime":"2020-11-03T01:23:31.402Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-03T11:55:08.047Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
