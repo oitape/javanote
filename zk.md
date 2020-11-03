@@ -59,7 +59,6 @@
     clientPort=2181
     ```
     - zoo2.cfg
-    
     ```
     # 快照数据  事务日志 两者可分开配置
     dataDir=/Users/Oitm/Downloads/Software/apache-zookeeper-3.6.2-bin/zookeeper/data_2
