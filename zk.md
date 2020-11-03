@@ -96,6 +96,7 @@
     - 配置修改: 
         - 节点配置增加`peerType=observer`
         - servers列表增加`server.4=localhost:2890:3890:observer `
+        
 - 集群角色
     - Leader：负责进行投票的发起和决议，最终更新状态
     - Follower：用于接收客户端请求并返回客户结果。参与Leader发起的投票
