@@ -149,14 +149,29 @@
   - Zookeepers 至少满足了 CP，牺牲了可用性，比如现在集群中有 Leader？和 Follower 两种角色，那么当其中任意台服务器挂掉了，都要重新进行选举，在选举过程中，集群是不可用的，这就是牺牲的可用性
   - 但是，如果集群中有 Leader、Follower、Observer 三种角色，那么如果挂掉的是 Observer，那么对于集群来说并没有影响，集群还是可以用的，只是 Observer 节点的数据不同了，从这个角度考虑，Zookeeper）又是牺牲了一致性，满足了AP。
   
-- 节点类型
+- znode节点类型
   - 持久节点：节点创建后就一直存在，直到有删除操作来主动清除这个节点`create /node "content"`  节点必须以 `/` 开始，创建已存在的节点会报错
   - 临时节点：临时节点的生命周期和客户端会话绑定，如果客户端会话失效，那么这个节点就会自动清除，会话失效而非连接断开。此外临时节点下面不能创建子节点。`create -e /node-e "content"`
   - 持久顺序节点：这类节点的基本特性和持久节点是一致的。额外的特性是，在 ZK 中，每个父节点会为他的第一级子节点维护一份时序，会记录每个子节点创建的先后顺序。基于这个特性，在创建子节点的时候，可以设置这个属性，那么在创建节点过程中，ZK 会自动为给定节点名加上ー个数字后缀，作为新的节点名。这个数字后缀的范围是整型的最大值 `create -s /node-s/prefix_  "content"`  创建出的节点`/node-s/prefix_0000000000`
   - 临时顺序节点：类似临时节点和顺序节点
 
 - zk默认对每个节点最大的数据量是 **0xfffff**，1M字节，可配置修改
+
+- stat
+  - Zookeeper命名空间中的每一个znode都有一个与之关联的stat结构，类似于Linux中文件的stat结构，znode的stat结构中字段显示如下：
+    - cZxid：创建znode的事务ID
+    - mZxid：最后修改znode的事务ID
+    - pZxid：最后修改或删除子节点的事务ID
+    - ctime：表示从 1970-01-01100:00:00Z 开始以毫秒为单位的 anode 创建时间
+    - mtime
+    - dataVersion：表示对该znode的数据所做的更改次数
+    - cversion：表示对此znode的子节点进行更改的次数
+    - aclVersion：表示对此znode的ACL进行更改的次数
+    - ephemeralowner：如果 znode 是 ephemeral 类型节点，则这是 znode所有者的 session D。如果 znode不是 ephemeral 节点，则该字段设置为零
+    - dataLength: 这是znode数据字段的长度
+    - numChildren：这表示znode的子节点的数量
   
+- Zxid：类似于RDBMS中的事务ID，用于标识一次更新操作的Proposal ID。为了保证顺序性，改zxid必须单调递增。因为zk使用的是64位的
   
   
   
