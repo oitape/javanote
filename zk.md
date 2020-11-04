@@ -189,5 +189,6 @@
   - set /node data
   - get /node
   - stat /node
+  - getAcl /node
   
   
