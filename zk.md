@@ -180,4 +180,4 @@
   - watch机制：一个watch事件是一个一次性的触发器，当贝设置watch的数据发生改变的时候，则服务器将这个改变发送给设置watch的客户端
   - 可以注册watcher的方法：getData、exists、getChildren
   - 可以触发watcher的方法：create、delete、setData。连接断开的情况下触发的watcher会丢失。
-  
+  - 一个watcher实例是一个回调函数，被回调一次就被移除了。如果还需要继续关注数据的变化，需要再次注册watcher。
