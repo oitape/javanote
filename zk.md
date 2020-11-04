@@ -157,7 +157,7 @@
 
 - zk默认对每个节点最大的数据量是 **0xfffff**，1M字节，可配置修改
 
-- stat：使用命令 ** ls -s /node **
+- stat：使用命令 ** ls -s /node **  或者 **stat /node**
   - Zookeeper命名空间中的每一个znode都有一个与之关联的stat结构，类似于Linux中文件的stat结构，znode的stat结构中字段显示如下：
     - cZxid：创建znode的事务ID
     - mZxid：最后修改znode的事务ID
