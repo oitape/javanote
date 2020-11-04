@@ -157,7 +157,7 @@
 
 - zk默认对每个节点最大的数据量是 **0xfffff**，1M字节，可配置修改
 
-- stat
+- stat：使用命令 ** ls -s /node **
   - Zookeeper命名空间中的每一个znode都有一个与之关联的stat结构，类似于Linux中文件的stat结构，znode的stat结构中字段显示如下：
     - cZxid：创建znode的事务ID
     - mZxid：最后修改znode的事务ID
@@ -178,4 +178,5 @@
 - watch
   - 一个zk的节点可以被监控，包括这个目录中存储的数据的修改，子节点目录的变化，一旦变化可以通知设置监控的客户端，这个功能是zookeeper对于一个应用最重要的特性，通过这个特性可以实现的功能：配置集中管理、集群管理、分布式锁等等。
   - watch机制：一个watch事件是一个一次性的触发器，当贝设置watch的数据发生改变的时候，则服务器将这个改变发送给设置watch的客户端
+  - 可以注册watcher的方法：getData、exists
   
