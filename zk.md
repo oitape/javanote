@@ -178,5 +178,6 @@
 - watch
   - 一个zk的节点可以被监控，包括这个目录中存储的数据的修改，子节点目录的变化，一旦变化可以通知设置监控的客户端，这个功能是zookeeper对于一个应用最重要的特性，通过这个特性可以实现的功能：配置集中管理、集群管理、分布式锁等等。
   - watch机制：一个watch事件是一个一次性的触发器，当贝设置watch的数据发生改变的时候，则服务器将这个改变发送给设置watch的客户端
-  - 可以注册watcher的方法：getData、exists
+  - 可以注册watcher的方法：getData、exists、getChildren
+  - 可以触发watcher的方法：create、delete、setData。连接断开的情况下触发的watcher会丢失。
   
