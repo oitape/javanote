@@ -146,7 +146,7 @@
   - 这个简单的扩展，给 Zookeeper 的可伸缩性帯来了全新的镜像。我们现在可以加入很多 Observer 节点，而无须担心严重影响写吞吐量。但他并非是无懈可击的，因为协议中的通知阶段，仍然与服务器的数量呈线性关系。但是，这里的串行开销非常低。因此，我们可以认为在通知服务器阶段的开销无法成为主要瓶颈。
 
 - ZK中的CAP
-  - Zookeepers 至少满足了 CP，牺牲了可用性，比如现在集群中有 Leader？和 Follower 两种角色，那么当其中任意台服务器挂掉了，都要重新进行选举，在选举过程中，集群是不可用的，这就是牺牲的可用性
+  - Zookeepers 至少满足了 CP，牺牲了可用性，比如现在集群中有 Leader和 Follower 两种角色，那么当其中任意台服务器挂掉了，都要重新进行选举，在选举过程中，集群是不可用的，这就是牺牲的可用性
   - 但是，如果集群中有 Leader、Follower、Observer 三种角色，那么如果挂掉的是 Observer，那么对于集群来说并没有影响，集群还是可以用的，只是 Observer 节点的数据不同了，从这个角度考虑，Zookeeper）又是牺牲了一致性，满足了AP。
   
 - znode节点类型
@@ -183,12 +183,12 @@
   - 一个watcher实例是一个回调函数，被回调一次就被移除了。如果还需要继续关注数据的变化，需要再次注册watcher。
   
 - 命令
-  - create /node/subnode
-  - delete /oitm
-  - deleteall /node/subnode
-  - set /node data
-  - get /node
-  - stat /node
-  - getAcl /node
+  - create  /node/subnode
+  - delete  /oitm
+  - deleteall  /node/subnode
+  - set  /node  data
+  - get  /node
+  - stat  /node
+  - getAcl  /node
   
   
