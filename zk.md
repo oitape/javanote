@@ -182,6 +182,23 @@
   - 可以触发watcher的方法：create、delete、setData。连接断开的情况下触发的watcher会丢失。
   - 一个watcher实例是一个回调函数，被回调一次就被移除了。如果还需要继续关注数据的变化，需要再次注册watcher。
   
+- ACL权限控制： `schema:id:permission`
+  - schema: 鉴权策略
+    - world：只有一个用户：anyone，代表所有人认）
+    - ip：使用 IP 地址认证
+    - auth：使用已添加认证的用户认证  
+    - digest：使用用户名：密码方式认证
+  - id: 授权对象 ID 是指，权限赋予的用户或者一个实体
+    - world：只有个 id，即 anyone
+    - ip: 通常是一个p地址或地址段,比如192.168.0.110或192.168.0.1/24     
+    - auth：用户名
+    - digest：自定义：通常是“username: BASE64 (SHA-1 (username password)
+  - 权限
+    - CREATE，简写为 c，可以创建子节点  
+    - DELETE，简写为 d，可以初除子节点仅下一级节点），注意不是本节点
+    - READ，简写为 r，可以读取节点数据及显示子节点列表
+    - WRITE，简写为 w，可设置节点数据
+    - ADMN，简写为 a，可以设置节点访问控制列表
 - 命令
   - create  /node/subnode
   - delete  /oitm
@@ -190,5 +207,44 @@
   - get  /node
   - stat  /node
   - getAcl  /node
+  - setAcl  /node world:anyone:cdrwa
+
+- zk常用客户端使用
+  - Curator
+    - 依赖
+    ```xml
+    <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-recipes</artifactId>
+        <version>5.1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-framework</artifactId>
+        <version>5.1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-client</artifactId>
+        <version>5.1.0</version>
+    </dependency>
+    ```
+    - 使用
+    ```java
+     CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("localhost:2181", new RetryNTimes(3, 1000));
+      curatorFramework.start();
+      //curatorFramework.create().forPath("/data", "content".getBytes());
+      CuratorCache curatorCache = CuratorCache.builder(curatorFramework, "/data").build();
+      curatorCache.start();
+      curatorCache.listenable().addListener(new CuratorCacheListener() {
+          @Override
+          public void event(Type type, ChildData oldData, ChildData data) {
+              System.out.println(type);
+              System.out.println(oldData);
+              System.out.println(data);
+          }
+      });
+    System.in.read();
+    ```
   
   
