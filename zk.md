@@ -1,4 +1,4 @@
-* 使用
+ * 使用
 
   * 下载zk包
   * bin目录下执行 `./zkServer.sh start`
