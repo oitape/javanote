@@ -257,7 +257,7 @@
       ```
 - ZK如何保证数据一致性
   - FollowerRequestProcessor为Follower的首个处理器，如果是写请求，先将请求写入commitprocessor的queuedRequests（方便后续commit时判断是否本Follower提交的写请求），然后转Leader
-  - Leader为每个请求生成zxid，下发proposal给Follower，Follower会将请求写入到pendingTxns阻塞队列及txnLog中，然后发送ack给Leader，proposal这步是会发给所有的follower的（放到LearnerHandler的请求处理队列中，一个Follower一个LearnerHandler），之后Follower的ack就不一定全返回了
+  - Leader为每个请求生成zxid，下发proposal给Follower，Follower会将请求写入到pendingTxns阻塞队列及txnLog中，然后发送ack给Leader（proposal这步是会发给所有的follower的（放到LearnerHandler的请求处理队列中，一个Follower一个LearnerHandler），之后Follower的ack就不一定全返回了）
   - ack过半，Leader发送commit请求给所有Follower，Follower对比commit request的zxid和前面提到的pendingTxns的zxid，不一致的话Follower退出，重新跟Leader同步
   - Follower处理commit请求，如果不是本Follower提交的写请求，直接调用FinalRequestProcessor做持久化，触发watches；如果是本Follower提交，则做一些特殊处理（主要针对客户端连接断开的场景），然后调用FinalRequestProcessor等后续处理流程
   - FinalRequestProcessor做持久化，返回客户端
