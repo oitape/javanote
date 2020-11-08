@@ -262,3 +262,11 @@
   - Follower处理commit请求，如果不是本Follower提交的写请求，直接调用FinalRequestProcessor做持久化，触发watches；如果是本Follower提交，则做一些特殊处理（主要针对客户端连接断开的场景），然后调用FinalRequestProcessor等后续处理流程
   - FinalRequestProcessor做持久化，返回客户端
   - 对于zookeeper来说，它实现了A可用性、P分区容错性、C中的写入强一致性，丧失的是C中的读取一致性
+  
+  
+- Leader选举：是保证分布式数据一致性的关键所在。
+  - 当ZK集群中的一台服务器出现以下情况就会进行Leader选举
+    - 服务器初始化成功
+    - Leader挂掉
+  - 服务器启动时的Leader选举
+    -
