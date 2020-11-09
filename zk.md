@@ -278,4 +278,64 @@
             - 对于 Server1 而言，它的投票是（1,0），接收 Server2 的投票为（2,0），首先会比较两者的 ZXID，均为 0, 再比较 myid，此时 Server2 的 myid 最大，于是更新自己的投票为（2,0），然后重新投票，对于 Server2 而言，其无须更新自己的投票，只是再次向集群中所有机器发出上一次投票信息即可
        - 统计投票。每次投票后，服务器都会统计投票信息，判断是否已经有过半机器接受到相同的投票信息对于 Server1、Server2 而言，都统计出集群中已经有两台机器接受了（2，）的投票信息，此时便认为已经选出了 Leader。
       - 改变服务器状态确定了 Leader，每个服务器就会更新自己的状态，如果是 Follower，那么就变更为 FOLLOWING，如果是 Leader，就变更为 LEADING
+      
+- 利用zk实现分布式锁
+  ![](/assets/iShot2020-11-09 17.50.07.png)
+  - 使用Curator的实现
+  ```java
+      public static void main(String[] args) throws InterruptedException {
+        CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("localhost:2181", new RetryNTimes(3, 1000));
+        curatorFramework.start();
 
+        CuratorFramework curatorFramework2 = CuratorFrameworkFactory.newClient("localhost:2181", new RetryNTimes(3, 1000));
+        curatorFramework2.start();
+
+        // 创建共享锁
+        String lockPath = "/lockPath";
+        final InterProcessLock lock = new InterProcessMutex(curatorFramework, lockPath);
+        // lock2 用于模拟其他客户端
+        final InterProcessLock lock2 = new InterProcessMutex(curatorFramework2, lockPath);
+        final CountDownLatch countDownLatch = new CountDownLatch(2);
+
+        new Thread(() -> {
+            // 获取锁对象
+            try {
+                lock.acquire();
+                System.out.println("1获取锁===============");
+                // 测试锁重入
+                lock.acquire();
+                System.out.println("1再次获取锁===============");
+                Thread.sleep(5 * 1000);
+                lock.release();
+                System.out.println("1释放锁===============");
+                lock.release();
+                System.out.println("1再次释放锁===============");
+                countDownLatch.countDown();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        new Thread(() -> {
+            // 获取锁对象
+            try {
+                lock2.acquire();
+                System.out.println("2获取锁===============");
+                // 测试锁重入
+                lock2.acquire();
+                System.out.println("2再次获取锁===============");
+                Thread.sleep(5 * 1000);
+                lock2.release();
+                System.out.println("2释放锁===============");
+                lock2.release();
+                System.out.println("2再次释放锁===============");
+
+                countDownLatch.countDown();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        countDownLatch.await();
+    }
+  ```

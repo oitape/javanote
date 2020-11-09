@@ -49,5 +49,4 @@
   * [链路层](net/lian-lu-ceng.md)
 * [分布式](fen-bu-shi.md)
   * [ZK](zk.md)
-  * [分布式锁](fen-bu-shi-suo.md)
 
