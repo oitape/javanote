@@ -48,8 +48,8 @@
     - extends：是指 “上界通配符（Upper Bounds Wildcards）”
     - super：是指 “下界通配符（Lower Bounds Wildcards）”
     - 多接口限定：`T extends SomeClass & interface1 & interface2 & interface3`
-        ```java
-         class Test <T extends Color & Brand> {
+    ```java
+     class Test <T extends Color & Brand> {
             public static <T extends Color & Brand> void test(T t) {
                 t.getBrand();
             }    
@@ -57,8 +57,8 @@
                 t.getColor();
             }    
         }
-        class Car implements Color, Brand {}
-        ```
+    class Car implements Color, Brand {}
+    ```
 
     
     
