@@ -47,6 +47,18 @@
     - Java泛型中的“通配符（Wildcards）”和“边界（Bounds）”的概念。
     - extends：是指 “上界通配符（Upper Bounds Wildcards）”
     - super：是指 “下界通配符（Lower Bounds Wildcards）”
+    - 多接口限定：`T extends SomeClass & interface1 & interface2 & interface3`
+        ```java
+    class Test <T extends Color & Brand> {
+            public static <T extends Color & Brand> void test(T t) {
+            t.getBrand();
+    }    
+            public void testCar(T t){
+            t.getColor();
+    }    
+        }
+        class Car implements Color, Brand {}
+        ```
 
     
     
