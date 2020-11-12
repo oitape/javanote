@@ -355,4 +355,10 @@
         - 统计投票。每次投票后器都会统计投票信息，判断是否已经有过半机器接受到相同的投票信息，对于 Server1、Server2 而言，都统计出集群中已经有两台机器接受了（2,0) 的投票信息，此时便认为已经选出了 Leader
         - 改服务器状态。一旦确定了 Leader，每个服务器就会更新自己的状态，如果是 Follower，那么就变更为 FOLLOWING，如果是 Leader，就变更为 LEADING
   - 服务器运行时期的 Leader 选举
-    - ZK运行期间， Leader与非 Leader 服务器各司其职，即便当有非 Leader 服务器宕机或新加入，此时也不会影响 Leader，但是一且 Leader 服务器挂了，那么整个集群将暂停对外服务，或者 Follower 挂掉了导致，进入新一轮 Leader 选举，其过程和启动时期的 Leaderi 选举过程基本一致。假设正在运行的有 Server1、Server2  Server.3 三台服务器，当前 Leader 是 Server2, 若某一时刻 Leader 挂了，此时便开始 Leaderi 选举。选举过程如下
+    - ZK运行期间， Leader与非 Leader 服务器各司其职，即便当有非 Leader 服务器宕机或新加入，此时也不会影响 Leader，但是一且 Leader 服务器挂了，那么整个集群将暂停对外服务，或者 Follower 挂掉了导致进入新一轮 Leader 选举，其过程和启动时期的 Leader选举过程基本一致。假设正在运行的有 Server1、Server2  Server.3 三台服务器，当前 Leader 是 Server2, 若某一时刻 Leader 挂了，此时便开始 Leaderi 选举。选举过程如下
+      - 变更状态。Leader 挂后，余下的服务器都会讲自己的服务器状态变更为 LOOKING，然后开始进入  Leader 选举过程，这个时候可以开启只读模式让服务器可以读数据。
+      - 每个 Server 会发出一个投票。在运行服务器上的 ZXID 可能不同，此时假定 S1的ZXID为123, Server.3 的 ZID 为 122; 在第一轮投票中，Server1 和 Server3 都会投自己，产生投票（1,123), (3,122）, 然后各自将投票发送给集群中所有机器 
+      - 接收来自各个服务器的投票。与启动时过程相同
+      - 处理投票。与启动时过程相同，此时，Server1 将会成为 Leader（只是投票为 Leader 阶段，真正修改为Leader 状态在第六步）
+      - 统计投票。与启动时过程相同。
+      - 改变服务器的状态。与启动时过程相同
