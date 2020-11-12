@@ -339,3 +339,20 @@
         countDownLatch.await();
     }
   ```
+
+- zk的leader选举
+  - 当 Zookeepers 集群中的一台服务器出现以下两种情况之时，需要进入 Leader 选举
+    1. 服务器初始化启动。
+    2. Leader 挂掉
+  - 服务器启动时期的 Leader 选举
+    - 若进行 Leader 选举，则至少需要两台机器，这里选取 3 台机器组成的服务器集群为例。在集群初始化阶段，当有一台服务器 Server1 启动时，其单独无法进行和完成 Leader 选举，当第二台服务器 Server2 启动时，此时两台机器可以相互通信，每台机器都试图找到 Leader，于是进入 Leader 选举过程。选举过程如下：
+        - 每个 Server 发出一个投票。由于是初始情况，Server1 和 Server2 都会将自己作为 Leader 服务器来进投票，每次投票会包含所推举的服务器的 myid 和 ZXID，使用（myid, ZXID）来表示，此时 Server1 的投票为（1,0), Server2 的投票为（2,0），然后各自将这个投票发给集群中其他机器
+        - 接受来自各个服务器的投票。集群的每个服务器收到投票后，首先判断该投票的有效性，如检查是否是本轮投票（检查 ZXID）、是否来自 LOOKING 状态的服务器
+        - 处理投票。针对每一个投票，服务器都需要将别人的投票和自己的投票进行 PK, PK 规则如下
+            - 优先查 ZID。ZXID 比较大的服务器优先作为 Leade
+            - 如果 ZXID 相同，那么就比较 myid 较大的服务器作为 Leader 服务器
+            - 对于 Server1 而言，它的投票是（1,0），接收 Server2 的投票为（2,0），首先会比较两者的 ZXID，均为 0, 再比较 myid，此时 Server2 的 myid 最大，于是更新自己的投票为（2,），然后重新投票，对  Server2 而言，其无须更新自己的投票，只是再次向集群中所有机器发出票信息即
+        - 统计投票。每次投票后器都会统计投票信息，判断是否已经有过半机器接受到相同的投票信息，对于 Server1、Server2 而言，都统计出集群中已经有两台机器接受了（2,0) 的投票信息，此时便认为已经选出了 Leader
+        - 改服务器状态。一旦确定了 Leader，每个服务器就会更新自己的状态，如果是 Follower，那么就变更为 FOLLOWING，如果是 Leader，就变更为 LEADING
+  - 服务器运行时期的 Leader 选举
+    - ZK运行期间， Leader与非 Leader 服务器各司其职，即便当有非 Leader 服务器宕机或新加入，此时也不会影响 Leader，但是一且 Leader 服务器挂了，那么整个集群将暂停对外服务，或者 Follower 挂掉了导致，进入新一轮 Leader 选举，其过程和启动时期的 Leaderi 选举过程基本一致。假设正在运行的有 Server1、Server2  Server.3 三台服务器，当前 Leader 是 Server2, 若某一时刻 Leader 挂了，此时便开始 Leaderi 选举。选举过程如下
