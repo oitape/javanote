@@ -52,4 +52,5 @@
 * [Dubbo](dubbo.md)
 * [IO](io.md)
 * [MQ](mq.md)
+  * [RMQ](mq/rmq.md)
 
