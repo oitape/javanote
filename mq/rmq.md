@@ -100,7 +100,8 @@
         }
     }
     ```
-    - 开启发送方确认模式
+    
+- 开启发送方确认模式
     ```java
      connectionFactory.setPublisherConfirms(true);
     ```
@@ -110,7 +111,14 @@
           rabbitmq:
                 publisher-confirms: true
     ```
-    
+    - 实现接口
+    ```java
+     public class MyConfirmCallback implements RabbitTemplate.ConfirmCallback{
+        @Override
+        public void confirm(CorrelationData correlationData, boolean ack, String cause) { 
+        } 
+    }
+    ```
     
     
     
