@@ -30,6 +30,7 @@
         //connectionFactory.setPublisherConfirms(true);
         return connectionFactory;
     }
+    
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
         //注意  这个ConnectionFactory 是使用javaconfig方式配置连接的时候才需要传入的  如果是yml配置的连接的话是不需要的
