@@ -122,7 +122,9 @@
     - RabbitmqTemplate修改
     ` template.setConfirmCallback(new MyConfirmCallback());`
     
-    
+- 要注意的是 confirm模式的发送成功 的意思是发送到RabbitMq(Broker)成功 而不是发送到队列成功,所以要和失败回调结合使用,这样才能确认消息投递成功了，
+  - confirm机制是确认我们的消息是否投递到了 RabbitMq(Broker)上面，而        
+  - mandatory是在我们的消息进入队列失败时候不会被遗弃(让我们自己进行处理)
     
     
     
