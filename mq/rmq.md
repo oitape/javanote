@@ -77,3 +77,52 @@
         }
     }
     ```
+    
+- 确保消息发送到RMQ
+    使用失败回调的方式，开启发送方确认
+    - RabbitmqTemplate
+    ```java
+    @Bean
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) { 
+        RabbitTemplate template = new RabbitTemplate(connectionFactory); 
+        //开启mandatory模式(开启失败回调)
+        template.setMandatory(true);
+        //指定失败回调接口的实现类 
+        template.setReturnCallback(new MyReturnCallback()); 
+        return template;
+    }    
+    ```
+    - 回调接口
+    ```java
+    public class MyReturnCallback implements RabbitTemplate.ReturnCallback {
+         @Override
+        public void returnedMessage(Message message, int replyCode, String replyText,String exchange, String routingKey){
+        }
+    }
+    ```
+    - 开启发送方确认模式
+    ```java
+     connectionFactory.setPublisherConfirms(true);
+    ```
+    - yml
+    ```yaml
+     spring:
+          rabbitmq:
+                publisher-confirms: true
+    ```
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
