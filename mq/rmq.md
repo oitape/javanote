@@ -119,7 +119,8 @@
         } 
     }
     ```
-    
+    - RabbitmqTemplate修改
+    ` template.setConfirmCallback(new MyConfirmCallback());`
     
     
     
