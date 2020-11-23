@@ -108,8 +108,8 @@
     - yml
     ```yaml
      spring:
-          rabbitmq:
-                publisher-confirms: true
+         rabbitmq:
+            publisher-confirms: true
     ```
     - 实现接口
     ```java
