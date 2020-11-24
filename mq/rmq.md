@@ -168,8 +168,6 @@ public class TestListener  {
             //channel.basicReject(message.getMessageProperties().getDeliveryTag(),true);
         }
     }
-
-
 }
 ```  
     
