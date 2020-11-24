@@ -188,7 +188,20 @@ simpleRabbitListenerContainerFactory.setPrefetchCount(1);
 - 如果设置为1 能极大的利用客户端的性能(我消费完了就可以赶紧消 费下一条 不会导致忙的很忙 闲的很闲) 但是， 我们每消费一条消息 就要通知一次rabbitmq 然后再取出新的消 息， 这样对于rabbitmq的性能来讲 是非常不合理的 所以这个参数要根据业务情况设置。这个数值的大小与性能成正比 但是有上限2500
 
 ### 死信队列
-    
+- 死信交换机有什么用呢? 在创建队列的时候 可以给这个队列附带一个交换机， 那么这个队列作废的消息就会被重新发到附带的交换机，然后让这个交换机重新路由这条消息
+```java
+@Bean
+public Queue queue() {
+    Map<String,Object> map = new HashMap<>();
+    //设置消息的过期时间 单位毫秒
+    map.put("x-message-ttl",10000);
+    //设置附带的死信交换机
+    map.put("x-dead-letter-exchange","exchange.dlx");
+    //指定重定向的路由建 消息作废之后可以决定需不需要更改他的路由建 如果需要 就在这里指定 map.put("x-dead-letter-routing-key","dead.order");
+    return new Queue("testQueue", true,false,false,map);
+}
+```
+
     
     
     
