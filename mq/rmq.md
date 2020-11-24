@@ -144,6 +144,7 @@ simpleRabbitListenerContainerFactory(ConnectionFactory connectionFactory){
     return simpleRabbitListenerContainerFactory;    
 }        
 ```
+
 - 注解设置
 ```java
 @Component
