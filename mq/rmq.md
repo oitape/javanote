@@ -185,7 +185,9 @@ simpleRabbitListenerContainerFactory.setPrefetchCount(1);
     return simpleRabbitListenerContainerFactory;
 }
 ```
-- 如果设置为1 能极大的利用客户端的性能(我消费完了就可以赶紧消 费下一条 不会导致忙的很忙 闲的很闲) 但是， 我们每消费一条消息 就要通知一次rabbitmq 然后再取出新的消 息， 这样对于rabbitmq的性能来讲 是非常不合理的 所以这个参数要根据业务情况设置
+- 如果设置为1 能极大的利用客户端的性能(我消费完了就可以赶紧消 费下一条 不会导致忙的很忙 闲的很闲) 但是， 我们每消费一条消息 就要通知一次rabbitmq 然后再取出新的消 息， 这样对于rabbitmq的性能来讲 是非常不合理的 所以这个参数要根据业务情况设置。这个数值的大小与性能成正比 但是有上限2500
+
+### 私信队列
     
     
     
