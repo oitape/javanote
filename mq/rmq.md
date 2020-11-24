@@ -126,8 +126,25 @@
   - confirm机制是确认我们的消息是否投递到了 RabbitMq(Broker)上面，而        
   - mandatory是在我们的消息进入队列失败时候不会被遗弃(让我们自己进行处理)
     
-    
-    
+- 消费者确认
+  - Container配置
+  ```java
+    @Bean
+    public SimpleRabbitListenerContainerFactory
+    simpleRabbitListenerContainerFactory(ConnectionFactory connectionFactory){
+        SimpleRabbitListenerContainerFactory simpleRabbitListenerContainerFactory =
+            new SimpleRabbitListenerContainerFactory();
+        //这个connectionFactory就是我们自己配置的连接工厂直接注入进来             
+                                              
+        simpleRabbitListenerContainerFactory
+            .setConnectionFactory(connectionFactory); 
+        //这边设置消息确认方式由自动确认变为手动确认     
+        simpleRabbitListenerContainerFactory
+            .setAcknowledgeMode(AcknowledgeMode.MANUAL); 
+        return simpleRabbitListenerContainerFactory;    
+    }        
+  ```
+  
     
     
     
