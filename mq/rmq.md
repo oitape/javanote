@@ -172,8 +172,19 @@ public class TestListener  {
 ```  
 
 ### 消费预取
-- RMQ消费是采用轮训平均分配的，不管该消费者的消费能力是否快慢，都是平均消费，RMQ是一下子平均分配给所有消费者的。解决方案：消息预取
-
+- RMQ消费是采用轮训平均分配的，不管该消费者的消费能力是否快慢，都是平均消费，RMQ是一下子平均分配给所有消费者的。解决方案：消息预取，在使用消息预取前 要注意一定要设置为手动确认消息
+- 设置
+```java
+@Bean
+public SimpleRabbitListenerContainerFactory
+simpleRabbitListenerContainerFactory(ConnectionFactory connectionFactory){
+    SimpleRabbitListenerContainerFactory simpleRabbitListenerContainerFactory =
+            new SimpleRabbitListenerContainerFactory();
+simpleRabbitListenerContainerFactory.setConnectionFactory(connectionFactory); //手动确认消息 simpleRabbitListenerContainerFactory.setAcknowledgeMode(AcknowledgeMode.MANUAL); //设置消息预取的数量
+simpleRabbitListenerContainerFactory.setPrefetchCount(1);
+    return simpleRabbitListenerContainerFactory;
+}
+```
     
     
     
