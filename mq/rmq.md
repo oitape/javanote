@@ -201,7 +201,13 @@ public Queue queue() {
     return new Queue("testQueue", true,false,false,map);
 }
 ```
+- 消息变成死信有以下情况
+    - 消息被拒绝(basic.reject / basic.nack)，并且requeue = false
+    - 消息TTL过期
+    - 队列达到最大长度
 
+
+### RMQ集群搭建
 
     
     
