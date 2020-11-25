@@ -53,4 +53,5 @@
 * [IO](io.md)
 * [MQ](mq.md)
   * [RMQ](mq/rmq.md)
+  * [Kafka](mq/kafka.md)
 
