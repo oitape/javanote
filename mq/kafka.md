@@ -47,6 +47,31 @@
 - client.id: 一个标识， 可以用来标识消息来自哪， 不影响kafka消息生产
 - max.in.flight.requests.per.connection: 指定kafka一次发送请求在得到服务器回应之前,可发送的消息数量
 
+### kafka消费者参数
+- fetch.min.bytes:<br>
+该属性指定了消费者从服务器获取记录的最小字节数。broker 在收到消费者的数据请求时，如果可用的数据量小 于 fetch.min.bytes 指定的大小，那么它会等到有足够的可用数据时才把它返回给消费者。这样可以降低消费者和 broker 的工作负载，因为它们在主题不是很活跃的时候(或者一天里的低谷时段)就不需要来来回回地处理消 息。如果没有很多可用数据，但消费者的 CPU 使用率却很高，那么就需要把该属性的值设得比默认值大。如果消 费者的数量比较多，把该属性的值设置得大一点可以降低 broker 的工作负载。 默认值为1 byte
+- fetch.max.wait.ms <br>用于指 定 broker 的等待时间，默认是如果没有足够的数据流入Kafka，消费者获取最小数据量的要求就得不到满足，最终 导致 500ms 的延迟。如果 fetch.max.wait.ms 被设为 100ms，并且 fetch.min.bytes 被设为 1MB，那么 Kafka 在 收到消费者的请求后，要么返回 1MB 数据，要么在 100ms 后返回所有可用的数据，就看哪个条件先得到满足。 默认值为500ms
+- max.partition.fetch.bytes 该属性指定了服务器从每个分区里返回给消费者的最大字节数。默认值是 1MB
+- session.timeout.ms 和heartbeat.interval.ms
+    - session.timeout.ms : 消费者多久没有发送心跳给服务器，服务器则认为消费者死亡/退出消费者组 默认值:10000ms 
+    - heartbeat.interval.ms :消费者往kafka服务器发送心跳的间隔 一般设置为session.timeout.ms的三分之一 默认值:3000ms
+- auto.offset.reset: 当消费者本地没有对应分区的offset时 会根据此参数做不同的处理 默认值为:latest
+    - earliest：当各分区下有已提交的offset时，从提交的offset开始消费;无提交的offset时，从头开始消费
+    - latest 当各分区下有已提交的offset时，从提交的offset开始消费;无提交的offset时，消费新产生的该分区下的数据
+    - none topic各分区都存在已提交的offset时，从offset后开始消费;只要有一个分区不存在已提交的offset，则抛出异常
+enable.auto.commit
+该属性指定了消费者是否自动提交偏移量，默认值是 true。为了尽量避免出现重复数据和数据丢失，可以把它设为 false，由自己控制何时提交偏移量。如果把它设为 true，还可以通过配置 auto.commit.interval.ms 属性来控制 提交的频率。
+partition.assignment.strategy
+PartitionAssignor 根据给定的消费者和主题，决定哪些分区应该被分配给哪个消费者。Kafka 有两个默认的分配策
+略。Range:该策略会把主题的若干个连续的分区分配给消费者。假设消费者 C1 和消费者 C2 同时订阅了主题 T1 和主题 T2，并且每个主题有 3 个分区。那么消费者 C1 有可能分配到这两个主题的分区 0 和分区 1，而消费 者 C2 分配到这两个主题的分区2。因为每个主题拥有奇数个分区，而分配是在主题内独立完成的，第一个消 费者最后分配到比第二个消费者更多的分区。只要使用了 Range 策略，而且分区数量无法被消费者数量整 除，就会出现这种情况。
+RoundRobin:该策略把主题的所有分区逐个分配给消费者。如果使用 RoundRobin 策略来给消费者 C1 和消 费者 C2 分配分区，那么消费者 C1 将分到主题 T1 的分区 0 和分区 2 以及主题 T2 的分区 1，消费者 C2 将分 配到主题 T1 的分区 1 以及主题 T2 的分区 0 和分区 2。一般来说，如果所有消费者都订阅相同的主题(这种 情况很常见)，RoundRobin 策略会给所有消费者分配相同数量的分区(或最多就差一个分区)。
+max.poll.records
+单次调用 poll() 方法最多能够返回的记录条数 ,默认值 500
+receive.buffer.bytes 和 send.buffer.bytes
+receive.buffer.bytes 默认值 64k 单位 bytes
+send.buffer.bytes 默认值 128k 单位 bytes
+这两个参数分别指定了 TCP socket 接收和发送数据包的缓冲区大小。如果它们被设为 -1
+
 ### 生产者和消费者  与分区关系
 - 生产者
     - 如果发送消息的时候制定了分区，则消息投递到指定的分区
@@ -58,6 +83,14 @@
  - 如果分区数大于或者等于组中的消费者实例数，无非一个消费者会负责多个分区；如果消费者实例的数量大于分区数，那么按照默认的策略(可自定义策略)，有一些消费者是多余的，一直接不到消息而处于空闲状态。
  - Kafka它在设计的时候就是要保证分区下消息的顺序，也就是说消息在一个分区中的顺序是怎样的，那么消费者在消费的时候看到的就是什么样的顺序，那么要做到这一点就首先要保证消息是由消费者主动拉取的（pull），其次还要保证一个分区只能由一个消费者负责。
  - 可以指定消费哪些分区消费
+
+```java
+ List<TopicPartition> list = new ArrayList<>(); 
+ //new出一个分区对象 声明这个分区是哪个topic下面的哪个分区 
+ list.add(new TopicPartition("test-topic",0)); 
+ //分配这个消费者所需要消费的分区, 传入一个分区对象集合      
+ kafkaConsumer.assign(list);
+```
 
 ### 自动提交的问题
     - 当A本地消费的偏移量还没有提交时，topic消费组中新加入了消费者B，发生了分区再均衡，如果A消费到offset 6，没有提交，服务器中分区的offset 是4，然后该分区均衡给了B，那么B就从offset 4进行消费，发生了消息重复消费。
