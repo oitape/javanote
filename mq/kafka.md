@@ -57,20 +57,20 @@
     - heartbeat.interval.ms :消费者往kafka服务器发送心跳的间隔 一般设置为session.timeout.ms的三分之一 默认值:3000ms
 - auto.offset.reset: 当消费者本地没有对应分区的offset时 会根据此参数做不同的处理 默认值为:latest
     - earliest：当各分区下有已提交的offset时，从提交的offset开始消费;无提交的offset时，从头开始消费
-    - latest 当各分区下有已提交的offset时，从提交的offset开始消费;无提交的offset时，消费新产生的该分区下的数据
-    - none topic各分区都存在已提交的offset时，从offset后开始消费;只要有一个分区不存在已提交的offset，则抛出异常
-enable.auto.commit
+    - latest: 当各分区下有已提交的offset时，从提交的offset开始消费;无提交的offset时，消费新产生的该分区下的数据
+    - none: topic各分区都存在已提交的offset时，从offset后开始消费;只要有一个分区不存在已提交的offset，则抛出异常
+- enable.auto.commit <br>
 该属性指定了消费者是否自动提交偏移量，默认值是 true。为了尽量避免出现重复数据和数据丢失，可以把它设为 false，由自己控制何时提交偏移量。如果把它设为 true，还可以通过配置 auto.commit.interval.ms 属性来控制 提交的频率。
-partition.assignment.strategy
-PartitionAssignor 根据给定的消费者和主题，决定哪些分区应该被分配给哪个消费者。Kafka 有两个默认的分配策
-略。Range:该策略会把主题的若干个连续的分区分配给消费者。假设消费者 C1 和消费者 C2 同时订阅了主题 T1 和主题 T2，并且每个主题有 3 个分区。那么消费者 C1 有可能分配到这两个主题的分区 0 和分区 1，而消费 者 C2 分配到这两个主题的分区2。因为每个主题拥有奇数个分区，而分配是在主题内独立完成的，第一个消 费者最后分配到比第二个消费者更多的分区。只要使用了 Range 策略，而且分区数量无法被消费者数量整 除，就会出现这种情况。
-RoundRobin:该策略把主题的所有分区逐个分配给消费者。如果使用 RoundRobin 策略来给消费者 C1 和消 费者 C2 分配分区，那么消费者 C1 将分到主题 T1 的分区 0 和分区 2 以及主题 T2 的分区 1，消费者 C2 将分 配到主题 T1 的分区 1 以及主题 T2 的分区 0 和分区 2。一般来说，如果所有消费者都订阅相同的主题(这种 情况很常见)，RoundRobin 策略会给所有消费者分配相同数量的分区(或最多就差一个分区)。
-max.poll.records
+- partition.assignment.strategy <br>
+PartitionAssignor 根据给定的消费者和主题，决定哪些分区应该被分配给哪个消费者。Kafka 有两个默认的分配策略。
+    - Range:该策略会把主题的若干个连续的分区分配给消费者。假设消费者 C1 和消费者 C2 同时订阅了主题 T1 和主题 T2，并且每个主题有 3 个分区。那么消费者 C1 有可能分配到这两个主题的分区 0 和分区 1，而消费 者 C2 分配到这两个主题的分区2。因为每个主题拥有奇数个分区，而分配是在主题内独立完成的，第一个消 费者最后分配到比第二个消费者更多的分区。只要使用了 Range 策略，而且分区数量无法被消费者数量整 除，就会出现这种情况。
+    - RoundRobin:该策略把主题的所有分区逐个分配给消费者。如果使用 RoundRobin 策略来给消费者 C1 和消 费者 C2 分配分区，那么消费者 C1 将分到主题 T1 的分区 0 和分区 2 以及主题 T2 的分区 1，消费者 C2 将分 配到主题 T1 的分区 1 以及主题 T2 的分区 0 和分区 2。一般来说，如果所有消费者都订阅相同的主题(这种 情况很常见)，RoundRobin 策略会给所有消费者分配相同数量的分区(或最多就差一个分区)。
+- max.poll.records <br>
 单次调用 poll() 方法最多能够返回的记录条数 ,默认值 500
-receive.buffer.bytes 和 send.buffer.bytes
-receive.buffer.bytes 默认值 64k 单位 bytes
-send.buffer.bytes 默认值 128k 单位 bytes
-这两个参数分别指定了 TCP socket 接收和发送数据包的缓冲区大小。如果它们被设为 -1
+- receive.buffer.bytes 和 send.buffer.bytes
+    - receive.buffer.bytes 默认值 64k 单位 bytes
+    - send.buffer.bytes 默认值 128k 单位 bytes
+    - 这两个参数分别指定了 TCP socket 接收和发送数据包的缓冲区大小。如果它们被设为 -1
 
 ### 生产者和消费者  与分区关系
 - 生产者
