@@ -46,6 +46,7 @@
 * [JVM](jvm.md)
 * [分布式](fen-bu-shi.md)
   * [ZK](zk.md)
+  * [Redis](redis.md)
 * [Dubbo](dubbo.md)
 * [IO](io.md)
 * [MQ](mq.md)
