@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="kafka.html" />
+    
     
     <link rel="prev" href="../mq.html" />
     
@@ -671,52 +673,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.33" data-path="../net.html">
-            
-                <a href="../net.html">
-            
-                    
-                    Net
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.33.1" data-path="../net/gai-shu.html">
-            
-                <a href="../net/gai-shu.html">
-            
-                    
-                    概述
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.33.2" data-path="../net/lian-lu-ceng.html">
-            
-                <a href="../net/lian-lu-ceng.html">
-            
-                    
-                    链路层
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.34" data-path="../fen-bu-shi.html">
+        <li class="chapter " data-level="1.33" data-path="../fen-bu-shi.html">
             
                 <a href="../fen-bu-shi.html">
             
@@ -730,7 +687,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.34.1" data-path="../zk.html">
+        <li class="chapter " data-level="1.33.1" data-path="../zk.html">
             
                 <a href="../zk.html">
             
@@ -743,12 +700,25 @@
             
         </li>
     
+        <li class="chapter " data-level="1.33.2" data-path="../redis.html">
+            
+                <a href="../redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
         </li>
     
-        <li class="chapter " data-level="1.35" data-path="../dubbo.html">
+        <li class="chapter " data-level="1.34" data-path="../dubbo.html">
             
                 <a href="../dubbo.html">
             
@@ -761,7 +731,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.36" data-path="../io.html">
+        <li class="chapter " data-level="1.35" data-path="../io.html">
             
                 <a href="../io.html">
             
@@ -774,7 +744,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.37" data-path="../mq.html">
+        <li class="chapter " data-level="1.36" data-path="../mq.html">
             
                 <a href="../mq.html">
             
@@ -788,12 +758,25 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.37.1" data-path="rmq.html">
+        <li class="chapter active" data-level="1.36.1" data-path="rmq.html">
             
                 <a href="rmq.html">
             
                     
                     RMQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36.2" data-path="kafka.html">
+            
+                <a href="kafka.html">
+            
+                    
+                    Kafka
             
                 </a>
             
@@ -852,87 +835,85 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="rmq&#x6574;&#x5408;spring&#x4F7F;&#x7528;">RMQ&#x6574;&#x5408;Spring&#x4F7F;&#x7528;</h3>
-<pre><code>- &#x4F9D;&#x8D56;
-```xml
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
-&lt;/dependency&gt;
+<ul>
+<li><p>&#x4F9D;&#x8D56;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 
 spring:
-      rabbitmq:
-        host:
-        port:
-        username:
-        password:
-        virtual-host: 
-
-```
-- &#x751F;&#x4EA7;&#x8005;
-```java
-@Bean
-public ConnectionFactory connectionFactory() {
-    CachingConnectionFactory connectionFactory = new CachingConnectionFactory(&quot;localhost&quot;,5672);
-    //&#x5728;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4F20;&#x5165;&#x4E86;
-    //        connectionFactory.setHost();
-    //        connectionFactory.setPort();
-    connectionFactory.setUsername(&quot;admin&quot;);
-    connectionFactory.setPassword(&quot;admin&quot;);
-    connectionFactory.setVirtualHost(&quot;testhost&quot;);
-    //&#x662F;&#x5426;&#x5F00;&#x542F;&#x6D88;&#x606F;&#x786E;&#x8BA4;&#x673A;&#x5236;
-    //connectionFactory.setPublisherConfirms(true);
-    return connectionFactory;
+    rabbitmq:
+      host:
+      port:
+      username:
+      password:
+      virtual-host:
+</code></pre>
+</li>
+<li><p>&#x751F;&#x4EA7;&#x8005;</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Bean</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> ConnectionFactory <span class="hljs-title">connectionFactory</span><span class="hljs-params">()</span> </span>{
+  CachingConnectionFactory connectionFactory = <span class="hljs-keyword">new</span> CachingConnectionFactory(<span class="hljs-string">&quot;localhost&quot;</span>,<span class="hljs-number">5672</span>);
+  <span class="hljs-comment">//&#x5728;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4F20;&#x5165;&#x4E86;</span>
+  <span class="hljs-comment">//        connectionFactory.setHost();</span>
+  <span class="hljs-comment">//        connectionFactory.setPort();</span>
+  connectionFactory.setUsername(<span class="hljs-string">&quot;admin&quot;</span>);
+  connectionFactory.setPassword(<span class="hljs-string">&quot;admin&quot;</span>);
+  connectionFactory.setVirtualHost(<span class="hljs-string">&quot;testhost&quot;</span>);
+  <span class="hljs-comment">//&#x662F;&#x5426;&#x5F00;&#x542F;&#x6D88;&#x606F;&#x786E;&#x8BA4;&#x673A;&#x5236;</span>
+  <span class="hljs-comment">//connectionFactory.setPublisherConfirms(true);</span>
+  <span class="hljs-keyword">return</span> connectionFactory;
 }
 
-@Bean
-public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-    //&#x6CE8;&#x610F;  &#x8FD9;&#x4E2A;ConnectionFactory &#x662F;&#x4F7F;&#x7528;javaconfig&#x65B9;&#x5F0F;&#x914D;&#x7F6E;&#x8FDE;&#x63A5;&#x7684;&#x65F6;&#x5019;&#x624D;&#x9700;&#x8981;&#x4F20;&#x5165;&#x7684;  &#x5982;&#x679C;&#x662F;yml&#x914D;&#x7F6E;&#x7684;&#x8FDE;&#x63A5;&#x7684;&#x8BDD;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x7684;
-    RabbitTemplate template = new RabbitTemplate(connectionFactory)&#xFF1B;
-    return template;
+<span class="hljs-meta">@Bean</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> RabbitTemplate <span class="hljs-title">rabbitTemplate</span><span class="hljs-params">(ConnectionFactory connectionFactory)</span> </span>{
+  <span class="hljs-comment">//&#x6CE8;&#x610F;  &#x8FD9;&#x4E2A;ConnectionFactory &#x662F;&#x4F7F;&#x7528;javaconfig&#x65B9;&#x5F0F;&#x914D;&#x7F6E;&#x8FDE;&#x63A5;&#x7684;&#x65F6;&#x5019;&#x624D;&#x9700;&#x8981;&#x4F20;&#x5165;&#x7684;  &#x5982;&#x679C;&#x662F;yml&#x914D;&#x7F6E;&#x7684;&#x8FDE;&#x63A5;&#x7684;&#x8BDD;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x7684;</span>
+  RabbitTemplate template = <span class="hljs-keyword">new</span> RabbitTemplate(connectionFactory)&#xFF1B;
+  <span class="hljs-keyword">return</span> template;
 }
 
-@Bean
-public DirectExchange  defaultExchange() {
-    return new DirectExchange(&quot;directExchange&quot;);
+<span class="hljs-meta">@Bean</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> DirectExchange  <span class="hljs-title">defaultExchange</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DirectExchange(<span class="hljs-string">&quot;directExchange&quot;</span>);
 }
 
-@Bean
-public Queue queue() {
-    //&#x540D;&#x5B57;  &#x662F;&#x5426;&#x6301;&#x4E45;&#x5316;
-    return new Queue(&quot;testQueue&quot;, true);
+<span class="hljs-meta">@Bean</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> Queue <span class="hljs-title">queue</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-comment">//&#x540D;&#x5B57;  &#x662F;&#x5426;&#x6301;&#x4E45;&#x5316;</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Queue(<span class="hljs-string">&quot;testQueue&quot;</span>, <span class="hljs-keyword">true</span>);
 }
 
-@Bean
-public Binding binding() {
-    //&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;&#x961F;&#x5217;  to: &#x7ED1;&#x5B9A;&#x5230;&#x54EA;&#x4E2A;&#x4EA4;&#x6362;&#x673A;&#x4E0A;&#x9762; with&#xFF1A;&#x7ED1;&#x5B9A;&#x7684;&#x8DEF;&#x7531;&#x5EFA;    &#xFF08;routingKey&#xFF09;
-    return                 BindingBuilder.bind(queue()).to(defaultExchange()).with(&quot;direct.key&quot;);
+<span class="hljs-meta">@Bean</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> Binding <span class="hljs-title">binding</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-comment">//&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;&#x961F;&#x5217;  to: &#x7ED1;&#x5B9A;&#x5230;&#x54EA;&#x4E2A;&#x4EA4;&#x6362;&#x673A;&#x4E0A;&#x9762; with&#xFF1A;&#x7ED1;&#x5B9A;&#x7684;&#x8DEF;&#x7531;&#x5EFA;    &#xFF08;routingKey&#xFF09;</span>
+  <span class="hljs-keyword">return</span>                 BindingBuilder.bind(queue()).to(defaultExchange()).with(<span class="hljs-string">&quot;direct.key&quot;</span>);
 }
 
-@Component
-public class TestSend {
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestSend</span> </span>{
 
-    @Autowired
-    RabbitTemplate rabbitTemplate;
-    public void send() {
-        //&#x81F3;&#x4E8E;&#x4E3A;&#x4EC0;&#x4E48;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;API &#x540E;&#x9762;&#x4F1A;&#x89E3;&#x91CA;
-        //&#x53C2;&#x6570;&#x4ECB;&#x7ECD;&#xFF1A; &#x4EA4;&#x6362;&#x673A;&#x540D;&#x5B57;&#xFF0C;&#x8DEF;&#x7531;&#x5EFA;&#xFF0C; &#x6D88;&#x606F;&#x5185;&#x5BB9;
-        rabbitTemplate.convertAndSend(&quot;directExchange&quot;, &quot;direct.key&quot;, &quot;hello&quot;);
-    }
+  <span class="hljs-meta">@Autowired</span>
+  RabbitTemplate rabbitTemplate;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">send</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-comment">//&#x81F3;&#x4E8E;&#x4E3A;&#x4EC0;&#x4E48;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;API &#x540E;&#x9762;&#x4F1A;&#x89E3;&#x91CA;</span>
+      <span class="hljs-comment">//&#x53C2;&#x6570;&#x4ECB;&#x7ECD;&#xFF1A; &#x4EA4;&#x6362;&#x673A;&#x540D;&#x5B57;&#xFF0C;&#x8DEF;&#x7531;&#x5EFA;&#xFF0C; &#x6D88;&#x606F;&#x5185;&#x5BB9;</span>
+      rabbitTemplate.convertAndSend(<span class="hljs-string">&quot;directExchange&quot;</span>, <span class="hljs-string">&quot;direct.key&quot;</span>, <span class="hljs-string">&quot;hello&quot;</span>);
+  }
 }
-```
-- &#x6D88;&#x8D39;&#x8005;
-```java
-@Component
-public class TestListener  {
-    @RabbitListener(queues = &quot;testQueue&quot;)
-    public void get(String message) throws Exception{
-        System.out.println(message);
-    }
+</code></pre>
+</li>
+<li><p>&#x6D88;&#x8D39;&#x8005;</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestListener</span>  </span>{
+  <span class="hljs-meta">@RabbitListener</span>(queues = <span class="hljs-string">&quot;testQueue&quot;</span>)
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">get</span><span class="hljs-params">(String message)</span> <span class="hljs-keyword">throws</span> Exception</span>{
+      System.out.println(message);
+  }
 }
-```
-</code></pre><ul>
-<li><p>&#x786E;&#x4FDD;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x5230;RMQ
-  &#x4F7F;&#x7528;&#x5931;&#x8D25;&#x56DE;&#x8C03;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E5F;&#x5FC5;&#x987B;&#x5F00;&#x542F;&#x53D1;&#x9001;&#x65B9;&#x786E;&#x8BA4;</p>
+</code></pre>
+</li>
+<li><p>&#x786E;&#x4FDD;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x5230;RMQ<br>  &#x4F7F;&#x7528;&#x5931;&#x8D25;&#x56DE;&#x8C03;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E5F;&#x5FC5;&#x987B;&#x5F00;&#x542F;&#x53D1;&#x9001;&#x65B9;&#x786E;&#x8BA4;</p>
 <ul>
 <li>RabbitmqTemplate<pre><code class="lang-java"><span class="hljs-meta">@Bean</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> RabbitTemplate <span class="hljs-title">rabbitTemplate</span><span class="hljs-params">(ConnectionFactory connectionFactory)</span> </span>{ 
@@ -1107,10 +1088,14 @@ simpleRabbitListenerContainerFactory.setPrefetchCount(<span class="hljs-number">
 
             
                 
-                <a href="../mq.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: MQ">
+                <a href="../mq.html" class="navigation navigation-prev " aria-label="Previous page: MQ">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="kafka.html" class="navigation navigation-next " aria-label="Next page: Kafka">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -1119,7 +1104,7 @@ simpleRabbitListenerContainerFactory.setPrefetchCount(<span class="hljs-number">
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RMQ","level":"1.37.1","depth":2,"previous":{"title":"MQ","level":"1.37","depth":1,"path":"mq.md","ref":"mq.md","articles":[{"title":"RMQ","level":"1.37.1","depth":2,"path":"mq/rmq.md","ref":"mq/rmq.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mq/rmq.md","mtime":"2020-11-25T06:07:47.371Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-25T06:12:02.387Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RMQ","level":"1.36.1","depth":2,"next":{"title":"Kafka","level":"1.36.2","depth":2,"path":"mq/kafka.md","ref":"mq/kafka.md","articles":[]},"previous":{"title":"MQ","level":"1.36","depth":1,"path":"mq.md","ref":"mq.md","articles":[{"title":"RMQ","level":"1.36.1","depth":2,"path":"mq/rmq.md","ref":"mq/rmq.md","articles":[]},{"title":"Kafka","level":"1.36.2","depth":2,"path":"mq/kafka.md","ref":"mq/kafka.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mq/rmq.md","mtime":"2020-12-21T12:00:16.598Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T01:00:38.467Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
