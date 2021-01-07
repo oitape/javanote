@@ -20,3 +20,5 @@ typedef struct redisDb {
     ...
 } redisDb;
 ```
+
+#### 过期的数据的删除策略
