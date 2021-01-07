@@ -29,3 +29,5 @@ typedef struct redisDb {
 
 仅仅通过给 key 设置过期时间还是有问题的。因为还是可能存在定期删除和惰性删除漏掉了很多过期 key 的情况。这样就导致大量过期 key 堆积在内存里，然后就Out of memory了
 解决方案就是： Redis 内存淘汰机制
+
+#### Redis 内存淘汰机制
