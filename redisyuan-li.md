@@ -42,3 +42,6 @@ Redis 提供 6 种数据淘汰策略：
 4.0 版本后增加以下两种：
 - volatile-lfu（least frequently used）：从已设置过期时间的数据集(server.db[i].expires)中挑选最不经常使用的数据淘汰
 - allkeys-lfu（least frequently used）：当内存不足以容纳新写入数据时，在键空间中，移除最不经常使用的 key
+
+
+
