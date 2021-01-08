@@ -48,6 +48,7 @@
   * [ZK](zk.md)
   * [Redis基础](redis.md)
   * [Redis原理](redisyuan-li.md)
+  * [秒杀](miao-sha.md)
 * [Dubbo](dubbo.md)
 * [IO](io.md)
 * [MQ](mq.md)
