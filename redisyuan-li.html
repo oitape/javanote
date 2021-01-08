@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Mybatis · GitBook</title>
+        <title>Redis原理 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="web.html" />
+    <link rel="next" href="miao-sha.html" />
     
     
-    <link rel="prev" href="log.html" />
+    <link rel="prev" href="redis.html" />
     
 
     </head>
@@ -634,7 +634,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.30" data-path="mybatis.html">
+        <li class="chapter " data-level="1.30" data-path="mybatis.html">
             
                 <a href="mybatis.html">
             
@@ -713,7 +713,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.33.3" data-path="redisyuan-li.html">
+        <li class="chapter active" data-level="1.33.3" data-path="redisyuan-li.html">
             
                 <a href="redisyuan-li.html">
             
@@ -845,7 +845,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Mybatis</a>
+        <a href="." >Redis原理</a>
     </h1>
 </div>
 
@@ -860,50 +860,49 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <ul>
-<li>&#x7F13;&#x5B58;<ul>
-<li>mybatis&#xFF0C;&#x4E00;&#x7EA7;&#x7F13;&#x5B58;&#x5728;&#x548C;spring&#x6574;&#x5408;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5931;&#x6548;&#xFF0C;&#x539F;&#x56E0;&#xFF1F;<ul>
-<li>mybatis&#x7684;&#x4E00;&#x7EA7;&#x7F13;&#x5B58;&#x662F;&#x6839;&#x636E;session&#x6765;&#x7F13;&#x5B58;&#x7684;&#xFF0C;&#x548C;spring&#x6574;&#x5408;&#x540E;&#xFF0C;session&#x4EA4;&#x7ED9;&#x4E86;spring&#x7BA1;&#x7406;&#xFF0C;spring&#x518D;&#x67E5;&#x8BE2;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x4F1A;&#x5173;&#x95ED;session&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x7EA7;&#x7F13;&#x5B58;&#x5931;&#x6548;&#x3002;</li>
-</ul>
-</li>
-<li>&#x4E8C;&#x7EA7;&#x7F13;&#x5B58;&#x5728;mapper&#x4E2D;&#x52A0;&#x4E0A;&#x6CE8;&#x89E3;@CacheNamespace&#x3002;mybatis&#x4F1A;&#x6839;&#x636E;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x7C7B;&#x540D;&#xFF09;&#xFF0C;&#x6839;&#x636E;&#x7C7B;&#x6765;&#x8FDB;&#x884C;&#x7F13;&#x5B58;&#xFF0C;&#x843D;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x67E5;&#x8BE2;&#x548C;&#x53D8;&#x66F4;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x91CC;&#xFF0C;&#x6B64;&#x65F6;&#x67E5;&#x8BE2;&#x2014;&#x2014;&gt;&#x53D8;&#x66F4;&#x2014;&#x2014;&gt;&#x518D;&#x67E5;&#x8BE2;&#x662F;&#x53D8;&#x66F4;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x5982;&#x679C;&#x67E5;&#x8BE2;&#x5728;A&#x7C7B;&#xFF0C;&#x53D8;&#x66F4;&#x5728;B&#x7C7B;&#xFF0C;&#x6B64;&#x65F6;&#xFF0C;&#x8C03;&#x7528;A&#x67E5;&#x8BE2;&#x2014;&#x2014;&gt;B&#x53D8;&#x66F4;&#x2014;&#x2014;&gt;A&#x67E5;&#x8BE2;&#xFF0C;&#x53D1;&#x73B0;&#x67E5;&#x8BE2;&#x7684;&#x7ED3;&#x679C;&#x5E76;&#x975E;B&#x53D8;&#x66F4;&#x540E;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x5728;B&#x53D8;&#x66F4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x53BB;&#x66F4;&#x65B0;A&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x5185;&#x5BB9;</li>
-</ul>
-</li>
-<li>&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7684;&#x65E5;&#x5FD7;&#x6846;&#x67B6;&#x662F;slf4j<ul>
-<li>mybatis + spring5.x + log4j  &#x4E0D;&#x80FD;&#x6253;&#x5370;&#x65E5;&#x5FD7;</li>
-<li>mybatis + log4j  &#x80FD;&#x6253;&#x5370;&#x65E5;&#x5FD7;</li>
-<li>&#x539F;&#x56E0;&#xFF1F;&#x56E0;&#x4E3A;springjcl &#x5185;&#x90E8;&#x662F;jul&#xFF0C;&#x5F15;&#x5165;spring&#x5728;&#x4E0B;&#x9762;&#x7B2C;&#x4E8C;&#x884C;&#x4EE3;&#x7801;&#x5C31;&#x5B9E;&#x4F8B;&#x5316;&#x4E86;&#xFF0C;&#x5B9E;&#x4F8B;&#x5316;&#x4E86;log&#x5BF9;&#x8C61;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5F15;&#x5165;spring&#xFF0C;&#x8D70;&#x5230;&#x4E0B;&#x9762;&#x7B2C;&#x56DB;&#x884C;&#x4EE3;&#x7801;&#x624D;&#x5B9E;&#x4F8B;&#x5316;log<pre><code class="lang-java">tryImplementation(LogFactory::useSlf4jLogging);
-tryImplementation(LogFactory::useCommonsLogging);
-tryImplementation(LogFactory::useLog4J2Logging);
-tryImplementation(LogFactory::useLog4JLogging);
-tryImplementation(LogFactory::useJdkLogging);
-tryImplementation(LogFactory::useNoLogging);
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p>&#x4E00;&#x7EA7;&#x7F13;&#x5B58;&#x5931;&#x6548;&#x539F;&#x7406;&#xFF1F;</p>
+                                <h2 id="redis-&#x5355;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;">Redis &#x5355;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;</h2>
+<p>Redis &#x57FA;&#x4E8E; Reactor &#x6A21;&#x5F0F;&#x6765;&#x8BBE;&#x8BA1;&#x5F00;&#x53D1;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x5957;&#x9AD8;&#x6548;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x6A21;&#x578B;&#x3002;&#x901A;&#x8FC7;IO &#x591A;&#x8DEF;&#x590D;&#x7528;&#x7A0B;&#x5E8F; &#x6765;&#x76D1;&#x542C;&#x6765;&#x81EA;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5927;&#x91CF;&#x8FDE;&#x63A5;&#xFF08;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x76D1;&#x542C;&#x591A;&#x4E2A; socket&#xFF09;&#xFF0C;&#x5B83;&#x4F1A;&#x5C06;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4E8B;&#x4EF6;&#x53CA;&#x7C7B;&#x578B;(&#x8BFB;&#x3001;&#x5199;&#xFF09;&#x6CE8;&#x518C;&#x5230;&#x5185;&#x6838;&#x4E2D;&#x5E76;&#x76D1;&#x542C;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x662F;&#x5426;&#x53D1;&#x751F;&#x3002;
+ I/O &#x591A;&#x8DEF;&#x590D;&#x7528;&#x6280;&#x672F;&#x7684;&#x4F7F;&#x7528;&#x8BA9; Redis &#x4E0D;&#x9700;&#x8981;&#x989D;&#x5916;&#x521B;&#x5EFA;&#x591A;&#x4F59;&#x7684;&#x7EBF;&#x7A0B;&#x6765;&#x76D1;&#x542C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5927;&#x91CF;&#x8FDE;&#x63A5;&#xFF0C;&#x964D;&#x4F4E;&#x4E86;&#x8D44;&#x6E90;&#x7684;&#x6D88;&#x8017;&#xFF08;&#x548C; NIO &#x4E2D;&#x7684; Selector &#x7EC4;&#x4EF6;&#x5F88;&#x50CF;&#xFF09;&#x3002;</p>
+<h3 id="redis60-&#x4E4B;&#x524D;-&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x4F7F;&#x7528;&#x591A;&#x7EBF;&#x7A0B;&#xFF1F;">Redis6.0 &#x4E4B;&#x524D; &#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x4F7F;&#x7528;&#x591A;&#x7EBF;&#x7A0B;&#xFF1F;</h3>
 <ul>
-<li>mybatis &#x2014;&#x2014; sqlSession &#x2014;&#x2014; defaultSqlSession &#x2014;&#x2014; select &#x2014;&#x2014; &#x6267;&#x884C;sql&#x3002;&#x4F7F;&#x7528;&#x7684;&#x662F;defaultSqlSession&#x6240;&#x4EE5;&#x7F13;&#x5B58;&#x8FD8;&#x5728;&#x3002;</li>
-<li>spring &#x2014;&#x2014; sqlSession &#x2014;&#x2014; SQLSessionTemplate &#x2014;&#x2014; select &#x2014;&#x2014; sqlSessionProxy.select &#x2014;&#x2014; &#x6267;&#x884C;sql &#x2014;&#x2014; &#x5173;&#x95ED;session<pre><code class="lang-java"><span class="hljs-comment">//SqlSessionTemplate.SqlSessionInterceptor.invoke&#x4E2D;&#x6700;&#x540E;&#x90E8;&#x5206;&#x4EE3;&#x7801;</span>
-<span class="hljs-keyword">finally</span> {
-  <span class="hljs-keyword">if</span> (sqlSession != <span class="hljs-keyword">null</span>) {
-    closeSqlSession(sqlSession, SqlSessionTemplate.<span class="hljs-keyword">this</span>.sqlSessionFactory);
-  }
-}
+<li>&#x5355;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x5BB9;&#x6613;&#x5E76;&#x4E14;&#x66F4;&#x5BB9;&#x6613;&#x7EF4;&#x62A4;&#xFF1B;</li>
+<li>Redis &#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x4E0D;&#x518D; CPU &#xFF0C;&#x4E3B;&#x8981;&#x5728;&#x5185;&#x5B58;&#x548C;&#x7F51;&#x7EDC;&#xFF1B;</li>
+<li>&#x591A;&#x7EBF;&#x7A0B;&#x5C31;&#x4F1A;&#x5B58;&#x5728;&#x6B7B;&#x9501;&#x3001;&#x7EBF;&#x7A0B;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x7B49;&#x95EE;&#x9898;&#xFF0C;&#x751A;&#x81F3;&#x4F1A;&#x5F71;&#x54CD;&#x6027;&#x80FD;&#x3002;</li>
+<li>Redis6.0 &#x5F15;&#x5165;&#x591A;&#x7EBF;&#x7A0B;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x7F51;&#x7EDC; IO &#x8BFB;&#x5199;&#x6027;&#x80FD;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x7B97;&#x662F; Redis &#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x6027;&#x80FD;&#x74F6;&#x9888;&#xFF08;Redis &#x7684;&#x74F6;&#x9888;&#x4E3B;&#x8981;&#x53D7;&#x9650;&#x4E8E;&#x5185;&#x5B58;&#x548C;&#x7F51;&#x7EDC;&#xFF09;&#x3002;</li>
+</ul>
+<h3 id="redis&#x662F;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x6570;&#x636E;&#x662F;&#x5426;&#x8FC7;&#x671F;&#x7684;">Redis&#x662F;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x6570;&#x636E;&#x662F;&#x5426;&#x8FC7;&#x671F;&#x7684;</h3>
+<p>Redis &#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x53EB;&#x505A;&#x8FC7;&#x671F;&#x5B57;&#x5178;&#xFF08;&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x662F;hash&#x8868;&#xFF09;&#x6765;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x8FC7;&#x671F;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x8FC7;&#x671F;&#x5B57;&#x5178;&#x7684;&#x952E;&#x6307;&#x5411;Redis&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;key(&#x952E;)&#xFF0C;&#x8FC7;&#x671F;&#x5B57;&#x5178;&#x7684;&#x503C;&#x662F;&#x4E00;&#x4E2A;long long&#x7C7B;&#x578B;&#x7684;&#x6574;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x6574;&#x6570;&#x4FDD;&#x5B58;&#x4E86;key&#x6240;&#x6307;&#x5411;&#x7684;&#x6570;&#x636E;&#x5E93;&#x952E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF08;&#x6BEB;&#x79D2;&#x7CBE;&#x5EA6;&#x7684;UNIX&#x65F6;&#x95F4;&#x6233;&#xFF09;&#x8FC7;&#x671F;&#x5B57;&#x5178;&#x662F;&#x5B58;&#x50A8;&#x5728;redisDb&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x91CC;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> redisDb {
+    ...
+
+    dict *dict;     <span class="hljs-comment">//&#x6570;&#x636E;&#x5E93;&#x952E;&#x7A7A;&#x95F4;,&#x4FDD;&#x5B58;&#x7740;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x6240;&#x6709;&#x952E;&#x503C;&#x5BF9;</span>
+    dict *expires   <span class="hljs-comment">// &#x8FC7;&#x671F;&#x5B57;&#x5178;,&#x4FDD;&#x5B58;&#x7740;&#x952E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;</span>
+    ...
+} redisDb;
 </code></pre>
-</li>
-</ul>
-</li>
-<li><p>mybatis&#x548C;spring&#x662F;&#x5982;&#x4F55;&#x6574;&#x5408;&#x7684;&#xFF1F;</p>
+<h4 id="&#x8FC7;&#x671F;&#x7684;&#x6570;&#x636E;&#x7684;&#x5220;&#x9664;&#x7B56;&#x7565;">&#x8FC7;&#x671F;&#x7684;&#x6570;&#x636E;&#x7684;&#x5220;&#x9664;&#x7B56;&#x7565;</h4>
 <ul>
-<li>MapperScan&#x626B;&#x63CF;mapper&#x6240;&#x5BF9;&#x5E94;&#x7684;BeanDefinition</li>
-<li>&#x628A;mapper&#x53D8;&#x6210;FactoryBean&#xFF0C;MapperFactoryBean</li>
-<li>&#x4E3A;BeanDefinition&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;mybatis&#x7684;Mapper FactoryBean&#x6709;&#x4E00;&#x4E2A;&#x6709;&#x53C2;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;spring&#x5B9E;&#x4F8B;&#x5316;&#x65F6;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x7684;&#x503C;</li>
-<li>mybatis&#x5229;&#x7528;spring&#x7684;afterPropertiesSet&#x65B9;&#x6CD5;&#x6765;&#x5B8C;&#x6210;&#x5BF9;mapper&#x4FE1;&#x606F;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x6BD4;&#x5982;&#x6CE8;&#x89E3;&#x7684;sql&#x8BED;&#x53E5;&#x521D;&#x59CB;&#x5316;&#x3002;</li>
-<li>&#x5F53;&#x4E00;&#x4E2A;MapperFactoryBean&#x88AB;&#x5B9E;&#x4F8B;&#x5316;&#x4E86;&#x4E4B;&#x540E;&#xFF0C;MapperFactoryBean&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x4E86;InitialBean&#x63A5;&#x53E3;afterPropertiesSet&#x65B9;&#x6CD5;&#xFF0C;afterPropertiesSet&#x4E2D;&#x8C03;&#x7528;&#x4E86;&#x5B50;&#x7C7B;&#x7684;checkDaoConfig()&#x65B9;&#x6CD5;&#xFF0C;checkDaoConfig&#x4E2D;&#x6709;configuration.addMapper(this.mapperInterface)&#xFF0C;&#x5F97;&#x5230;&#x63A5;&#x53E3;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5224;&#x65AD;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x6709;&#x6CA1;&#x6709;&#x52A0;mybatis&#x7684;&#x76F8;&#x5173;curd&#x6CE8;&#x89E3;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x76F8;&#x5173;sql&#x5B58;&#x653E;&#x5230; &#x5168;&#x7C7B;&#x540D;+&#x65B9;&#x6CD5;&#x540D; &#x4F5C;&#x4E3A;key &#x653E;&#x5230;mapperedStatements&#x7684;map&#x4E2D;&#x3002;&#x5728;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x4ECE;&#x8BE5;map&#x4E2D;&#x53D6;&#x51FA;sql&#x8FDB;&#x884C;&#x6267;&#x884C;&#x3002;</li>
+<li>&#x60F0;&#x6027;&#x5220;&#x9664; &#xFF1A;&#x53EA;&#x4F1A;&#x5728;&#x53D6;&#x51FA;key&#x7684;&#x65F6;&#x5019;&#x624D;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8FC7;&#x671F;&#x68C0;&#x67E5;&#x3002;&#x8FD9;&#x6837;&#x5BF9;CPU&#x6700;&#x53CB;&#x597D;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x592A;&#x591A;&#x8FC7;&#x671F; key &#x6CA1;&#x6709;&#x88AB;&#x5220;&#x9664;&#x3002;</li>
+<li>&#x5B9A;&#x671F;&#x5220;&#x9664; &#xFF1A; &#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x62BD;&#x53D6;&#x4E00;&#x6279; key &#x6267;&#x884C;&#x5220;&#x9664;&#x8FC7;&#x671F;key&#x64CD;&#x4F5C;&#x3002;&#x5E76;&#x4E14;&#xFF0C;Redis &#x5E95;&#x5C42;&#x4F1A;&#x901A;&#x8FC7;&#x9650;&#x5236;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x7684;&#x65F6;&#x957F;&#x548C;&#x9891;&#x7387;&#x6765;&#x51CF;&#x5C11;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x5BF9;CPU&#x65F6;&#x95F4;&#x7684;&#x5F71;&#x54CD;&#x3002;</li>
+<li>&#x5B9A;&#x671F;&#x5220;&#x9664;&#x5BF9;&#x5185;&#x5B58;&#x66F4;&#x52A0;&#x53CB;&#x597D;&#xFF0C;&#x60F0;&#x6027;&#x5220;&#x9664;&#x5BF9;CPU&#x66F4;&#x52A0;&#x53CB;&#x597D;</li>
+<li>Redis &#x91C7;&#x7528;&#x7684;&#x662F; &#x5B9A;&#x671F;&#x5220;&#x9664;+&#x60F0;&#x6027;/&#x61D2;&#x6C49;&#x5F0F;&#x5220;&#x9664;</li>
 </ul>
-</li>
+<p>&#x4EC5;&#x4EC5;&#x901A;&#x8FC7;&#x7ED9; key &#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x8FD8;&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;&#x3002;&#x56E0;&#x4E3A;&#x8FD8;&#x662F;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x5B9A;&#x671F;&#x5220;&#x9664;&#x548C;&#x60F0;&#x6027;&#x5220;&#x9664;&#x6F0F;&#x6389;&#x4E86;&#x5F88;&#x591A;&#x8FC7;&#x671F; key &#x7684;&#x60C5;&#x51B5;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x5BFC;&#x81F4;&#x5927;&#x91CF;&#x8FC7;&#x671F; key &#x5806;&#x79EF;&#x5728;&#x5185;&#x5B58;&#x91CC;&#xFF0C;&#x7136;&#x540E;&#x5C31;Out of memory&#x4E86;
+&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x5C31;&#x662F;&#xFF1A; Redis &#x5185;&#x5B58;&#x6DD8;&#x6C70;&#x673A;&#x5236;</p>
+<h4 id="redis-&#x5185;&#x5B58;&#x6DD8;&#x6C70;&#x673A;&#x5236;">Redis &#x5185;&#x5B58;&#x6DD8;&#x6C70;&#x673A;&#x5236;</h4>
+<p>Redis &#x63D0;&#x4F9B; 6 &#x79CD;&#x6570;&#x636E;&#x6DD8;&#x6C70;&#x7B56;&#x7565;&#xFF1A;</p>
+<ul>
+<li>volatile-lru&#xFF08;least recently used&#xFF09;&#xFF1A;&#x4ECE;&#x5DF2;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].expires&#xFF09;&#x4E2D;&#x6311;&#x9009;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>volatile-ttl&#xFF1A;&#x4ECE;&#x5DF2;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].expires&#xFF09;&#x4E2D;&#x6311;&#x9009;&#x5C06;&#x8981;&#x8FC7;&#x671F;&#x7684;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>volatile-random&#xFF1A;&#x4ECE;&#x5DF2;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].expires&#xFF09;&#x4E2D;&#x4EFB;&#x610F;&#x9009;&#x62E9;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>allkeys-lru&#xFF08;least recently used&#xFF09;&#xFF1A;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5728;&#x952E;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x79FB;&#x9664;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684; key&#xFF08;&#x8FD9;&#x4E2A;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#xFF09;</li>
+<li>allkeys-random&#xFF1A;&#x4ECE;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].dict&#xFF09;&#x4E2D;&#x4EFB;&#x610F;&#x9009;&#x62E9;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>no-eviction&#xFF1A;&#x7981;&#x6B62;&#x9A71;&#x9010;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x65B0;&#x5199;&#x5165;&#x64CD;&#x4F5C;&#x4F1A;&#x62A5;&#x9519;&#x3002;&#x8FD9;&#x4E2A;&#x5E94;&#x8BE5;&#x6CA1;&#x4EBA;&#x4F7F;&#x7528;&#x5427;&#xFF01;</li>
+</ul>
+<p>4.0 &#x7248;&#x672C;&#x540E;&#x589E;&#x52A0;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>volatile-lfu&#xFF08;least frequently used&#xFF09;&#xFF1A;&#x4ECE;&#x5DF2;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x96C6;(server.db[i].expires)&#x4E2D;&#x6311;&#x9009;&#x6700;&#x4E0D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>allkeys-lfu&#xFF08;least frequently used&#xFF09;&#xFF1A;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5728;&#x952E;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x79FB;&#x9664;&#x6700;&#x4E0D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684; key</li>
 </ul>
 
                                 
@@ -932,12 +931,12 @@ tryImplementation(LogFactory::useNoLogging);
 
             
                 
-                <a href="log.html" class="navigation navigation-prev " aria-label="Previous page: Log">
+                <a href="redis.html" class="navigation navigation-prev " aria-label="Previous page: Redis基础">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="web.html" class="navigation navigation-next " aria-label="Next page: Web">
+                <a href="miao-sha.html" class="navigation navigation-next " aria-label="Next page: 秒杀">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -948,7 +947,7 @@ tryImplementation(LogFactory::useNoLogging);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mybatis","level":"1.30","depth":1,"next":{"title":"Web","level":"1.31","depth":1,"path":"web.md","ref":"web.md","articles":[]},"previous":{"title":"Log","level":"1.29","depth":1,"path":"log.md","ref":"log.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mybatis.md","mtime":"2020-12-23T01:00:58.516Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-08T07:50:01.390Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Redis原理","level":"1.33.3","depth":2,"next":{"title":"秒杀","level":"1.33.4","depth":2,"path":"miao-sha.md","ref":"miao-sha.md","articles":[]},"previous":{"title":"Redis基础","level":"1.33.2","depth":2,"path":"redis.md","ref":"redis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"redisyuan-li.md","mtime":"2021-01-07T11:57:15.361Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-08T07:50:01.390Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
